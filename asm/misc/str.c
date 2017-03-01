@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 15:05:53 2017 
-** Last update Wed Mar  1 15:09:20 2017 
+** Last update Wed Mar  1 16:59:52 2017 
 */
 #include <stdlib.h>
 #include "my.h"
@@ -38,4 +38,17 @@ char	*my_strndup(char *str, int len)
     dup[i] = str[i];
   dup[i] = 0;
   return (dup);
+}
+
+char	*is_only_composed_of(char *str, char only_composed)
+{
+  int	i;
+
+  i = -1;
+  while (str[++i])
+    {
+      if (!is_in(str[i], only_composed))
+	return (0);
+    }
+  return (1);
 }
