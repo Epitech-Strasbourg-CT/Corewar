@@ -1,17 +1,25 @@
 /*
-** main.c for main.c in /home/cedric/delivery/ex
+** main.c for corewar-asm in /home/nicolaspolomack/cpe/2/CPE_2016_corewar/asm
 ** 
-** Made by Cédric Thomas
-** Login   <cedric@epitech.net>
+** Made by Nicolas Polomack
+** Login   <nicolas.polomack@epitech.eu>
 ** 
-** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Sat Oct 22 18:21:05 2016 Cédric Thomas
+** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
+** Last update Wed Mar  1 17:33:28 2017 Nicolas Polomack
 */
 
-int	main(int ac, char **av)
+#include <stdlib.h>
+#include "asm.h"
+
+int		main(int ac, char **av)
 {
-  if (ac != 0)
+  t_asm		a;
+
+  if (ac != 2 || (check_dir(av[1]) == -1))
     return (84);
-  
+  a.file = NULL;
+  if (read_file(&a, av[1]) == -1)
+    return (84);
+  display_file(a.file);
   return (0);
 }

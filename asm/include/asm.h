@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Wed Mar  1 15:40:18 2017 
+** Last update Wed Mar  1 17:36:50 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -25,10 +25,24 @@ typedef struct		s_header
 
 typedef struct		s_instruct
 {
-
   struct s_instruct	*prev;
   struct s_instruct	*next;
 }			t_instruct;
+
+typedef struct		s_asm
+{
+  char			**file;
+  t_header		header;
+}			t_asm;
+
+/*
+** file.c
+*/
+
+void	display_file(char **);
+char	**my_realloc(char **, char *, int);
+int	read_file(t_asm *, char *);
+int	check_dir(char *);
 
 /*
 **misc.c
