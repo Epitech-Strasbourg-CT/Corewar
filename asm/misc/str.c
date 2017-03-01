@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 15:05:53 2017 
-** Last update Wed Mar  1 16:59:52 2017 
+** Last update Wed Mar  1 21:12:49 2017 Nicolas Polomack
 */
 #include <stdlib.h>
 #include "my.h"
@@ -40,7 +40,7 @@ char	*my_strndup(char *str, int len)
   return (dup);
 }
 
-char	*is_only_composed_of(char *str, char only_composed)
+int	is_only_composed_of(char *str, char *only_composed)
 {
   int	i;
 

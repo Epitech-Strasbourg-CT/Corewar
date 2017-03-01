@@ -5,10 +5,11 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Wed Mar  1 17:33:28 2017 Nicolas Polomack
+** Last update Wed Mar  1 21:15:04 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
+#include "my_printf.h"
 #include "asm.h"
 
 int		main(int ac, char **av)
@@ -20,6 +21,8 @@ int		main(int ac, char **av)
   a.file = NULL;
   if (read_file(&a, av[1]) == -1)
     return (84);
-  display_file(a.file);
+  parse_headers(&a);
+  my_printf("NAME: %s\n", a.header.name);
+  my_printf("COMMENT: %s\n", a.header.comment);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Wed Mar  1 17:36:50 2017 Nicolas Polomack
+** Last update Wed Mar  1 21:13:27 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -20,7 +20,8 @@ typedef struct		s_label
 
 typedef struct		s_header
 {
-  
+  char			*name;
+  char			*comment;
 }			t_header;
 
 typedef struct		s_instruct
@@ -39,10 +40,16 @@ typedef struct		s_asm
 ** file.c
 */
 
-void	display_file(char **);
-char	**my_realloc(char **, char *, int);
-int	read_file(t_asm *, char *);
-int	check_dir(char *);
+void	display_file(char **file);
+char	**my_realloc(char **file, char *line, int size);
+int	read_file(t_asm *a, char *file);
+int	check_dir(char *file);
+
+/*
+** header.c
+*/
+
+void	parse_headers(t_asm *a);
 
 /*
 **misc.c
@@ -51,17 +58,20 @@ int	check_dir(char *);
 /*
 **str.c
 */
+
 int	my_strnlen(char *str, char *c);
 char	*my_strndup(char *str, int len);
 
 /*
 **endian.c
 */
+
 void		swap_endian(void *raw, int size);
 
 /*
 **epurstr.c
 */
+
 char	*my_epurnstr(char *str, int nbspace, char *to_ep, char replace);
 
 #endif /* !ASM_H_ */

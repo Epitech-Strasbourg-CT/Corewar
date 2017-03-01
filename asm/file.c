@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Wed Mar  1 17:33:59 2017 Nicolas Polomack
+** Last update Wed Mar  1 21:09:46 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "my_printf.h"
+#include "op.h"
 #include "asm.h"
 #include "my.h"
 
@@ -32,6 +33,18 @@ char	**my_realloc(char **file, char *line, int size)
   return (new);
 }
 
+int	is_comment(char *str)
+{
+  int	i;
+
+  i = 0;
+  while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+    i += 1;
+  if (str[i] == COMMENT_CHAR || str[i] == 0)
+    return (1);
+  return (0);
+}
+
 int	read_file(t_asm *a, char *file)
 {
   int	fd;
@@ -43,17 +56,21 @@ int	read_file(t_asm *a, char *file)
   size = 0;
   while ((line = get_next_line(fd)))
     {
-      if (size == 0)
+      if (is_comment(line))
 	{
+	  free(line);
+	  continue;
+	}
+      else if (size == 0)
+	{	
 	  if ((a->file = malloc(sizeof(char *) * 2)) == NULL)
 	    return (-1);
 	  a->file[0] = line;
 	  a->file[1] = NULL;
-	  size += 1;
-	  continue;
 	}
-      if ((a->file = my_realloc(a->file, line, size)) == NULL)
-	return (-1);
+      else
+	if ((a->file = my_realloc(a->file, line, size)) == NULL)
+	  return (-1);
       size += 1;
     }
   close(fd);

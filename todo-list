@@ -1,7 +1,7 @@
 ASM:
 
-- .name
-- .comment
+- .name			DONE
+- .comment		DONE
 - live (0x01)
 - ld (0x02)
 - st (0x03)
