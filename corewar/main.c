@@ -5,14 +5,16 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Tue Feb 28 20:20:30 2017 Arthur Knoepflin
+** Last update Wed Mar  1 16:25:07 2017 Nicolas Polomack
 */
 
 #include "my.h"
 
-void	disp_help()
+void	disp_help(char *name)
 {
-  my_putstr("USAGE\n\t./corewar [-dump nbr_cycle] [[-n prog_number] \
+  my_putstr("USAGE\n\t");
+  my_putstr(name);
+  my_putstr(" [-dump nbr_cycle] [[-n prog_number] \
 [-a load_address] prog_name] ...\n\n");
   my_putstr("DESCRIPTION\n\t-dump nbr_clycle dumbs the memory after \
 the nbr_cycle execution (if the round isn't\n\t\t\t already over) with the \
@@ -28,8 +30,8 @@ The addresses are MEM_SIZE modulo\n");
 int	main(int ac, char **av)
 {
   if (ac == 1)
-    disp_help();
+    disp_help(av[0]);
   if (ac > 1 && my_strcmp(av[1], "-h") == 0)
-    disp_help();
+    disp_help(av[0]);
   return (0);
 }
