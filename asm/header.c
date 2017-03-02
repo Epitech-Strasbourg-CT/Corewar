@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Wed Mar  1 21:11:28 2017 Nicolas Polomack
+** Last update Thu Mar  2 07:45:32 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -37,7 +37,7 @@ void	parse_name(t_asm *a, int i, int j, int *indic)
       my_printf("ERROR:%d:%d: Invalid character\n", i, j + l);
       exit(84);
     }
-  t = l + 1;
+  t = ++l;
   while (a->file[i][j + t] && a->file[i][j + t] != quote)
     t += 1;
   if (a->file[i][j + t] != quote || a->file[i][j + t + 1] != 0)
@@ -64,7 +64,7 @@ void	parse_comment(t_asm *a, int i, int j, int *indic)
       my_printf("ERROR:%d:%d: Invalid character\n", i, j + l);
       exit(84);
     }
-  t = l + 1;
+  t = ++l;
   while (a->file[i][j + t] && a->file[i][j + t] != quote)
     t += 1;
   if (a->file[i][j + t] != quote || a->file[i][j + t + 1] != 0)
