@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Wed Mar  1 21:15:04 2017 Nicolas Polomack
+** Last update Thu Mar  2 09:43:08 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -19,10 +19,13 @@ int		main(int ac, char **av)
   if (ac != 2 || (check_dir(av[1]) == -1))
     return (84);
   a.file = NULL;
+  a.header.name = NULL;
+  a.header.comment = NULL;
   if (read_file(&a, av[1]) == -1)
     return (84);
   parse_headers(&a);
   my_printf("NAME: %s\n", a.header.name);
   my_printf("COMMENT: %s\n", a.header.comment);
+  display_file(a.file);
   return (0);
 }
