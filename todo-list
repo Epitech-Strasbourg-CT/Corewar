@@ -24,7 +24,7 @@ ASM:
 
 VM:
 
-- mgik number
+- magik number
 - args parsing
 - op.h parsing
 - output
