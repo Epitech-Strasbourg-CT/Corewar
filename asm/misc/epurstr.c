@@ -5,8 +5,9 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 15:08:23 2017 
-** Last update Wed Mar  1 15:08:43 2017 
+** Last update Thu Mar  9 20:00:12 2017 Nicolas Polomack
 */
+
 #include <stdlib.h>
 #include "asm.h"
 
@@ -40,7 +41,7 @@ static void	copy_space(char **epur, int *j, char replace, int nb_space)
   while (*j < temp)
     {
       (*epur)[*j] = replace;
-      (*j)++;      
+      (*j)++;
     }
 }
 

@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Thu Mar  9 19:30:27 2017 Nicolas Polomack
+** Last update Thu Mar  9 19:53:34 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -55,24 +55,19 @@ int	read_file(t_asm *a, char *file)
     return (-1);
   size = 0;
   while ((line = get_next_line(fd)))
-    {
-      if (is_comment(line))
-	{
-	  free(line);
-	  continue;
-	}
-      else if (size == 0)
-	{	
-	  if ((a->file = malloc(sizeof(char *) * 2)) == NULL)
-	    return (-1);
-	  a->file[0] = line;
-	  a->file[1] = NULL;
-	}
-      else
-	if ((a->file = my_realloc(a->file, line, size)) == NULL)
+    if (is_comment(line))
+      free(line);
+    else if (size == 0)
+      {	
+	if ((a->file = malloc(sizeof(char *) * 2)) == NULL)
 	  return (-1);
-      size += 1;
-    }
+	a->file[0] = line;
+	a->file[1] = NULL;
+	size += 1;
+      }
+    else
+      if ((a->file = my_realloc(a->file, line, size++)) == NULL)
+	return (-1);
   close(fd);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Thu Mar  9 19:44:13 2017 Nicolas Polomack
+** Last update Thu Mar  9 20:01:23 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -14,13 +14,6 @@
 #include "my.h"
 #include "op.h"
 #include "my_printf.h"
-
-void	error_header(int i, int j, int k)
-{
-  my_printf("ERROR:%d:%d: Two %s defined.\n", i, j,
-	    (k) ? "names" : "comments");
-  exit(84);
-}
 
 void	suppress_line(char **file, int i)
 {
