@@ -5,9 +5,10 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Tue Feb 28 20:20:30 2017 Arthur Knoepflin
+** Last update Thu Mar  9 20:45:18 2017 Arthur Knoepflin
 */
 
+#include "corewar.h"
 #include "my.h"
 
 void	disp_help()
@@ -25,11 +26,14 @@ the processes are as far\n\t\t\t away from each other as possible. \
 The addresses are MEM_SIZE modulo\n");
 }
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
+  t_parse	*parse;
+
   if (ac == 1)
     disp_help();
   if (ac > 1 && my_strcmp(av[1], "-h") == 0)
     disp_help();
+  parse = get_parse(ac - 1, av + 1);
   return (0);
 }
