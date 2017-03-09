@@ -5,13 +5,14 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Thu Mar  2 09:50:46 2017 Nicolas Polomack
+** Last update Thu Mar  9 19:44:13 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "asm.h"
 #include "my.h"
+#include "op.h"
 #include "my_printf.h"
 
 void	error_header(int i, int j, int k)
@@ -76,31 +77,39 @@ void	parse_comment(t_asm *a, int *i, int j, int *indic)
   *i = -1;
 }
 
-void	parse_headers(t_asm *a)
+static void	logic(t_asm *a, int *name, int *comment)
 {
-  int	i;
-  int	j;
-  int	name;
-  int	comment;
+  int		i;
+  int		j;
 
-  name = 0;
-  comment = 0;
   i = -1;
   while (a->file[++i])
     {
       j = 0;
       while (a->file[i][j] && (a->file[i][j] == ' ' ||
-			       a->file[i][j] == '\t'))
-	j += 1;
-      if (my_strncmp(&(a->file[i][j]), ".name", 5) == 0 && name++ == 0)
-	parse_name(a, &i, j + 5, &name);
-      else if (my_strncmp(&(a->file[i][j]), ".comment", 8) == 0 && comment++ == 0)
-	parse_comment(a, &i, j + 8, &comment);
-      else if (name == 2 || comment == 2)
-	error_header(i, j, (name == 2) ? 1 : 0);
+                               a->file[i][j] == '\t'))
+        j += 1;
+      if (my_strncmp(&(a->file[i][j]), NAME_CMD_STRING,
+		     5) == 0 && (*name)++ == 0)
+        parse_name(a, &i, j + 5, name);
+      else if (my_strncmp(&(a->file[i][j]), COMMENT_CMD_STRING,
+			  8) == 0 && (*comment)++ == 0)
+        parse_comment(a, &i, j + 8, comment);
+      else if (*name == 2 || *comment == 2)
+        error_header(i, j, (*name == 2) ? 1 : 0);
       j += 1;
     }
+}
+
+void	parse_headers(t_asm *a)
+{
+  int	name;
+  int	comment;
+
+  name = 0;
+  comment = 0;
+  logic(a, &name, &comment);
   if (a->header.name == NULL || a->header.comment == NULL)
     exit(84 + 0 * my_printf("ERROR: No '%s' found.\n",
-			    (!name) ? ".name" : ".comment"));
+			    (!name) ? NAME_CMD_STRING : COMMENT_CMD_STRING));
 }

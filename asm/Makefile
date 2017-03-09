@@ -1,3 +1,4 @@
+
 ##
 ## Makefile for Makefile in /home/cedric/lib
 ## 
@@ -5,7 +6,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Wed Mar  1 20:15:27 2017 Nicolas Polomack
+## Last update Thu Mar  9 19:36:01 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c		\
@@ -27,26 +28,30 @@ CFLAGS	+=	 $(INCLUDE)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-		@echo -n "Compilation GNL... "
+$(NAME):	.SILENT
+
+.SILENT:	$(OBJ)
+		@echo -en "Compilation GNL...\t\t"
 		@make -sC lib/GNL
 		@echo "OK"
-		@echo -n "Compilation libmy... "
+		@echo -en "Compilation libmy...\t\t"
 		@make -sC lib/my
 		@echo "OK"
-		@echo -n "Compilation my_printf... "
+		@echo -en "Compilation my_printf...\t"
 		@make -sC lib/my_printf
 		@echo "OK"
-		gcc -o $(NAME) $(OBJ) -L$(LIB_F) $(LIB)
+		@echo -en "Linking ASM compiler...\t\t"
+		@gcc -o $(NAME) $(OBJ) -L$(LIB_F) $(LIB)
+		@echo "OK"
 
 clean:
 		@make -sC lib/GNL fclean
 		@make -sC lib/my fclean
 		@make -sC lib/my_printf fclean
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 
 fclean:		clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re: 		fclean all
 

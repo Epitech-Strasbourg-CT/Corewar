@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Wed Mar  1 21:09:46 2017 Nicolas Polomack
+** Last update Thu Mar  9 19:30:27 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -83,7 +83,7 @@ void	display_file(char **file)
 
   i = -1;
   while (file[++i] != NULL)
-    my_printf("line %d: '%s'\n", i + 1, file[i]);
+    my_printf("line %3d: '%s'\n", i + 1, file[i]);
 }
 
 int	check_dir(char *file)
