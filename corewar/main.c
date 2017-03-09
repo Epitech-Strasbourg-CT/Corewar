@@ -5,15 +5,21 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
+<<<<<<< HEAD
 ** Last update Thu Mar  9 20:45:18 2017 Arthur Knoepflin
+=======
+** Last update Wed Mar  1 16:25:07 2017 Nicolas Polomack
+>>>>>>> d0e412442836c78a0c995c79573b655fa8b96dbd
 */
 
 #include "corewar.h"
 #include "my.h"
 
-void	disp_help()
+void	disp_help(char *name)
 {
-  my_putstr("USAGE\n\t./corewar [-dump nbr_cycle] [[-n prog_number] \
+  my_putstr("USAGE\n\t");
+  my_putstr(name);
+  my_putstr(" [-dump nbr_cycle] [[-n prog_number] \
 [-a load_address] prog_name] ...\n\n");
   my_putstr("DESCRIPTION\n\t-dump nbr_clycle dumbs the memory after \
 the nbr_cycle execution (if the round isn't\n\t\t\t already over) with the \
@@ -31,9 +37,13 @@ int		main(int ac, char **av)
   t_parse	*parse;
 
   if (ac == 1)
-    disp_help();
+    disp_help(av[0]);
   if (ac > 1 && my_strcmp(av[1], "-h") == 0)
+<<<<<<< HEAD
     disp_help();
   parse = get_parse(ac - 1, av + 1);
+=======
+    disp_help(av[0]);
+>>>>>>> d0e412442836c78a0c995c79573b655fa8b96dbd
   return (0);
 }

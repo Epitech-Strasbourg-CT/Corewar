@@ -1,7 +1,7 @@
 ASM:
 
-- .name
-- .comment
+- .name			DONE
+- .comment		DONE
 - live (0x01)
 - ld (0x02)
 - st (0x03)
@@ -24,6 +24,7 @@ ASM:
 
 VM:
 
+- magik number
 - args parsing
 - op.h parsing
 - output
@@ -33,3 +34,22 @@ VM:
 - live checks
 - champions spread
 - .name && .comment parsing
+
+struct header
+struct list_instru
+struct list_label
+
+ASM fcts:
+
+epurstr -> n espace entre les mots
+my_strnlen -> jusqu'à la lettre n
+my_strndup -> dup n carac
+
+fct pour list doublement chainer de :
+
+-> label -> name + nb instruction
+-> instruction -> type en int (zjmp ...), char ** d'args
+
+fct pour ecrire et check la syntaxe de:
+
+type, direct, indirect, register
