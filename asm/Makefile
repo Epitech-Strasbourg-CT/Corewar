@@ -6,13 +6,15 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Thu Mar  9 19:36:01 2017 Nicolas Polomack
+## Last update Fri Mar 10 17:58:16 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c		\
 		file.c		\
 		header.c	\
-		misc/str.c
+		error.c		\
+		misc/str.c	\
+		misc/endian.c
 
 OBJ	=	$(SRC:.c=.o)
 

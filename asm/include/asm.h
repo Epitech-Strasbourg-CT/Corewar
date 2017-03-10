@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Wed Mar  1 21:13:27 2017 Nicolas Polomack
+** Last update Fri Mar 10 18:11:17 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -26,6 +26,7 @@ typedef struct		s_header
 
 typedef struct		s_instruct
 {
+  
   struct s_instruct	*prev;
   struct s_instruct	*next;
 }			t_instruct;
@@ -33,6 +34,8 @@ typedef struct		s_instruct
 typedef struct		s_asm
 {
   char			**file;
+  int			fd;
+  char			*file_name;
   t_header		header;
 }			t_asm;
 
@@ -50,6 +53,12 @@ int	check_dir(char *file);
 */
 
 void	parse_headers(t_asm *a);
+
+/*
+** error.c
+*/
+
+void	error_header(int, int, int);
 
 /*
 **misc.c
