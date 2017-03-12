@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Wed Mar  1 16:05:30 2017 
+** Last update Fri Mar 10 17:50:59 2017 Nicolas Polomack
 */
 
 #ifndef _OP_H_

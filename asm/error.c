@@ -5,8 +5,11 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 20:00:51 2017 Nicolas Polomack
-** Last update Thu Mar  9 20:01:11 2017 Nicolas Polomack
+** Last update Fri Mar 10 18:09:53 2017 Nicolas Polomack
 */
+
+#include <stdlib.h>
+#include "my_printf.h"
 
 void	error_header(int i, int j, int k)
 {
