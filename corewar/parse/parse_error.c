@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 20:41:18 2017 Arthur Knoepflin
-** Last update Thu Mar  9 23:26:07 2017 Arthur Knoepflin
+** Last update Sun Mar 12 12:19:05 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -13,26 +13,33 @@
 
 int	is_an_arg(char *str)
 {
-  if (!my_strcmp(str, "-dump") || !my_strcmp(str, "-n") ||
-      !my_strcmp(str, "-a"))
+  if (!my_strcmp(str, "-dump"))
     return (1);
+  if (!my_strcmp(str, "-n"))
+    return (2);
+  if (!my_strcmp(str, "-a"))
+    return (3);
   return (0);
 }
 
-int	check_champ(int ac, char **av, int *count, int *i)
+int		check_champ(int ac, char **av, int *count, int *i)
 {
   if (*i >= ac)
     return (1);
   if (av[*i][0] == '-' && !is_an_arg(av[*i]))
     return (print_unknown_arg(av[*i]));
-  if (!my_strcmp(av[*i], "-a") && (*count += 2) && (*i += 2));
+  if ((is_an_arg(av[*i]) == 2 || is_an_arg(av[*i]) == 3) && (*i += 2))
+    *count += 2;
   if (*i >= ac)
     return (1);
   if (av[*i][0] == '-' && !is_an_arg(av[*i]))
     return (print_unknown_arg(av[*i]));
-  if (!my_strcmp(av[*i], "-n") && (*count += 2) && (*i += 2));
-  if (*i >= ac && av[*i][0] == '-' && !is_an_arg(av[*i]))
+  if ((is_an_arg(av[*i]) == 2 || is_an_arg(av[*i]) == 3) && (*i += 2))
+    *count += 2;
+  if (*i >= ac)
     return (1);
+  if (av[*i][0] == '-' && !is_an_arg(av[*i]))
+    return (print_unknown_arg(av[*i]));
   if (!is_an_arg(av[*i]) && (*count += 1));
   return (0);
 }
@@ -73,6 +80,10 @@ int	check_error(int ac, char **av)
   if (check_nb_arg(ac, av))
     return (1);
   if (check_valid_arg(ac, av))
+    return (1);
+  if (check_nb_champ(ac, av))
+    return (1);
+  if (check_id(ac, av))
     return (1);
   return (0);
 }

@@ -5,13 +5,10 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-<<<<<<< HEAD
-** Last update Thu Mar  9 20:45:18 2017 Arthur Knoepflin
-=======
-** Last update Wed Mar  1 16:25:07 2017 Nicolas Polomack
->>>>>>> d0e412442836c78a0c995c79573b655fa8b96dbd
+** Last update Sun Mar 12 12:40:26 2017 Arthur Knoepflin
 */
 
+#include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
 
@@ -39,11 +36,18 @@ int		main(int ac, char **av)
   if (ac == 1)
     disp_help(av[0]);
   if (ac > 1 && my_strcmp(av[1], "-h") == 0)
-<<<<<<< HEAD
-    disp_help();
-  parse = get_parse(ac - 1, av + 1);
-=======
     disp_help(av[0]);
->>>>>>> d0e412442836c78a0c995c79573b655fa8b96dbd
+  if ((parse = get_parse(ac - 1, av + 1)) == NULL)
+    return (84);
+  printf("dump : %d && nb_champ : %d\n", parse->dump, parse->nb_champ);
+  int	i;
+  i = 0;
+  while (i < parse->nb_champ)
+    {
+      if (parse->champ[i])
+  	printf("id : %d load_addr : %d path : %s\n", parse->champ[i]->id,
+	       parse->champ[i]->load_addr, parse->champ[i]->path);
+      i += 1;
+    }
   return (0);
 }
