@@ -9,6 +9,7 @@
 */
 
 #include <stdlib.h>
+#include "my.h"
 #include "asm.h"
 
 static int	my_epur_size(char *str, int nbspace, char *to_ep)
