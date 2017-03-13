@@ -78,6 +78,7 @@ static void	logic(t_asm *a, int *name, int *comment)
   i = -1;
   while (a->file[++i])
     {
+      a->file[i] = my_epurnstr(a->file[i], 1, " \t", ' ');
       j = 0;
       while (a->file[i][j] && (a->file[i][j] == ' ' ||
                                a->file[i][j] == '\t'))

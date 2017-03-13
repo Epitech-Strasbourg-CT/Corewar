@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Fri Mar 10 18:05:57 2017 Nicolas Polomack
+** Last update Sun Mar 12 15:57:14 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -46,11 +46,11 @@ void			write_headers(t_asm *a)
   my_strcpy(h.comment, a->header.comment);
   swap_endian(&h.magic, 4);
   write(a->fd, &h.magic, 4);
-  write(a->fd, h.prog_name, PROG_NAME_LENGTH + 1);
-  write(a->fd, h.comment, COMMENT_LENGTH + 1);
+  write(a->fd, h.prog_name, PROG_NAME_LENGTH);
+  write(a->fd, h.comment, COMMENT_LENGTH);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
   t_asm		a;
 
@@ -67,9 +67,10 @@ int		main(int ac, char **av)
     return (84);
   parse_headers(&a);
   write_headers(&a);
-  my_printf("NAME: %s\n", a.header.name);
-  my_printf("COMMENT: %s\n", a.header.comment);
-  //display_file(a.file);
+  // my_printf("NAME: %s\n", a.header.name);
+  // my_printf("COMMENT: %s\n", a.header.comment);
+  // parse_commands(&a);
+  display_file(a.file);
   close(a.fd);
   return (0);
 }
