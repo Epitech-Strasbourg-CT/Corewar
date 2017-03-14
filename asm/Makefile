@@ -6,18 +6,23 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sun Mar 12 15:54:58 2017 Nicolas Polomack
+## Last update Tue Mar 14 15:58:51 2017 
 ##
 
 SRC	=	main.c			\
 		file.c			\
 		header.c		\
 		commands.c		\
-		error.c			\
+		error_handling/error.c	\
 		op.c			\
 		misc/str.c		\
-		misc/epurstr.c	\
-		misc/endian.c
+		misc/tab.c		\
+		misc/epurstr.c		\
+		misc/endian.c		\
+		label/label.c		\
+		label/list_label.c	\
+		instruct/instruct.c	\
+		instruct/list_instruct.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -29,7 +34,7 @@ LIB	=	-lmy -lmyprintf -lgnl
 
 INCLUDE	=	-I./include/
 
-CFLAGS	+=	 $(INCLUDE)
+CFLAGS	+=	 $(INCLUDE) -g
 
 all:		$(NAME)
 

@@ -5,11 +5,22 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 15:05:53 2017 
-** Last update Wed Mar  1 21:12:49 2017 Nicolas Polomack
+** Last update Mon Mar 13 15:36:18 2017 
 */
 #include <stdlib.h>
 #include "my.h"
 #include "asm.h"
+
+int	my_cstrnlen(char *str, char c)
+{
+  int	i;
+
+  i = -1;
+  if (str == NULL)
+    return (-1);
+  while (str[++i] && str[i] != c);
+  return (i);
+}
 
 int	my_strnlen(char *str, char *c)
 {

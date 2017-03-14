@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Sun Mar 12 15:57:14 2017 Nicolas Polomack
+** Last update Tue Mar 14 16:19:40 2017 
 */
 
 #include <stdlib.h>
@@ -17,10 +17,10 @@
 #include "my_printf.h"
 #include "asm.h"
 
-char	*get_file_name(char *str)
+static char	*get_file_name(char *str)
 {
-  int	i;
-  char	*name;
+  int		i;
+  char		*name;
 
   name = str;
   while (*(++str));
@@ -36,11 +36,11 @@ char	*get_file_name(char *str)
   return (name);
 }
 
-void			write_headers(t_asm *a)
+static void	write_headers(t_asm *a)
 {
-  struct header_s	h;
+  t_header	h;
 
-  my_memset((char *)&h, 0, sizeof(struct header_s));
+  my_memset((char *)&h, 0, sizeof(t_header));
   h.magic = COREWAR_EXEC_MAGIC;
   my_strcpy(h.prog_name, a->header.name);
   my_strcpy(h.comment, a->header.comment);
@@ -50,27 +50,39 @@ void			write_headers(t_asm *a)
   write(a->fd, h.comment, COMMENT_LENGTH);
 }
 
-int			main(int ac, char **av)
+static void	init_asm(t_asm *a, char **av)
+{
+  a->file_name = get_file_name(av[1]);
+  a->file = NULL;
+  a->header.name = NULL;
+  a->header.comment = NULL;
+}
+
+int		main(int ac, char **av)
 {
   t_asm		a;
 
   if (ac != 2 || (check_dir(av[1]) == -1))
     return (84);
-  a.file_name = get_file_name(av[1]);
+  init_asm(&a, av);
   if ((a.fd = open(a.file_name,
 		   O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
     return (84);
-  a.file = NULL;
-  a.header.name = NULL;
-  a.header.comment = NULL;
   if (read_file(&a, av[1]) == -1)
     return (84);
   parse_headers(&a);
   write_headers(&a);
-  // my_printf("NAME: %s\n", a.header.name);
-  // my_printf("COMMENT: %s\n", a.header.comment);
-  // parse_commands(&a);
-  display_file(a.file);
+  change_label(&a);
+  load_instruct(&a);
+  
+  //DEBUG
+  
+  my_printf("NAME: %s\n", a.header.name);
+  my_printf("COMMENT: %s\n\n", a.header.comment);
+  my_show_label(a.labels);
+  my_putchar('\n');
+  my_show_instruct(a.instructs);
+  my_putchar('\n');
   close(a.fd);
   return (0);
 }

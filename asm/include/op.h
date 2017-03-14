@@ -5,91 +5,68 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Fri Mar 10 17:50:59 2017 Nicolas Polomack
+** Last update Sun Mar 12 19:32:22 2017 
 */
 
 #ifndef _OP_H_
 # define _OP_H_
 
-# define MEM_SIZE                (6*1024)
-# define IDX_MOD                 512   /* modulo of the index < */
-# define MAX_ARGS_NUMBER         4     /* this may not be changed 2^*IND_SIZE */
+# define MEM_SIZE		(6*1024)
+# define IDX_MOD		512
+# define MAX_ARGS_NUMBER	4
 
-# define COMMENT_CHAR            '#'
-# define LABEL_CHAR              ':'
-# define DIRECT_CHAR             '%'
-# define SEPARATOR_CHAR          ','
+# define COMMENT_CHAR		'#'
+# define LABEL_CHAR		':'
+# define DIRECT_CHAR		'%'
+# define SEPARATOR_CHAR		','
 
-# define LABEL_CHARS             "abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-# define NAME_CMD_STRING         ".name"
-# define COMMENT_CMD_STRING      ".comment"
+# define NAME_CMD_STRING	".name"
+# define COMMENT_CMD_STRING	".comment"
 
-/*
-** regs
-*/
+# define REG_NUMBER		16
 
-# define REG_NUMBER      16              /* r1 <--> rx */
+# define CYCLE_TO_DIE		1536
+# define CYCLE_DELTA		5
+# define NBR_LIVE		40
 
-/*
-**
-*/
+# define T_REG			1
+# define T_DIR			2
+# define T_IND			4
+# define T_LAB			8
 
-typedef char    args_type_t;
+# define REG_SIZE		4
+# define IND_SIZE		2
+# define DIR_SIZE		REG_SIZE
 
-# define T_REG           1       /* register */
-# define T_DIR           2       /* direct  (ld  #1,r1  put 1 into r1) */
-# define T_IND           4       /* indirect always relative
-				    ( ld 1,r1 put what's in the address (1+pc)
-				    into r1 (4 bytes )) */
-# define T_LAB           8       /* LABEL */
+# define PROG_NAME_LENGTH	128
+# define COMMENT_LENGTH		2048
+# define COREWAR_EXEC_MAGIC	0xea83f3
 
-struct  op_s
+typedef char			t_args_type;
+
+struct		s_op
 {
-  char         *mnemonique;
-  char         nbr_args;
-  args_type_t  type[MAX_ARGS_NUMBER];
-  char         code;
-  int          nbr_cycles;
-  char         *comment;
+  char		*mnemonique;
+  char		nbr_args;
+  t_args_type	type[MAX_ARGS_NUMBER];
+  char		code;
+  int		nbr_cycles;
+  char		*comment;
 };
 
-typedef struct op_s     op_t;
-
-/*
-** size (in bytes)
-*/
-# define REG_SIZE        4
-# define IND_SIZE        2
-# define DIR_SIZE        REG_SIZE
-
-/*
-** op_tab
-*/
-extern  op_t    op_tab[];
-
-/*
-** header
-*/
-# define PROG_NAME_LENGTH        128
-# define COMMENT_LENGTH          2048
-
-struct header_s
+struct		s_header
 {
-  int  magic;
-# define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
-  char prog_name[PROG_NAME_LENGTH+1];
-  int  prog_size;
-  char comment[COMMENT_LENGTH+1];
+  int		magic;
+  char		prog_name[PROG_NAME_LENGTH+1];
+  int		prog_size;
+  char		comment[COMMENT_LENGTH+1];
 };
 
-typedef struct header_s header_t;
+typedef struct	s_header	t_header;
+typedef struct	s_op		t_op;
 
-/*
-** live
-*/
-# define CYCLE_TO_DIE    1536    /* number of cycle before beig declared dead */
-# define CYCLE_DELTA     5
-# define NBR_LIVE        40
+extern t_op	op_tab[];
 
-#endif
+#endif /* !_OP_H_ */
