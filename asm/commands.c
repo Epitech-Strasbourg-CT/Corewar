@@ -77,7 +77,6 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
         op_cur->nbr_cycles = op_tab[i].nbr_cycles;
         break;
       }
-	  printf("VALID\n");
   //  write_command(op_cur, fd);
   return (1);
 }
@@ -92,16 +91,13 @@ void		parse_commands(t_asm *a)
   t = a->instructs;
   while (t)
   {
-	  arg = my_strdup(t->raw);
 	  i = 0;
-	  while (arg[i] && arg[i] != ' ')
+	  while (t->raw[i] && t->raw[i] != ' ')
 	  	i += 1;
-	  arg = my_epurnstr(arg, 0, " ", ' ');
-	  list = my_split(arg + i, ',');
-	  printf("PASSED: %s\n", arg+i);
+	  t->raw = my_epurnstr(t->raw, 0, " ", ' ');
+	  list = my_split(t->raw + i, ',');
 	  if ((check_command_args(list, a->fd, t->op)) == 0)
 	  	exit(84);
-	  free(arg);
 	  t->args = list;
 	  t = t->next;
   }
