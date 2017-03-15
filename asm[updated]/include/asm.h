@@ -24,6 +24,7 @@ typedef struct		s_instruct
 {
   char			*raw;
   t_op			*op;
+  char			**args;
   struct s_instruct	*prev;
   struct s_instruct	*next;
 }			t_instruct;
