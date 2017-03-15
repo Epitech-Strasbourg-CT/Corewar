@@ -83,6 +83,7 @@ int		main(int ac, char **av)
   my_putchar('\n');
   my_show_instruct(a.instructs);
   my_putchar('\n');
+  parse_commands(&a);
   close(a.fd);
   return (0);
 }

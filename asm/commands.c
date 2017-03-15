@@ -56,43 +56,51 @@ int are_same_type(t_op *cur, t_op *ref)
   return (1);
 }
 
-int	check_command_args(char **command, int fd)
+int	check_command_args(char **command, int fd, t_op *op_cur)
 {
-  t_op	op_cur;
   int	i;
 
-  my_memset((char *)&op_cur, 0, sizeof(t_op));
-  op_cur.mnemonique = command[0];
-  op_cur.nbr_args = -1;
-  while(command[++(op_cur.nbr_args)]);
-  op_cur.nbr_args -= 1;
-  parse_types(&op_cur, command);
+  my_memset((char *)op_cur, 0, sizeof(t_op));
+  op_cur->mnemonique = command[0];
+  op_cur->nbr_args = -1;
+  while(command[++(op_cur->nbr_args)]);
+  op_cur->nbr_args -= 1;
+  parse_types(op_cur, command);
   i = -1;
   while (op_tab[++i].mnemonique != 0)
     if (my_strcmp(op_tab[i].mnemonique, command[0]) == 0)
       {
-        op_cur.code = op_tab[i].code;
-        if (op_cur.nbr_args != op_tab[i].nbr_args ||
-        !are_same_type(&op_cur, op_tab + i))
+        op_cur->code = op_tab[i].code;
+        if (op_cur->nbr_args != op_tab[i].nbr_args ||
+        !are_same_type(op_cur, op_tab + i))
           return (0);
-        op_cur.nbr_cycles = op_tab[i].nbr_cycles;
+        op_cur->nbr_cycles = op_tab[i].nbr_cycles;
         break;
       }
-  //  write_command(&op_cur, fd);
+  //  write_command(op_cur, fd);
   return (1);
 }
 
-void	parse_commands(t_asm *a)
+void		parse_commands(t_asm *a)
 {
-  int	i;
-  char	**command;
-
-  i = -1;
-  while (a->file[++i])
-    {
-      command = my_split(a->file[i], ' ');
-      my_show_wordtab(command);
-      if(!is_valid_command(command[0]) || !check_command_args(command, a->fd))
-        exit(84);
-    }
+	t_instruct *t;
+	char	**list;
+	char	*arg;
+	int		i;
+  
+  t = a->instructs;
+  while (t)
+  {
+	  arg = my_strdup(t->raw);
+	  i = 0;
+	  while (arg[i] && arg[i] != ' ')
+	  	i += 1;
+	  arg = my_epurnstr(arg, 0, " ", ' ');
+	  list = my_split(arg + i, ',');
+	  if ((check_command_args(list, a->fd, t->op)) == 0)
+	  	exit(84);
+	  free(arg);
+	  t->args = list;
+	  t = t->next;
+  }
 }
