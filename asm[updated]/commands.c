@@ -86,19 +86,20 @@ void		parse_commands(t_asm *a)
 	t_instruct *t;
 	char	**list;
 	char	*arg;
+	int		i;
   
   t = a->instructs;
   while (t)
   {
 	  arg = my_strdup(t->raw);
-	  list = -1;
-	  while (arg[++list])
-	  	if (arg[list] == ',')
-		  arg[list] = ' ';
-	  list = my_split(arg, ' ');
-	  check_command_args(list, a->fd, t->op);
+	  i = 0;
+	  while (arg[i] && arg[i] != ' ')
+	  	i += 1;
+	  arg = my_epurnstr(arg, 0, " ", ' ');
+	  list = my_split(arg + i, ',');
+	  if ((check_command_args(list, a->fd, t->op)) == 0)
+	  	exit(84);
 	  free(arg);
-	  arg = -1;
 	  t->args = list;
 	  t = t->next;
   }
