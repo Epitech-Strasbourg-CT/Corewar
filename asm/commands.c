@@ -38,7 +38,7 @@ void  parse_types(t_op *cur, char **command)
         cur->type[i - 1] += T_DIR;
     else if (command[i][0] == 'r')
       cur->type[i - 1] += T_REG;
-    else if (command[i][0] >= '0' && command[i][0] <= '9')
+    else if (command[i][0] >= '0' && command[i][0] <= '9' || command[i][0] == '-')
       cur->type[i - 1] += T_IND;
     else
       exit(84);
@@ -51,7 +51,7 @@ int are_same_type(t_op *cur, t_op *ref)
 
   i = -1;
   while (++i < cur->nbr_args)
-    if (cur->type[i] != ref->type[i])
+    if ((cur->type[i] & ref->type[i]) == 0)
       return (0);
   return (1);
 }
@@ -77,6 +77,7 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
         op_cur->nbr_cycles = op_tab[i].nbr_cycles;
         break;
       }
+	  printf("VALID\n");
   //  write_command(op_cur, fd);
   return (1);
 }
@@ -97,6 +98,7 @@ void		parse_commands(t_asm *a)
 	  	i += 1;
 	  arg = my_epurnstr(arg, 0, " ", ' ');
 	  list = my_split(arg + i, ',');
+	  printf("PASSED: %s\n", arg+i);
 	  if ((check_command_args(list, a->fd, t->op)) == 0)
 	  	exit(84);
 	  free(arg);
