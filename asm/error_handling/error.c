@@ -5,15 +5,23 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 20:00:51 2017 Nicolas Polomack
-** Last update Fri Mar 10 18:09:53 2017 Nicolas Polomack
+** Last update Tue Mar 14 15:25:15 2017 
 */
 
 #include <stdlib.h>
 #include "my_printf.h"
+#include "asm.h"
 
 void	error_header(int i, int j, int k)
 {
   my_printf("ERROR:%d:%d: Two %s defined.\n", i, j,
             (k) ? "names" : "comments");
+  exit(84);
+}
+
+int	error_double_label(t_label **my_label, char *name)
+{
+  my_printf("ERROR: two labels (or more) have the name value: '%s'\n", name);
+  my_free_label(my_label);
   exit(84);
 }
