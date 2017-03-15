@@ -5,18 +5,24 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Sun Mar 12 12:25:33 2017 Arthur Knoepflin
+** Last update Tue Mar 14 16:27:03 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
 # define COREWAR_H_
 
-typedef struct		s_nchamp
+# define BUF_SIZE	2048
+
+typedef struct	s_nchamp
 {
-  int			id;
-  int			load_addr;
-  char			*path;
-}			t_nchamp;
+  int		id;
+  int		load_addr;
+  char		*path;
+  int		size;
+  char		*name;
+  char		*comment;
+  char		*code;
+}		t_nchamp;
 
 typedef struct		s_parse
 {
@@ -24,6 +30,12 @@ typedef struct		s_parse
   int			nb_champ;
   struct s_nchamp	*champ[4];
 }			t_parse;
+
+/*
+** endian.c
+*/
+
+void	swap_endian(void *, int);
 
 /*
 ** parse.c
@@ -58,5 +70,26 @@ int	check_nb_champ(int, char **);
 
 char	*get_list_id(int, char **);
 int	check_id(int, char **);
+
+/*
+** parse_file_champ.c
+*/
+
+int	parse_file_champ(t_parse *);
+
+/*
+** parse_file.c
+*/
+
+int	read_comment(int, char *, t_nchamp *);
+int	read_name(int, char *, t_nchamp *);
+int	check_magic_number(int, char *);
+int	parse_header(int, char *, t_nchamp *);
+
+/*
+** read_file.c
+*/
+
+char	*read_file(int);
 
 #endif /* !COREWAR_H_ */

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 19:19:22 2017 Arthur Knoepflin
-** Last update Sun Mar 12 12:18:32 2017 Arthur Knoepflin
+** Last update Tue Mar 14 16:49:45 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -71,5 +71,7 @@ t_parse		*get_parse(int ac, char **av)
   init_parse(parse, ac, av);
   parse_dump(parse, ac, av);
   parse_champ(parse, ac, av);
+  if (parse_file_champ(parse))
+    return (NULL);
   return (parse);
 }

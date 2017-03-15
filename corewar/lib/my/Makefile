@@ -5,7 +5,7 @@
 ## Login   <nicolas@epitech.net>
 ##
 ## Started on  Tue Nov  1 12:04:24 2016 Nicolas POLOMACK
-## Last update Thu Mar  9 22:29:28 2017 Arthur Knoepflin
+## Last update Mon Mar 13 22:11:13 2017 Arthur Knoepflin
 ##
 
 SRC	=	is_a_num.c	\
@@ -24,6 +24,7 @@ SRC	=	is_a_num.c	\
 		my_strncmp.c	\
 		my_revstr.c	\
 		my_getnbr.c	\
+		my_getnbr_base.c	\
 		my_find_prime_sup.c	\
 		my_is_prime.c	\
 		my_isneg.c	\

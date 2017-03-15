@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.net>
 **
 ** Started on  Thu Oct 13 10:04:36 2016 Nicolas POLOMACK
-** Last update Thu Mar  9 22:29:44 2017 Arthur Knoepflin
+** Last update Mon Mar 13 22:11:35 2017 Arthur Knoepflin
 */
 
 #ifndef MY_H_
@@ -33,6 +33,7 @@ int	my_swap(int, int);
 void	my_putstr(char *);
 int	my_strlen(char *);
 int	my_getnbr(char *);
+int	my_getnbr_base(char *, char *);
 int	*my_sort_int_tab(int *, int);
 int	my_power_rec(int, int);
 int	my_square_root(int);
