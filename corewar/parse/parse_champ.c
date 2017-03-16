@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Sun Mar 12 11:16:07 2017 Arthur Knoepflin
-** Last update Tue Mar 14 16:03:03 2017 Arthur Knoepflin
+** Last update Thu Mar 16 20:57:24 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -53,7 +53,8 @@ int	auto_attribute_id(t_parse *parse, int nb_champ, int ac, char **av)
       i = -1;
       while (++i < 4)
 	if ((new_id == list_id[i] ||
-	     (parse->champ[i] && new_id == parse->champ[i]->id)) && ((i = -1) || 1))
+	     (parse->champ[i] && new_id == parse->champ[i]->id)) &&
+	    ((i = -1) || 1))
 	  new_id += 1;
       parse->champ[nb_champ]->id = new_id;
     }

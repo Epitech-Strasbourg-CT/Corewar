@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.net>
 **
 ** Started on  Thu Oct 13 10:04:36 2016 Nicolas POLOMACK
-** Last update Mon Mar 13 22:11:35 2017 Arthur Knoepflin
+** Last update Thu Mar 16 20:29:10 2017 Arthur Knoepflin
 */
 
 #ifndef MY_H_
@@ -29,6 +29,8 @@ void	*my_memset(void *, int, int);
 void	my_putchar(char);
 int	my_isneg(int);
 void	my_put_nbr(int);
+int	size_nb(int, char *);
+void	my_putnbr_base(int, char *);
 int	my_swap(int, int);
 void	my_putstr(char *);
 int	my_strlen(char *);

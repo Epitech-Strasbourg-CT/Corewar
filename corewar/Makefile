@@ -5,10 +5,14 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Tue Mar 14 17:15:43 2017 Arthur Knoepflin
+## Last update Thu Mar 16 21:07:46 2017 Arthur Knoepflin
 ##
 
-SRC	=	main.c				\
+SRC	=	arena/arena_create.c		\
+		arena/load_champ.c		\
+		dump.c				\
+		game.c				\
+		main.c				\
 		op.c				\
 		endian.c			\
 		parse/parse.c			\

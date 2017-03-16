@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Tue Mar 14 21:12:26 2017 Arthur Knoepflin
+** Last update Thu Mar 16 13:35:39 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -51,6 +51,6 @@ int		main(int ac, char **av)
 	       parse->champ[i]->size, parse->champ[i]->comment);
       i += 1;
     }
-  printf("%s\n", op_tab[parse->champ[0]->code[5] - 1].mnemonique);
+  game(parse);
   return (0);
 }

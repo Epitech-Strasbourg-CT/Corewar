@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Tue Mar 14 16:27:03 2017 Arthur Knoepflin
+** Last update Thu Mar 16 21:15:49 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -31,11 +31,42 @@ typedef struct		s_parse
   struct s_nchamp	*champ[4];
 }			t_parse;
 
+typedef struct	s_game
+{
+  t_parse	*parse;
+  unsigned char	*arena;
+  int		cycle;
+}		t_game;
+
+/*
+** arena_create.c
+*/
+
+char	*arena_create(void);
+
+/*
+** load_champ.c
+*/
+
+void	load_champ(t_game *, t_nchamp *);
+
+/*
+** dump.c
+*/
+
+void	dump(t_game *);
+
 /*
 ** endian.c
 */
 
 void	swap_endian(void *, int);
+
+/*
+** game.c
+*/
+
+int	game(t_parse *);
 
 /*
 ** parse.c
