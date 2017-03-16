@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Sun Mar 12 12:04:18 2017 Arthur Knoepflin
-** Last update Mon Mar 13 14:27:05 2017 Arthur Knoepflin
+** Last update Thu Mar 16 20:59:03 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -59,7 +59,7 @@ static int	same_id(int val, int index, char *list_id)
     {
       if (index != j && val == list_id[j] &&
 	  (my_puterror("Two champion have the same id\n")))
-	return (1);	
+	return (1);
     }
   return (0);
 }
@@ -77,9 +77,9 @@ int	check_id(int ac, char **av)
     {
       if (list_id[i] == -1)
       	continue ;
-      /* if ((list_id[i] < 1 || list_id[i] > 4) && */
-      /* 	  (my_puterror("The id need to be between 1 and 4\n"))) */
-	/* return (my_free(list_id)); */
+      if ((list_id[i] < 1 || list_id[i] > 4) &&
+      	  (my_puterror("The id need to be between 1 and 4\n")))
+	return (my_free(list_id));
       if (same_id(list_id[i], i, list_id))
 	return (my_free(list_id));
     }

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 13 22:16:36 2017 Arthur Knoepflin
-** Last update Tue Mar 14 16:50:13 2017 Arthur Knoepflin
+** Last update Thu Mar 16 20:57:56 2017 Arthur Knoepflin
 */
 
 #include <sys/stat.h>
@@ -36,7 +36,7 @@ int	parse_file_champ(t_parse *parse)
 
   i = -1;
   while (++i < parse->nb_champ)
-   { 
+   {
       if ((fd = open_file(parse->champ[i]->path)) == -1)
 	return (1);
       if (parse_header(fd, parse->champ[i]->path, parse->champ[i]))

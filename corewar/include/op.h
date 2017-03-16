@@ -5,9 +5,8 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 14 13:40:17 2017 Arthur Knoepflin
-** Last update Tue Mar 14 16:14:13 2017 Arthur Knoepflin
+** Last update Thu Mar 16 20:58:24 2017 Arthur Knoepflin
 */
-
 
 #ifndef OP_H_
 # define OP_H_
@@ -73,9 +72,9 @@ extern	t_op	op_tab[];
 struct	s_header
 {
   int	magic;
-  char	prog_name[PROG_NAME_LENGTH+1];
+  char	prog_name[PROG_NAME_LENGTH + 1];
   int	prog_size;
-  char	comment[COMMENT_LENGTH+1];
+  char	comment[COMMENT_LENGTH + 1];
 };
 
 typedef struct s_header t_header;
