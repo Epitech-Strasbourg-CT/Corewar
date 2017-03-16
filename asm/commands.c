@@ -42,7 +42,11 @@ void  parse_types(t_op *cur, char **command)
     else if (my_str_isnum(command[i] + (command[i][0] == '-')))
       cur->type[i] = T_IND;
     else
+	{
+	  my_puterror(cur->mnemonique);
+	  my_puterror(": Invalid types\n");
       exit(84);
+	}
   }
 }
 
@@ -97,7 +101,10 @@ void		parse_commands(t_asm *a)
   	  my_memset((char *)t->op, 0, sizeof(t_op));
 	  t->op->mnemonique = my_strndup(t->raw, i);
 	  if ((check_command_args(list, a->fd, t->op)) == 0)
-	  	exit(84);
+	  	{
+		  my_puterror("Syntax error\n");
+		  exit(84);
+		}
 	  t->args = list;
 	  t = t->next;
   }
