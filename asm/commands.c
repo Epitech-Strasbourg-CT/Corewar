@@ -28,18 +28,19 @@ void  parse_types(t_op *cur, char **command)
 {
   int i;
 
-  i = 0;
+  i = -1;
   while (command[++i])
   {
     if (command[i][0] == DIRECT_CHAR)
       if (command[i][1] == LABEL_CHAR)
-        cur->type[i - 1] += T_LAB;
+        cur->type[i] = T_LAB;
       else
-        cur->type[i - 1] += T_DIR;
-    else if (command[i][0] == 'r')
-      cur->type[i - 1] += T_REG;
-    else if (command[i][0] >= '0' && command[i][0] <= '9' || command[i][0] == '-')
-      cur->type[i - 1] += T_IND;
+        cur->type[i] = T_DIR;
+    else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
+	is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
+      cur->type[i] = T_REG;
+    else if (my_str_isnum(command[i] + (command[i][0] == '-')))
+      cur->type[i] = T_IND;
     else
       exit(84);
   }
@@ -60,15 +61,12 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
 {
   int	i;
 
-  my_memset((char *)op_cur, 0, sizeof(t_op));
-  op_cur->mnemonique = command[0];
   op_cur->nbr_args = -1;
   while(command[++(op_cur->nbr_args)]);
-  op_cur->nbr_args -= 1;
   parse_types(op_cur, command);
   i = -1;
   while (op_tab[++i].mnemonique != 0)
-    if (my_strcmp(op_tab[i].mnemonique, command[0]) == 0)
+    if (my_strcmp(op_tab[i].mnemonique, op_cur->mnemonique) == 0)
       {
         op_cur->code = op_tab[i].code;
         if (op_cur->nbr_args != op_tab[i].nbr_args ||
@@ -96,6 +94,8 @@ void		parse_commands(t_asm *a)
 	  	i += 1;
 	  t->raw = my_epurnstr(t->raw, 0, " ", ' ');
 	  list = my_split(t->raw + i, ',');
+  	  my_memset((char *)t->op, 0, sizeof(t_op));
+	  t->op->mnemonique = my_strndup(t->raw, i);
 	  if ((check_command_args(list, a->fd, t->op)) == 0)
 	  	exit(84);
 	  t->args = list;
