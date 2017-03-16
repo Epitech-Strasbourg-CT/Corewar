@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 15:08:23 2017 
-** Last update Thu Mar  9 20:00:12 2017 Nicolas Polomack
+** Last update Mon Mar 13 17:27:59 2017 
 */
 
 #include <stdlib.h>
@@ -52,6 +52,12 @@ static void	go_next(char *str, int *i, char *to_ep)
     *i += 1;
 }
 
+static char	*my_freeit(char *str, char *epured)
+{
+  free(str);
+  return (epured);
+}
+
 char	*my_epurnstr(char *str, int nbspace, char *to_ep, char replace)
 {
   char	*epured;
@@ -78,5 +84,5 @@ char	*my_epurnstr(char *str, int nbspace, char *to_ep, char replace)
       go_next(str, &i, to_ep);
     }
   epured[j] = 0;
-  return (epured);
+  return (my_freeit(str, epured));
 }
