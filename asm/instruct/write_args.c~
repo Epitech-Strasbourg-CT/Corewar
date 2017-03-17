@@ -1,0 +1,24 @@
+/*
+** write_args.c for asm in /home/cedric/delivery/CPE/CPE_2016_corewar/asm
+** 
+** Made by 
+** Login   <cedric.thomas@epitech.eu>
+** 
+** Started on  Fri Mar 17 13:02:48 2017 
+** Last update Fri Mar 17 16:07:39 2017 
+*/
+#include "my_printf.h"
+#include "asm.h"
+
+int		write_args(t_instruct *instructs)
+{
+  int		i;
+
+  i = 0;
+  while (instructs && ++i)
+    {
+      
+      instructs = instructs->next;
+      my_printf("%d\n", i);
+    }
+}

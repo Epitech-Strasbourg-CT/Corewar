@@ -8,8 +8,8 @@ label2:
 label1:
 label7:
 
-label3:	add r1,r2,r3
+label3:	add r1,r2,r7
 
 	
 	add r1,r2,r3
-label10:	
+zjmp: 43 	

@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Fri Oct 21 15:54:31 2016 Cédric Thomas
-** Last update Mon Feb 20 21:47:02 2017 
+** Last update Fri Mar 17 10:25:33 2017 
 */
 
 #include <stdlib.h>
@@ -65,11 +65,14 @@ static char	*go_base(long dec, char *base, int len, char *futur)
     futur = go_base(dec / my_strlen(base), base, len + 1, futur);
   else
     {
-      futur = malloc(sizeof(char) * (len + 2));
+      if ((futur = malloc(sizeof(char) * (len + 2))) == NULL)
+	return (NULL);
       futur[len + 1] = '\0';
       futur[len] = base[dec % my_strlen(base)];
       return (futur);
     }
+  if (futur == NULL)
+    return (NULL);
   futur[len] = base[dec % my_strlen(base)];
   return (futur);
 }

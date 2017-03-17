@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Tue Mar 14 16:19:40 2017 
+** Last update Fri Mar 17 20:11:19 2017 
 */
 
 #include <stdlib.h>
@@ -74,16 +74,29 @@ int		main(int ac, char **av)
   write_headers(&a);
   change_label(&a);
   load_instruct(&a);
+  parse_commands(&a);
   
   //DEBUG
   
   my_printf("NAME: %s\n", a.header.name);
   my_printf("COMMENT: %s\n\n", a.header.comment);
+  
   my_show_label(a.labels);
   my_putchar('\n');
-  my_show_instruct(a.instructs);
+  my_show_instruct(a.instructs); 
   my_putchar('\n');
-  parse_commands(&a);
+
+  /* t_instruct    *temp; */
+
+  /* temp = a.instructs; */
+  /* while (temp != NULL) */
+  /*   { */
+  /*     write_args_type(temp, a.fd); */
+  /*     my_putchar('\n'); */
+  /*     temp = temp->next; */
+  /*   } */
+  
+  
   close(a.fd);
   return (0);
 }
