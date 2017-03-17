@@ -45,12 +45,28 @@ int	parse_types(t_op *cur, char **command)
       else if (my_str_isnum(command[i] + (command[i][0] == '-')))
 	cur->type[i] = T_IND;
       else
+<<<<<<< HEAD
 	{
 	  my_printf("The argument \'%s\' doesn't match any type ", command[i]);
 	  return (84);
 	}
     }
   return (0);
+=======
+        cur->type[i] = T_DIR;
+    else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
+	is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
+      cur->type[i] = T_REG;
+    else if (my_str_isnum(command[i] + (command[i][0] == '-')))
+      cur->type[i] = T_IND;
+    else
+	{
+	  my_puterror(cur->mnemonique);
+	  my_puterror(": Invalid types\n");
+      exit(84);
+	}
+  }
+>>>>>>> 545f09fe94073e02ff36aad9165bec91affab5a7
 }
 
 int are_same_type(t_op *cur, t_op *ref)
@@ -99,6 +115,7 @@ void		parse_commands(t_asm *a)
   int		i;
 
   t = a->instructs;
+<<<<<<< HEAD
   idx = 0;
   while (t && ++idx)
     {
@@ -117,4 +134,23 @@ void		parse_commands(t_asm *a)
       t->args = list;
       t = t->next;
     }
+=======
+  while (t)
+  {
+	  i = 0;
+	  while (t->raw[i] && t->raw[i] != ' ')
+	  	i += 1;
+	  t->raw = my_epurnstr(t->raw, 0, " ", ' ');
+	  list = my_split(t->raw + i, ',');
+  	  my_memset((char *)t->op, 0, sizeof(t_op));
+	  t->op->mnemonique = my_strndup(t->raw, i);
+	  if ((check_command_args(list, a->fd, t->op)) == 0)
+	  	{
+		  my_puterror("Syntax error\n");
+		  exit(84);
+		}
+	  t->args = list;
+	  t = t->next;
+  }
+>>>>>>> 545f09fe94073e02ff36aad9165bec91affab5a7
 }
