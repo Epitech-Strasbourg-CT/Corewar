@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Fri Oct 21 15:54:31 2016 Cédric Thomas
-** Last update Fri Mar 17 10:25:33 2017 
+** Last update Fri Mar 17 21:10:52 2017 
 */
 
 #include <stdlib.h>
@@ -97,7 +97,7 @@ char	*convert_base(char *nbr, char *base_from, char *base_to)
   converted = go_base(dec, base_to, 0, converted);
   my_revstr(converted);
   if (sign == -1)
-    converted = my_strcatdup("-", converted, 0);
+    converted = my_strcatdup("-", converted, 2);
   free(nbr);
   return (converted);
 }
