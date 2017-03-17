@@ -1,11 +1,11 @@
 /*
-** commands.c for corewar-asm in /home/nicolaspolomack/cpe/2/CPE_2016_corewar/asm
+1;4601;0c** commands.c for corewar-asm in /home/nicolaspolomack/cpe/2/CPE_2016_corewar/asm
 ** 
 ** Made by Nicolas Polomack
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Fri Mar 17 20:34:47 2017 Nicolas Polomack
+** Last update Fri Mar 17 23:06:26 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -105,10 +105,12 @@ void		parse_commands(t_asm *a)
       i = 0;
       while (t->raw[i] && t->raw[i] != ' ')
 	i += 1;
-      t->raw = my_epurnstr(t->raw, 0, " ", ' ');
-      list = my_split(t->raw + i, ',');
+      if ((arg = my_strdup(t->raw)) == NULL)
+	exit(84);
+      arg = my_epurnstr(arg, 0, " ", ' ');
+      list = my_split(arg + i, ',');
       my_memset((char *)t->op, 0, sizeof(t_op));
-      t->op->mnemonique = my_strndup(t->raw, i);
+      t->op->mnemonique = my_strndup(arg, i);
       if ((check_command_args(list, a->fd, t->op)) == 0)
 	{
 	  my_printf("at instruct number %d\n", idx);

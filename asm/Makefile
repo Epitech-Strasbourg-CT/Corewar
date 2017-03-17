@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Fri Mar 17 22:39:56 2017 Nicolas Polomack
+## Last update Fri Mar 17 23:04:44 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c			\
@@ -55,12 +55,15 @@ $(NAME):	.SILENT
 		@echo "OK"
 
 clean:
-		@make -sC lib/GNL fclean
-		@make -sC lib/my fclean
-		@make -sC lib/my_printf fclean
+		@make -sC lib/GNL clean
+		@make -sC lib/my clean
+		@make -sC lib/my_printf clean
 		@rm -f $(OBJ)
 
 fclean:		clean
+		@make -sC lib/GNL fclean
+		@make -sC lib/my fclean
+		@make -sC lib/my_printf fclean
 		@rm -f $(NAME)
 
 re: 		fclean all
