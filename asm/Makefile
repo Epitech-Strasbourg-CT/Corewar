@@ -1,4 +1,3 @@
-
 ##
 ## Makefile for Makefile in /home/cedric/lib
 ## 
@@ -6,13 +5,14 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Tue Mar 14 15:58:51 2017 
+## Last update Fri Mar 17 22:39:56 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c			\
 		file.c			\
 		header.c		\
 		commands.c		\
+		bitshift.c		\
 		error_handling/error.c	\
 		op.c			\
 		misc/str.c		\

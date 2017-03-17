@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Fri Mar 17 20:27:20 2017 
+** Last update Fri Mar 17 20:34:47 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -53,9 +53,9 @@ int	parse_types(t_op *cur, char **command)
   return (0);
 }
 
-int are_same_type(t_op *cur, t_op *ref)
+int	are_same_type(t_op *cur, t_op *ref)
 {
-  int i;
+  int	i;
 
   i = -1;
   while (++i < cur->nbr_args)
