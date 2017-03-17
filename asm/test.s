@@ -12,4 +12,4 @@ label3:	add r1,r2,r7
 
 	
 	add r1,r2,r3
-zjmp: 43 	
+zjmp %:43 	
