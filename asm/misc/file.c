@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Tue Mar 14 15:22:28 2017 
+** Last update Sat Mar 18 16:13:18 2017 
 */
 
 #include <stdlib.h>
@@ -71,10 +71,6 @@ int	read_file(t_asm *a, char *file)
   close(fd);
   return (0);
 }
-
-/*
-**deprecated
-*/
 
 void	display_file(char **file)
 {

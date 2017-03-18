@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Fri Mar 17 16:50:44 2017 
+** Last update Fri Mar 17 23:55:29 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -128,6 +128,8 @@ int	my_free_label(t_label **ll);
 **instruct.c
 */
 
+int	get_instruct_size(t_instruct *instruct);
+int	write_args_type(t_instruct *instruct, int fd);
 int	load_instruct(t_asm *my_asm);
 
 /*
@@ -137,5 +139,13 @@ int	my_put_list_instruct(t_instruct **ll, char *raw);
 int	my_show_instruct(t_instruct *ll);
 int	my_del_list_instruct(t_instruct **ll, t_instruct *elem);
 int	my_free_instruct(t_instruct **ll);
+
+int	write_instructs(t_instruct *instructs, t_asm *myasm);
+
+/*
+**bitshift.c
+*/
+char	*my_char_int_to_bytes(char *str, int *packets);
+void	print_mem_char(char c, int zero);
 
 #endif /* !ASM_H_ */

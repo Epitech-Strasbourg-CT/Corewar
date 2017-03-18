@@ -5,24 +5,26 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Fri Mar 17 23:04:44 2017 Nicolas Polomack
+## Last update Sat Mar 18 16:15:50 2017 
 ##
 
-SRC	=	main.c			\
-		file.c			\
-		header.c		\
-		commands.c		\
-		bitshift.c		\
-		error_handling/error.c	\
-		op.c			\
-		misc/str.c		\
-		misc/tab.c		\
-		misc/epurstr.c		\
-		misc/endian.c		\
-		label/label.c		\
-		label/list_label.c	\
-		instruct/instruct.c	\
-		instruct/list_instruct.c
+SRC	=	main.c				\
+		op.c				\
+		error_handling/error.c		\
+		header/header.c			\
+		instruct/parse.c		\
+		instruct/misc.c			\
+		instruct/write_args.c		\
+		instruct/list_instruct.c	\
+		label/label.c			\
+		label/list_label.c		\
+		misc/file.c			\
+		misc/str.c			\
+		misc/tab.c			\
+		misc/epurstr.c			\
+		misc/bitshift.c			\
+		misc/endian.c
+
 
 OBJ	=	$(SRC:.c=.o)
 

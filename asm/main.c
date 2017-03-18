@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Fri Mar 17 20:11:19 2017 
+** Last update Fri Mar 17 23:06:52 2017 
 */
 
 #include <stdlib.h>
@@ -75,6 +75,7 @@ int		main(int ac, char **av)
   change_label(&a);
   load_instruct(&a);
   parse_commands(&a);
+  write_instructs(a.instructs, &a);
   
   //DEBUG
   
@@ -83,8 +84,8 @@ int		main(int ac, char **av)
   
   my_show_label(a.labels);
   my_putchar('\n');
-  my_show_instruct(a.instructs); 
-  my_putchar('\n');
+  /* my_show_instruct(a.instructs);  */
+  /* my_putchar('\n'); */
 
   /* t_instruct    *temp; */
 

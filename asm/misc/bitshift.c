@@ -5,13 +5,13 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 20:37:36 2017 Nicolas Polomack
-** Last update Sat Mar 18 16:10:44 2017 Nicolas Polomack
+** Last update Sat Mar 18 16:16:58 2017 
 */
 
 #include <stdlib.h>
-#include "asm.h"
 #include "my_printf.h"
 #include "my.h"
+#include "asm.h"
 
 char	*my_char_int_to_bytes(char *str, int *packets)
 {
@@ -41,6 +41,13 @@ char	*my_char_int_to_bytes(char *str, int *packets)
   return (len);
 }
 
+void	print_mem_char(char a, int e)
+{
+  if (e != 7)
+    print_mem_char(a, e + 1);
+  my_putchar(((a >> e) & 1) + '0');
+}
+
 int	get_prog_size(t_instruct *instr)
 {
   int	i;
@@ -52,11 +59,4 @@ int	get_prog_size(t_instruct *instr)
       instr = instr->next;
     }
   return (i);
-}
-
-void	print_mem_char(char a, int e)
-{
-  if (e != 7)
-    print_mem_char(a, e + 1);
-  my_putchar(((a >> e) & 1) + '0');
 }
