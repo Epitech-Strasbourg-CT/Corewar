@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 **
 ** Started on  Fri Mar 17 13:02:48 2017
-** Last update Sat Mar 18 16:06:47 2017 
+** Last update Sat Mar 18 16:20:44 2017 
 */
 #include <unistd.h>
 #include "my_printf.h"
@@ -20,6 +20,7 @@ static void		write_reg(char *reg, int fd)
   byte_code = my_char_int_to_bytes(reg + 1, &size);
   swap_endian(byte_code, size);
   write(fd, byte_code, size);
+
 }
 
 static void	write_ind(char *ind, int fd, char type, t_instruct *instructs)
