@@ -5,10 +5,11 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 20:37:36 2017 Nicolas Polomack
-** Last update Fri Mar 17 22:41:02 2017 Nicolas Polomack
+** Last update Sat Mar 18 16:10:44 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
+#include "asm.h"
 #include "my_printf.h"
 #include "my.h"
 
@@ -38,6 +39,19 @@ char	*my_char_int_to_bytes(char *str, int *packets)
     }
   free(str);
   return (len);
+}
+
+int	get_prog_size(t_instruct *instr)
+{
+  int	i;
+
+  i = 0;
+  while (instr)
+    {
+      i += get_instruct_size(instr);
+      instr = instr->next;
+    }
+  return (i);
 }
 
 void	print_mem_char(char a, int e)
