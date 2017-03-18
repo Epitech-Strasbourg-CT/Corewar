@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Fri Oct 14 09:33:10 2016 Cédric Thomas
-## Last update Wed Jan  4 10:24:56 2017 Cédric Thomas
+## Last update Sat Mar 18 17:04:30 2017 Nicolas Polomack
 ##
 
 SRC	=	get_next_line.c
@@ -27,5 +27,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f ../$(NAME)
 
 re:	fclean all

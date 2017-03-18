@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Fri Mar 17 23:55:29 2017 
+** Last update Sat Mar 18 16:57:40 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -64,6 +64,11 @@ int	check_dir(char *file);
 */
 
 void	parse_headers(t_asm *a);
+
+/*
+** my_int_to_char.c
+*/
+char	*my_int_to_char(int nbr);
 
 /*
 ** error.c

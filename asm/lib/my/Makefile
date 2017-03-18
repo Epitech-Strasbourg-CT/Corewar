@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Fri Oct 14 09:33:10 2016 Cédric Thomas
-## Last update Sun Dec 18 14:26:24 2016 Cédric Thomas
+## Last update Sat Mar 18 17:02:27 2017 Nicolas Polomack
 ##
 
 SRC	=	is_betw.c		\
@@ -68,5 +68,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f ../$(NAME)
 
 re:	fclean all

@@ -5,11 +5,12 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sat Mar 18 16:15:50 2017 
+## Last update Sat Mar 18 16:54:07 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c				\
 		op.c				\
+		my_int_to_char.c		\
 		error_handling/error.c		\
 		header/header.c			\
 		instruct/parse.c		\
