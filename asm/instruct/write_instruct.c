@@ -27,8 +27,8 @@ static void	fill_fct(void (*fct[16])(t_instruct *current, t_asm *myasm))
   fct[0x8] = &write_simple_instruct;
   fct[0x9] = NULL;
   fct[0xa] = NULL;
-  fct[0xb] = NULL;
-  fct[0xc] = &write_simple_instruct;
+  fct[0xb] = &write_simple_instruct;
+  fct[0xc] = NULL;
   fct[0xd] = NULL;
   fct[0xe] = NULL;
   fct[0xf] = NULL;

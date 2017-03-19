@@ -1,4 +1,10 @@
 .name "lol"
 .comment "mdr"
 
-zjmp %-1
+lol:
+
+zjmp %:lol2
+fork %:lol
+	
+lol2:
+zjmp %:lol
