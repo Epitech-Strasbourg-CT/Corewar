@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sun Mar 19 19:30:14 2017 
+## Last update Mon Mar 20 00:00:05 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c				\
@@ -32,7 +32,7 @@ SRC	=	main.c				\
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	asm
+NAME	=	../asm
 
 LIB_F	=	./lib/
 
@@ -40,7 +40,7 @@ LIB	=	-lmy -lmyprintf -lgnl
 
 INCLUDE	=	-I./include/
 
-CFLAGS	+=	 $(INCLUDE) -g
+CFLAGS	+=	 $(INCLUDE)
 
 all:		$(NAME)
 
