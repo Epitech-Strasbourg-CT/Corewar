@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Fri Mar 17 20:37:36 2017 Nicolas Polomack
-** Last update Sat Mar 18 16:16:58 2017 
+** Last update Sat Mar 18 20:56:57 2017 
 */
 
 #include <stdlib.h>
@@ -30,7 +30,7 @@ char	*my_char_int_to_bytes(char *str, int *packets)
   my_memset(len, 0, *packets);
   l = *packets - 1;
   c = 0;
-  while (str[--i])
+  while (i--)
     {
       if (str[i] == '1')
 	len[l] += 1 << (c % 8);

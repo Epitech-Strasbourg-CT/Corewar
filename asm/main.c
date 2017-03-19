@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Fri Mar 17 23:06:52 2017 
+** Last update Sat Mar 18 18:09:07 2017 
 */
 
 #include <stdlib.h>
@@ -45,9 +45,9 @@ static void	write_headers(t_asm *a)
   my_strcpy(h.prog_name, a->header.name);
   my_strcpy(h.comment, a->header.comment);
   swap_endian(&h.magic, 4);
-  write(a->fd, &h.magic, 4);
-  write(a->fd, h.prog_name, PROG_NAME_LENGTH);
-  write(a->fd, h.comment, COMMENT_LENGTH);
+  h.prog_size = get_prog_size(a->instructs);
+  swap_endian(&h.prog_size, 4);
+  write(a->fd, &h, sizeof(h));
 }
 
 static void	init_asm(t_asm *a, char **av)
@@ -71,10 +71,10 @@ int		main(int ac, char **av)
   if (read_file(&a, av[1]) == -1)
     return (84);
   parse_headers(&a);
-  write_headers(&a);
   change_label(&a);
   load_instruct(&a);
   parse_commands(&a);
+  write_headers(&a);
   write_instructs(a.instructs, &a);
   
   //DEBUG

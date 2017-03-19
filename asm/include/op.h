@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Sun Mar 12 19:32:22 2017 
+** Last update Sat Mar 18 20:59:10 2017 
 */
 
 #ifndef _OP_H_
@@ -36,9 +36,9 @@
 # define T_IND			4
 # define T_LAB			8
 
-# define REG_SIZE		4
+# define REG_SIZE		1
 # define IND_SIZE		2
-# define DIR_SIZE		REG_SIZE
+# define DIR_SIZE		2
 
 # define PROG_NAME_LENGTH	128
 # define COMMENT_LENGTH		2048

@@ -1,4 +1,5 @@
-.name 'lol'
-.comment 'mdr'
-
-add r1,r2,r3
+.name "lol"
+.comment "mdr"
+	
+	sti r1,%4,%4
+	ld r1,r2

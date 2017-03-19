@@ -1,5 +1,5 @@
 .name "Wall-e"
-.comment  'Just a basic Wall-ing program...'
+.comment  "Just a basic Wall-ing program..."
 
 sti r1,%:live6,%1
 sti r1,%:live7,%1

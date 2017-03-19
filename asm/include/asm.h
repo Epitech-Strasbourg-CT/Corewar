@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Fri Mar 17 23:55:29 2017 
+** Last update Sat Mar 18 21:22:04 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -66,6 +66,12 @@ int	check_dir(char *file);
 void	parse_headers(t_asm *a);
 
 /*
+** my_int_to_char.c
+*/
+char	*my_int_to_char(int nbr);
+char	*my_unsigned_to_char(unsigned int nbr);
+
+/*
 ** error.c
 */
 
@@ -121,6 +127,11 @@ int	my_del_list_label(t_label **ll, t_label *elem);
 int	my_free_label(t_label **ll);
 
 /*
+**size.c
+*/
+int	label_to_addr(t_asm *myasm, t_instruct *current, char *name, int *error);
+
+/*
 **INSTRUCT
 */
 
@@ -147,5 +158,6 @@ int	write_instructs(t_instruct *instructs, t_asm *myasm);
 */
 char	*my_char_int_to_bytes(char *str, int *packets);
 void	print_mem_char(char c, int zero);
+int	get_prog_size(t_instruct *instr);
 
 #endif /* !ASM_H_ */

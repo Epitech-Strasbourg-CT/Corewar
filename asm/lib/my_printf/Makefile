@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sun Dec 18 14:40:56 2016 Cédric Thomas
+## Last update Sat Mar 18 17:04:13 2017 Nicolas Polomack
 ##
 
 SRC	=	my_printf.c		\
@@ -87,6 +87,7 @@ clean:
 
 fclean:	clean
 	rm -f $(NAME)
+	rm -f ../$(NAME)
 
 re: fclean all
 
