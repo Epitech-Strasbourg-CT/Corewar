@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sat Mar 18 17:50:01 2017 
+## Last update Sun Mar 19 17:54:18 2017 
 ##
 
 SRC	=	main.c				\
@@ -15,7 +15,7 @@ SRC	=	main.c				\
 		header/header.c			\
 		instruct/parse.c		\
 		instruct/misc.c			\
-		instruct/write_args.c		\
+		instruct/write_instruct.c	\
 		instruct/list_instruct.c	\
 		label/label.c			\
 		label/size.c			\

@@ -1,5 +1,7 @@
 .name "lol"
 .comment "mdr"
-	
+
+	st 14,r2
 	sti r1,%4,%4
-	ld r1,r2
+	ld 13,r2
+	

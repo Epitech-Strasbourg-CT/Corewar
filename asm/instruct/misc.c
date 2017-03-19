@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Sun Mar 19 18:44:38 2017 Nicolas Polomack
+** Last update Sun Mar 19 18:53:28 2017 Nicolas Polomack
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -44,12 +44,10 @@ int	get_instruct_size(t_instruct *instruct)
     return (0);
   my_op = instruct->op;
   i = -1;
-  if (my_op->nbr_args > 1)
+  if (my_op->nbr_args > 1 || my_op->code == 0x10)
     size += my_op->nbr_args / 4 + (my_op->nbr_args % 4 ? 1 : 0);
-  printf("size 1: %d, %d\n", size);
   while (++i < my_op->nbr_args)
     size += get_arg_size(my_op->type[i]);
-  printf("size f: %d\n", size);
   return (size);
 }
 
@@ -61,8 +59,6 @@ int	write_args_type(t_instruct *instruct, int fd)
   t_op	*my_op;
 
   my_op = instruct->op;
-  if (my_op->nbr_args == 1)
-    return (0);
   args = -1;
   while (++args < my_op->nbr_args)
     {

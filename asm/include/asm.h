@@ -5,10 +5,12 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Sat Mar 18 21:22:04 2017 
+** Last update Sun Mar 19 18:12:20 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
+
+# define MAX_OPCODE	16
 
 typedef struct	s_op	t_op;
 
