@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 19:01:48 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:45:39 2017 
+** Last update Sun Mar 19 19:54:19 2017 
 */
 
 #include <unistd.h>
@@ -46,7 +46,7 @@ void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm)
   else
   	dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
-    my_printf("error : %d\n", size);
+    my_printf("error dir : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
   my_strncpy(str + (DIR_SIZE - size), byte_code, size);
   write(myasm->fd, str, DIR_SIZE);
@@ -69,7 +69,7 @@ void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm)
   else
   	ind = my_unsigned_to_char(my_getnbr(ind));
   if (size)
-    my_printf("error : %d\n", size);
+    my_printf("error ind : %d\n", size);
   byte_code = my_char_int_to_bytes(ind, &size);
   my_strncpy(str + (IND_SIZE - size), byte_code, size);
   write(myasm->fd, str, IND_SIZE);

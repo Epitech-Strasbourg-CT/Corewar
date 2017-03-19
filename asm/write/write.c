@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:41:45 2017 
+** Last update Sun Mar 19 19:54:50 2017 
 */
 
 #include <stdlib.h>
@@ -13,6 +13,7 @@
 #include "asm.h"
 #include "op.h"
 #include "my.h"
+#include "my_printf.h"
 
 void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
 {
@@ -21,6 +22,7 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
   char	*byte_code;
   char	str[DIR_SIZE % IDX_MOD];
 
+  size = 0;
   dir = instruct->args[0];
   my_memset(str, 0, DIR_SIZE % IDX_MOD);
   if ((instruct->op->type[0] & T_LAB) == T_LAB)
@@ -41,6 +43,7 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
   char	*byte_code;
   char	str[4];
 
+  size = 0;
   dir = instruct->args[0];
   my_memset(str, 0, 4);
   if ((instruct->op->type[0] & T_LAB) == T_LAB)
