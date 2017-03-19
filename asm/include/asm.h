@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Sun Mar 19 19:29:35 2017 
+** Last update Sun Mar 19 19:41:18 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -159,6 +159,30 @@ int	my_show_instruct(t_instruct *ll);
 int	my_del_list_instruct(t_instruct **ll, t_instruct *elem);
 int	my_free_instruct(t_instruct **ll);
 
+/*
+**write_instructs.c
+*/
+
 int	write_instructs(t_instruct *instructs, t_asm *myasm);
+
+/*
+**WRITE
+*/
+
+/*
+**standard.c
+*/
+void	write_standard_reg(t_instruct *instruct, int index, t_asm *myasm);
+void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm);
+void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm);
+void	write_standard(t_instruct *current, t_asm *myasm);
+
+/*
+**write.c
+*/
+void	write_simple_instruct(t_instruct *instruct, t_asm *myasm);
+void	write_live_instruct(t_instruct *instruct, t_asm *myasm);
+void	write_math_instruct(t_instruct *instruct, t_asm *myasm);
+void	write_logic_instruct(t_instruct *instruct, t_asm *myasm);
 
 #endif /* !ASM_H_ */

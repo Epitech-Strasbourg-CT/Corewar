@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:27:11 2017 
+** Last update Sun Mar 19 19:41:45 2017 
 */
 
 #include <stdlib.h>
@@ -69,7 +69,7 @@ void	write_logic_instruct(t_instruct *instruct, t_asm *myasm)
   int	i;
 
   i = -1;
-  while (++i < instruct->nbr_args)
+  while (++i < instruct->op->nbr_args)
   {
 	if ((instruct->op->type[i] & T_DIR) == T_DIR)
 	  write_standard_dir(instruct, i, myasm);
