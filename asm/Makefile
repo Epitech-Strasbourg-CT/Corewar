@@ -5,12 +5,11 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Sun Mar 19 17:54:18 2017 
+## Last update Sun Mar 19 19:30:14 2017 
 ##
 
 SRC	=	main.c				\
 		op.c				\
-		my_int_to_char.c		\
 		error_handling/error.c		\
 		header/header.c			\
 		instruct/parse.c		\
@@ -25,7 +24,10 @@ SRC	=	main.c				\
 		misc/tab.c			\
 		misc/epurstr.c			\
 		misc/bitshift.c			\
-		misc/endian.c
+		misc/my_int_to_char.c		\
+		misc/endian.c			\
+		write/standard.c		\
+		write/write.c
 
 
 OBJ	=	$(SRC:.c=.o)

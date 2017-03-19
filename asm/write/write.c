@@ -5,11 +5,13 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 18:55:19 2017 Nicolas Polomack
+** Last update Sun Mar 19 19:27:11 2017 
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "asm.h"
+#include "op.h"
 #include "my.h"
 
 void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
@@ -21,7 +23,7 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
 
   dir = instruct->args[0];
   my_memset(str, 0, DIR_SIZE % IDX_MOD);
-  if ((current->op->type[0] & T_LAB) == T_LAB)
+  if ((instruct->op->type[0] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
 			      label_to_addr(myasm, instruct,
 					    dir + 2, &size));
@@ -41,7 +43,7 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
 
   dir = instruct->args[0];
   my_memset(str, 0, 4);
-  if ((current->op->type[0] & T_LAB) == T_LAB)
+  if ((instruct->op->type[0] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
@@ -58,7 +60,7 @@ void	write_math_instruct(t_instruct *instruct, t_asm *myasm)
 
   write_args_type(instruct, myasm->fd);
   i = -1;
-  while (++i < instruct->nbr_args)
+  while (++i < instruct->op->nbr_args)
   	write_standard_reg(instruct, i, myasm);
 }
 
