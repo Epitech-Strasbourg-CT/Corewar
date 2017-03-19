@@ -37,7 +37,7 @@
 # define T_LAB			8
 
 # define REG_SIZE		1
-# define IND_SIZE		4
+# define IND_SIZE		2
 # define DIR_SIZE		2
 
 # define PROG_NAME_LENGTH	128

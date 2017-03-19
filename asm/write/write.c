@@ -20,11 +20,11 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
   char	*dir;
   int	size;
   char	*byte_code;
-  char	str[DIR_SIZE % IDX_MOD];
+  char	str[DIR_SIZE];
 
   size = 0;
   dir = instruct->args[0];
-  my_memset(str, 0, DIR_SIZE % IDX_MOD);
+  my_memset(str, 0, DIR_SIZE);
   if ((instruct->op->type[0] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
 			      label_to_addr(myasm, instruct,
@@ -34,8 +34,8 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
   if (size)
     my_printf("error : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
-  my_strncpy(str + ((DIR_SIZE % IDX_MOD) - size), byte_code, size);
-  write(myasm->fd, str, DIR_SIZE % IDX_MOD);
+  my_strncpy(str + (DIR_SIZE - size), byte_code, size);
+  write(myasm->fd, str, DIR_SIZE);
 }
 
 void	write_live_instruct(t_instruct *instruct, t_asm *myasm)

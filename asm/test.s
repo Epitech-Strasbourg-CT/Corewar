@@ -3,8 +3,11 @@
 
 lol:
 
+aff r1
+st r1,-400
+
 zjmp %:lol2
-fork %:lol
-	
+sti r6,%67,%-42
+
 lol2:
-zjmp %:lol
+zjmp %-600

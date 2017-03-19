@@ -82,6 +82,7 @@ void	write_standard(t_instruct *current, t_asm *myasm)
 
   i = -1;
   op = current->op;
+  write_args_type(current, myasm->fd);
   while (++i < op->nbr_args)
     {
       if (op->type[i] == T_REG)

@@ -40,6 +40,8 @@ int	get_instruct_size(t_instruct *instruct)
   t_op	*my_op;
 
   size = 1;
+  if (instruct->op->code == 1)
+  	return (5);
   if (instruct->op == NULL)
     return (0);
   my_op = instruct->op;
