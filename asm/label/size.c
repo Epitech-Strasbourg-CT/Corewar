@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Sat Mar 18 16:18:30 2017 
-** Last update Sun Mar 19 14:15:03 2017 
+** Last update Sun Mar 19 19:45:22 2017 
 */
 #include <stdlib.h>
 #include "my.h"
@@ -83,7 +83,7 @@ int		calc_size(t_instruct *first, t_instruct *sec, int index, int mod)
       size += get_instruct_size(first);
       first = first->next;
     }
-  printf("size betw lab : %d\n", size);
+  //  printf("size betw lab : %d\n", size);
   return (size * mod);
 }
 
@@ -101,7 +101,7 @@ int		label_to_addr(t_asm *myasm, t_instruct *current, char *name, int *error)
     return (0);
   if ((idx_current = find_instruct_index(myasm, current, error)) == -1)
     return (0);
-  printf("ligne courante : %d, ligne trouvé : %d\n", idx_current, idx_find);
+  //printf("ligne courante : %d, ligne trouvé : %d\n", idx_current, idx_find);
   if (idx_find < idx_current)
     return (calc_size(to_find, current, index, -1));
   else if (idx_find > idx_current)
