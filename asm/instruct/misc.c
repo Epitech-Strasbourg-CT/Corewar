@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Sat Mar 18 22:01:00 2017 
+** Last update Sun Mar 19 18:44:38 2017 Nicolas Polomack
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@
 #include "my.h"
 
 int	get_arg_size(char type)
-{ 
+{
   if (type == T_REG)
     return (REG_SIZE);
   else if ((type & T_IND) == T_IND)
@@ -62,7 +62,7 @@ int	write_args_type(t_instruct *instruct, int fd)
 
   my_op = instruct->op;
   if (my_op->nbr_args == 1)
-    return (0); 
+    return (0);
   args = -1;
   while (++args < my_op->nbr_args)
     {
@@ -84,7 +84,7 @@ int	load_instruct(t_asm *myasm)
   int	i;
 
   i = -1;
-  myasm->instructs = NULL;  
+  myasm->instructs = NULL;
   while (myasm->file[++i])
     my_put_list_instruct(&myasm->instructs, myasm->file[i]);
   free(myasm->file);

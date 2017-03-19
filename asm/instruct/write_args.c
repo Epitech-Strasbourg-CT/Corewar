@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 **
 ** Started on  Fri Mar 17 13:02:48 2017
-** Last update Sun Mar 19 14:35:45 2017 
+** Last update Sun Mar 19 18:42:59 2017 Nicolas Polomack
 */
 #include <unistd.h>
 #include "my_printf.h"
@@ -13,10 +13,10 @@
 #include "asm.h"
 #include "my.h"
 
-static void		write_reg(char *reg, int fd)
+static void	write_reg(char *reg, int fd)
 {
-  int			size;
-  char			*byte_code;
+  int		size;
+  char		*byte_code;
 
   byte_code = my_char_int_to_bytes(reg + 1, &size);
   write(fd, byte_code, REG_SIZE);
@@ -33,7 +33,9 @@ static void	write_ind(t_instruct *current, int index, t_asm *myasm)
   ind = current->args[index];
   my_memset(str, 0, IND_SIZE);
   if ((current->op->type[index] & T_LAB) == T_LAB)
-    ind = my_unsigned_to_char((unsigned int)label_to_addr(myasm, current, ind + 1, &size));
+    ind = my_unsigned_to_char((unsigned int)
+			      label_to_addr(myasm,
+					    current, ind + 1, &size));
   if (size)
     my_printf("error : %d\n", size);
   printf("%s\n", ind);
@@ -42,9 +44,6 @@ static void	write_ind(t_instruct *current, int index, t_asm *myasm)
   //  swap_endian(str, IND_SIZE);
   write(myasm->fd, str, IND_SIZE);
 }
-
-//int     label_to_addr(t_asm *myasm, t_instruct *current, char *name, int *error);
-
 
 static void	write_dir(t_instruct *current, int index, t_asm *myasm)
 {
@@ -57,7 +56,9 @@ static void	write_dir(t_instruct *current, int index, t_asm *myasm)
   dir = current->args[index];
   my_memset(str, 0, DIR_SIZE);
   if ((current->op->type[index] & T_LAB) == T_LAB)
-    dir = my_unsigned_to_char((unsigned int)label_to_addr(myasm, current, dir + 2, &size));
+    dir = my_unsigned_to_char((unsigned int)
+			      label_to_addr(myasm,
+					    current, dir + 2, &size));
   if (size)
     my_printf("error : %d\n", size);
   printf("%s\n", dir);

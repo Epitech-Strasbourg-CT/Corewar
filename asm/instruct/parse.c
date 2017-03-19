@@ -1,11 +1,11 @@
 /*
-1;4601;0c** commands.c for corewar-asm in /home/nicolaspolomack/cpe/2/CPE_2016_corewar/asm
+** commands.c for corewar-asm in /home/nicolaspolomack/cpe/2/CPE_2016_corewar/asm
 ** 
 ** Made by Nicolas Polomack
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 18:33:30 2017 Nicolas Polomack
+** Last update Sun Mar 19 18:48:09 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -69,7 +69,7 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
   int	i;
 
   op_cur->nbr_args = -1;
-  while(command[++(op_cur->nbr_args)]);
+  while (command[++(op_cur->nbr_args)]);
   if (parse_types(op_cur, command) == 84)
     return (0);
   i = -1;
@@ -105,17 +105,13 @@ void		parse_commands(t_asm *a)
       i = 0;
       while (t->raw[i] && t->raw[i] != ' ')
 	i += 1;
-      if ((arg = my_strdup(t->raw)) == NULL)
-	exit(84);
-      arg = my_epurnstr(arg, 0, " ", ' ');
+      arg = my_epurnstr(my_strdup(t->raw), 0, " ", ' ');
       list = my_split(arg + i, ',');
       my_memset((char *)t->op, 0, sizeof(t_op));
       t->op->mnemonique = my_strndup(arg, i);
       if ((check_command_args(list, a->fd, t->op)) == 0)
-	{
-	  my_printf("at instruct number %d\n", idx);
-	  exit(84);
-	}
+	exit(84 + 0 * my_printf("at instruct number %d\n", idx));
+      free(arg);
       t->args = list;
       t = t->next;
     }
