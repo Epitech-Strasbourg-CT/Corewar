@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 18:31:40 2017 Nicolas Polomack
+** Last update Sun Mar 19 18:55:19 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -51,3 +51,15 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
   my_strncpy(str + (4 - size), byte_code, size);
   write(myasm->fd, str, 4);
 }
+
+void	write_math_instruct(t_instruct *instruct, t_asm *myasm)
+{
+  int	i;
+
+  write_args_type(instruct, myasm->fd);
+  i = -1;
+  while (++i < instruct->nbr_args)
+  	write_standard_reg(instruct, i, myasm);
+}
+
+void	write_
