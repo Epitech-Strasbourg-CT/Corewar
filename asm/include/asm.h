@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Sun Mar 19 18:12:20 2017 
+** Last update Sun Mar 19 19:29:35 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -70,8 +70,14 @@ void	parse_headers(t_asm *a);
 /*
 ** my_int_to_char.c
 */
-char	*my_int_to_char(int nbr);
 char	*my_unsigned_to_char(unsigned int nbr);
+
+/*
+**bitshift.c
+*/
+char	*my_char_int_to_bytes(char *str, int *packets);
+void	print_mem_char(char c, int zero);
+int	get_prog_size(t_instruct *instr);
 
 /*
 ** error.c
@@ -154,12 +160,5 @@ int	my_del_list_instruct(t_instruct **ll, t_instruct *elem);
 int	my_free_instruct(t_instruct **ll);
 
 int	write_instructs(t_instruct *instructs, t_asm *myasm);
-
-/*
-**bitshift.c
-*/
-char	*my_char_int_to_bytes(char *str, int *packets);
-void	print_mem_char(char c, int zero);
-int	get_prog_size(t_instruct *instr);
 
 #endif /* !ASM_H_ */
