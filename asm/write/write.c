@@ -72,6 +72,7 @@ void	write_logic_instruct(t_instruct *instruct, t_asm *myasm)
   int	i;
 
   i = -1;
+  write_args_type(instruct, myasm->fd);
   while (++i < instruct->op->nbr_args)
   {
 	if ((instruct->op->type[i] & T_DIR) == T_DIR)
