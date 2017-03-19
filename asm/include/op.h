@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Sat Mar 18 20:59:10 2017 
+** Last update Sun Mar 19 18:32:26 2017 Nicolas Polomack
 */
 
 #ifndef _OP_H_
@@ -67,6 +67,6 @@ struct		s_header
 typedef struct	s_header	t_header;
 typedef struct	s_op		t_op;
 
-extern t_op	op_tab[];
+extern t_op	g_op_tab[];
 
 #endif /* !_OP_H_ */

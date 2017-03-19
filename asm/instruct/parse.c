@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Fri Mar 17 23:06:26 2017 Nicolas Polomack
+** Last update Sun Mar 19 18:33:30 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -19,8 +19,8 @@ int	is_valid_command(char *command)
   int	i;
 
   i = -1;
-  while (op_tab[++i].mnemonique != 0)
-    if (my_strcmp(op_tab[i].mnemonique, command) == 0)
+  while (g_op_tab[++i].mnemonique != 0)
+    if (my_strcmp(g_op_tab[i].mnemonique, command) == 0)
       return (1);
   return (0);
 }
@@ -73,17 +73,17 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
   if (parse_types(op_cur, command) == 84)
     return (0);
   i = -1;
-  while (op_tab[++i].mnemonique != 0)
-    if (my_strcmp(op_tab[i].mnemonique, op_cur->mnemonique) == 0)
+  while (g_op_tab[++i].mnemonique != 0)
+    if (my_strcmp(g_op_tab[i].mnemonique, op_cur->mnemonique) == 0)
       {
-        op_cur->code = op_tab[i].code;
-        if (op_cur->nbr_args != op_tab[i].nbr_args ||
-	    !are_same_type(op_cur, op_tab + i))
+        op_cur->code = g_op_tab[i].code;
+        if (op_cur->nbr_args != g_op_tab[i].nbr_args ||
+	    !are_same_type(op_cur, g_op_tab + i))
 	  {
-	    my_printf("Bad arguments for the opcode '%s' ", op_tab[i].mnemonique);
+	    my_printf("Bad arguments for the opcode '%s' ", g_op_tab[i].mnemonique);
 	    return (0);
 	  }
-        op_cur->nbr_cycles = op_tab[i].nbr_cycles;
+        op_cur->nbr_cycles = g_op_tab[i].nbr_cycles;
 	return (1);
       }
   my_printf("Bad opcode for '%s' ", op_cur->mnemonique);
