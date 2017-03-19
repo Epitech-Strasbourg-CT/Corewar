@@ -62,4 +62,18 @@ void	write_math_instruct(t_instruct *instruct, t_asm *myasm)
   	write_standard_reg(instruct, i, myasm);
 }
 
-void	write_
+void	write_logic_instruct(t_instruct *instruct, t_asm *myasm)
+{
+  int	i;
+
+  i = -1;
+  while (++i < instruct->nbr_args)
+  {
+	if ((instruct->op->type[i] & T_DIR) == T_DIR)
+	  write_standard_dir(instruct, i, myasm);
+	else if ((instruct->op->type[i] & T_IND) == T_IND)
+	  write_standard_ind(instruct, i, myasm);
+	else if ((instruct->op->type[i] & T_REG) == T_REG)
+	  write_standard_reg(instruct, i, myasm);
+  }
+}
