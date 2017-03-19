@@ -5,12 +5,13 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 19:01:48 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:27:40 2017 
+** Last update Sun Mar 19 19:45:39 2017 
 */
 
 #include <unistd.h>
 #include "asm.h"
 #include "my.h"
+#include "my_printf.h"
 #include "op.h"
 
 void	write_standard_reg(t_instruct *instruct, int index, t_asm *myasm)
