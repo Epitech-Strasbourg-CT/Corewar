@@ -38,7 +38,7 @@ void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm)
   size = 0;
   dir = instruct->args[index];
   my_memset(str, 0, 4);
-  if ((instruct->op->type[0] & T_LAB) == T_LAB)
+  if ((instruct->op->type[index] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
@@ -61,7 +61,7 @@ void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm)
   ind = instruct->args[index];
   my_memset(str, 0, IND_SIZE);
   size = 0;
-  if ((instruct->op->type[0] & T_LAB) == T_LAB)
+  if ((instruct->op->type[index] & T_LAB) == T_LAB)
     ind = my_unsigned_to_char((unsigned int)
                               label_to_addr(myasm, instruct,
                                             ind + 1, &size));
