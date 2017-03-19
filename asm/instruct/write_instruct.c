@@ -16,22 +16,22 @@
 
 static void	fill_fct(void (*fct[16])(t_instruct *current, t_asm *myasm))
 {
-  fct[0] = &write_live_instruct;
-  fct[1] = NULL;
-  fct[2] = NULL;
-  fct[3] = &write_math_instruct;
-  fct[4] = &write_math_instruct;
-  fct[5] = &write_logic_instruct;
-  fct[6] = &write_logic_instruct;
-  fct[7] = &write_logic_instruct;
-  fct[8] = &write_simple_instruct;
-  fct[9] = NULL;
-  fct[10] = NULL;
-  fct[11] = NULL;
-  fct[12] = &write_simple_instruct;
-  fct[13] = NULL;
-  fct[14] = NULL;
-  fct[15] = NULL;
+  fct[0x0] = &write_live_instruct;
+  fct[0x1] = NULL;
+  fct[0x2] = NULL;
+  fct[0x3] = &write_math_instruct;
+  fct[0x4] = &write_math_instruct;
+  fct[0x5] = &write_logic_instruct;
+  fct[0x6] = &write_logic_instruct;
+  fct[0x7] = &write_logic_instruct;
+  fct[0x8] = &write_simple_instruct;
+  fct[0x9] = NULL;
+  fct[0xa] = NULL;
+  fct[0xb] = NULL;
+  fct[0xc] = &write_simple_instruct;
+  fct[0xd] = NULL;
+  fct[0xe] = NULL;
+  fct[0xf] = NULL;
 }
 
 static int	write_args(t_instruct *current, t_asm *myasm,

@@ -29,6 +29,8 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
     dir = my_unsigned_to_char((unsigned int)
 			      label_to_addr(myasm, instruct,
 					    dir + 2, &size));
+  else
+  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
@@ -50,6 +52,8 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
     dir = my_unsigned_to_char((unsigned int)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
+  else
+  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
