@@ -1,17 +1,24 @@
 /*
 ** corewar.h for corewar in /home/arthur/delivery/CPE/CPE_2016_corewar/corewar
-** 
+**
 ** Made by Arthur Knoepflin
 ** Login   <arthur@epitech.net>
-** 
+**
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 16 21:15:49 2017 Arthur Knoepflin
+** Last update Mon Mar 20 13:11:20 2017 Maxime Jenny
 */
 
 #ifndef COREWAR_H_
 # define COREWAR_H_
 
 # define BUF_SIZE	2048
+
+typedef struct		s_heads
+{
+  int			champion_id;
+  int			pos;
+  struct s_heads	*next;
+}			t_heads;
 
 typedef struct	s_nchamp
 {
@@ -37,6 +44,13 @@ typedef struct	s_game
   unsigned char	*arena;
   int		cycle;
 }		t_game;
+
+/*
+** head/head.c
+*/
+
+int		new_head(int champion_id, int position, t_heads **list);
+int		delete_heads(t_heads **precedent_head, t_heads **head_to_del);
 
 /*
 ** arena_create.c
