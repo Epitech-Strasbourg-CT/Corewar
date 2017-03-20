@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Mon Mar 20 17:54:53 2017 Nicolas Polomack
+** Last update Mon Mar 20 18:41:20 2017 
 */
 
 #include <stdlib.h>
@@ -29,7 +29,8 @@ static char	*get_file_name(char *str)
   if (*str == '/')
     str += 1;
   i = my_strstr(str, ".s") - str;
-  name = malloc(i + 5);
+  if ((name = malloc(i + 5)) == NULL)
+    exit(84);
   name = my_strncpy(name, str, i);
   name[i] = 0;
   my_strcat(name, ".cor");
@@ -58,6 +59,16 @@ static void	init_asm(t_asm *a, char **av)
   a->header.comment = NULL;
 }
 
+static void	free_asm(t_asm *a)
+{
+  my_free_label(&(a->labels));
+  my_free_instruct(&(a->instructs));
+  free(a->header.name);
+  free(a->header.comment);
+  free(a->file_name);
+  close(a->fd);
+}
+
 int		main(int ac, char **av)
 {
   t_asm		a;
@@ -77,28 +88,6 @@ int		main(int ac, char **av)
   parse_commands(&a);
   write_headers(&a);
   write_instructs(a.instructs, &a);
-  
-  //DEBUG
-  
-  my_printf("NAME: %s\n", a.header.name);
-  my_printf("COMMENT: %s\n\n", a.header.comment);
-  
-  my_show_label(a.labels);
-  my_putchar('\n');
-  /* my_show_instruct(a.instructs);  */
-  /* my_putchar('\n'); */
-
-  /* t_instruct    *temp; */
-
-  /* temp = a.instructs; */
-  /* while (temp != NULL) */
-  /*   { */
-  /*     write_args_type(temp, a.fd); */
-  /*     my_putchar('\n'); */
-  /*     temp = temp->next; */
-  /*   } */
-  
-  
-  close(a.fd);
+  free_asm(&a);
   return (0);
 }

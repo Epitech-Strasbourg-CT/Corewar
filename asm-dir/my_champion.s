@@ -1,5 +1,5 @@
 .name "Wall-e"
-.comment  "Just a basic Wall-ing program..."
+.comment ""
 
 sti r1,%:live6,%1
 sti r1,%:live7,%1
@@ -11,9 +11,9 @@ init:   live %1
 
 fork %:wall
 
-init2:  live %1
+init2:	live %1
 
-main:   fork %:func
+main:	fork %:func
        live6: live %1
        fork %:init2
     live7: live %1
@@ -127,7 +127,7 @@ front:  live %1
        xor r3,r3,r3
        zjmp %:front
 
-func:   fork %:init2
+func:	fork %:init2
        live1: live %1
        fork %:wall
        live2: live %1

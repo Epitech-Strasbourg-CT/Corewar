@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Mon Mar 20 12:18:35 2017 Nicolas Polomack
-** Last update Mon Mar 20 17:08:38 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:15:51 2017 
 */
 
 #include <stdlib.h>
@@ -32,10 +32,12 @@ void	write_standard_dir_mod(t_instruct *instruct, int index, t_asm *myasm)
   else
     dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
-    my_printf("error dir : %d\n", size);
+    error_write(size, instruct->args[index] + 2);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
+  free(dir);
   my_strncpy(str + ((DIR_SIZE / 2) - size), byte_code, size);
   write(myasm->fd, str, DIR_SIZE / 2);
+  free(byte_code);
 }
 
 void	write_standard_ind_mod(t_instruct *instruct, int index, t_asm *myasm)
@@ -55,10 +57,12 @@ void	write_standard_ind_mod(t_instruct *instruct, int index, t_asm *myasm)
   else
     ind = my_unsigned_to_char(my_getnbr(ind));
   if (size)
-    my_printf("error ind : %d\n", size);
+    error_write(size, instruct->args[index] + 1);
   byte_code = my_char_int_to_bytes(ind, &size);
+  free(ind);
   my_strncpy(str + ((IND_SIZE / 2) - size), byte_code, size);
   write(myasm->fd, str, IND_SIZE / 2);
+  free(byte_code);
 }
 
 void	write_standard_mod(t_instruct *current, t_asm *myasm)

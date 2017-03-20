@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Mon Nov 21 12:15:25 2016 Cédric Thomas
-** Last update Tue Mar 14 16:16:24 2017 
+** Last update Mon Mar 20 18:42:33 2017 
 */
 #include <stdlib.h>
 #include "my_printf.h"
@@ -71,6 +71,10 @@ int		my_del_list_instruct(t_instruct **ll, t_instruct *elem)
     elem->next->prev = elem->prev;
   if (elem->prev != NULL)
     elem->prev->next = elem->next;
+  free(elem->op->mnemonique);
+  free(elem->op);
+  free(elem->raw);
+  free_tab(elem->args);
   free(elem);
   return (0);
 }

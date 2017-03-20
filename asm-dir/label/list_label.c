@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Mon Nov 21 12:15:25 2016 Cédric Thomas
-** Last update Mon Mar 13 18:37:52 2017 Cédric Thomas
+** Last update Mon Mar 20 18:27:15 2017 
 */
 #include <stdlib.h>
 #include "my_printf.h"
@@ -64,6 +64,7 @@ int		my_del_list_label(t_label **ll, t_label *elem)
     elem->next->prev = elem->prev;
   if (elem->prev != NULL)
     elem->prev->next = elem->next;
+  free(elem->name);
   free(elem);
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 18:48:09 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:03:47 2017 
 */
 
 #include <stdlib.h>
@@ -46,7 +46,8 @@ int	parse_types(t_op *cur, char **command)
 	cur->type[i] = T_IND;
       else
 	{
-	  my_printf("The argument \'%s\' doesn't match any type ", command[i]);
+	  my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
+		    YELLOW, RESET, command[i]);
 	  return (84);
 	}
     }
@@ -80,13 +81,15 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
         if (op_cur->nbr_args != g_op_tab[i].nbr_args ||
 	    !are_same_type(op_cur, g_op_tab + i))
 	  {
-	    my_printf("Bad arguments for the opcode '%s' ", g_op_tab[i].mnemonique);
+	    my_printf("%sERROR%s: Bad arguments for the opcode '%s' ",
+		      YELLOW, RESET, g_op_tab[i].mnemonique);
 	    return (0);
 	  }
         op_cur->nbr_cycles = g_op_tab[i].nbr_cycles;
 	return (1);
       }
-  my_printf("Bad opcode for '%s' ", op_cur->mnemonique);
+  my_printf("%sERROR%s: Bad opcode for '%s' ", YELLOW, RESET,
+	    op_cur->mnemonique);
   return (0);
 }
 

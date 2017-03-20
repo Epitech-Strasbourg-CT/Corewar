@@ -5,17 +5,18 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Mon Mar 20 18:53:18 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:11:19 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
 
 # define MAX_OPCODE	16
 
-# define RED "\e[31m"
-# define GREEN "\e[32m"
-# define BLUE "\e[32m"
-# define RESET "\e[0m"
+# define RED		"\e[1m\e[31m"
+# define GREEN		"\e[1m\e[32m"
+# define BLUE		"\e[1m\e[34m"
+# define YELLOW		"\e[1m\e[33m"
+# define RESET		"\e[0m\e[21m"
 
 typedef struct	s_op	t_op;
 

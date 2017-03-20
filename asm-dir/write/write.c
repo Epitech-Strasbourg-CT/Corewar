@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Mon Mar 20 15:43:27 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:18:30 2017 
 */
 
 #include <stdlib.h>
@@ -32,10 +32,12 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
   else
     dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
-    my_printf("error : %d\n", size);
+    error_write(size, instruct->args[0] + 2);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
+  free(dir);
   my_strncpy(str + ((DIR_SIZE / 2) - size), byte_code, size);
   write(myasm->fd, str, DIR_SIZE / 2);
+  free(byte_code);
 }
 
 void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
@@ -55,10 +57,12 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
   else
     dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
-    my_printf("error : %d\n", size);
+    error_write(size, instruct->args[0] + 2);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
+  free(dir);
   my_strncpy(str + (4 - size), byte_code, size);
   write(myasm->fd, str, 4);
+  free(byte_code);
 }
 
 void	write_math_instruct(t_instruct *instruct, t_asm *myasm)
@@ -68,7 +72,7 @@ void	write_math_instruct(t_instruct *instruct, t_asm *myasm)
   write_args_type(instruct, myasm->fd);
   i = -1;
   while (++i < instruct->op->nbr_args)
-  	write_standard_reg(instruct, i, myasm);
+    write_standard_reg(instruct, i, myasm);
 }
 
 void	write_logic_instruct(t_instruct *instruct, t_asm *myasm)
