@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Mon Mar 20 13:30:41 2017 Nicolas Polomack
+** Last update Mon Mar 20 14:02:50 2017 
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@ int	get_arg_size(char type, int ismod)
   if (type == T_REG)
     return (REG_SIZE);
   else if ((type & T_IND) == T_IND)
-    return (IND_SIZE);
+    return (IND_SIZE / (1 + ismod));
   else if ((type & T_DIR) == T_DIR)
     return (DIR_SIZE / (1 + ismod));
 }
