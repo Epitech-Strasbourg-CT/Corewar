@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Mon Mar 20 16:45:34 2017 Nicolas Polomack
+** Last update Mon Mar 20 18:00:16 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -115,6 +115,12 @@ void		swap_endian(void *raw, int size);
 */
 
 char	*my_epurnstr(char *str, int nbspace, char *to_ep, char replace);
+
+/*
+**clear.c
+*/
+
+void	clear_comments(t_asm *a);
 
 /*
 **LABEL

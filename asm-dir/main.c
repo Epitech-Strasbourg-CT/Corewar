@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Sat Mar 18 18:09:07 2017 
+** Last update Mon Mar 20 17:54:53 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -70,6 +70,7 @@ int		main(int ac, char **av)
     return (84);
   if (read_file(&a, av[1]) == -1)
     return (84);
+  clear_comments(&a);
   parse_headers(&a);
   change_label(&a);
   load_instruct(&a);

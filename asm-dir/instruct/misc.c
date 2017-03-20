@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Mon Mar 20 16:50:29 2017 Nicolas Polomack
+** Last update Mon Mar 20 18:02:35 2017 Nicolas Polomack
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -50,8 +50,9 @@ int	get_instruct_size(t_instruct *instruct)
     size += my_op->nbr_args / 4 + (my_op->nbr_args % 4 ? 1 : 0);
   while (++i < my_op->nbr_args)
     {
-      printf("Name: %s\t", my_op->mnemonique);
-      size += get_arg_size(my_op->type[i], (my_op->code == 0x0a || my_op->code == 0x0b || my_op->code == 0x0e));// || my_op->code == 0x0e || my_op->code == 0x0f));
+      size += get_arg_size(my_op->type[i],
+			   (my_op->code == 0x0a ||
+			    my_op->code == 0x0b || my_op->code == 0x0e));
     }
   return (size);
 }
