@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 18:48:09 2017 Nicolas Polomack
+** Last update Mon Mar 20 21:06:29 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -33,11 +33,11 @@ int	parse_types(t_op *cur, char **command)
   while (command[++i])
     {
       if (command[i][0] == DIRECT_CHAR)
-	if (command[i][1] == LABEL_CHAR)
+	if (command[i][1] == LABEL_CHAR && is_only_composed_of(command[i] + 2, LABEL_CHARS))
 	  cur->type[i] = T_LAB | T_DIR;
-	else
+	else if (my_str_isnum(command[i] + 1))
 	  cur->type[i] = T_DIR;
-      else if (command[i][0] == LABEL_CHAR)
+      else if (command[i][0] == LABEL_CHAR && is_only_composed_of(command[i] + 1, LABEL_CHARS))
 	cur->type[i] = T_LAB | T_IND;
       else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
 	       is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
@@ -46,7 +46,7 @@ int	parse_types(t_op *cur, char **command)
 	cur->type[i] = T_IND;
       else
 	{
-	  my_printf("The argument \'%s\' doesn't match any type ", command[i]);
+	  my_printf("%sERROR%s: Wrong argument type ", GREEN, RESET, command[i]);
 	  return (84);
 	}
     }
@@ -80,7 +80,7 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
         if (op_cur->nbr_args != g_op_tab[i].nbr_args ||
 	    !are_same_type(op_cur, g_op_tab + i))
 	  {
-	    my_printf("Bad arguments for the opcode '%s' ", g_op_tab[i].mnemonique);
+	    my_printf("ERROR: Bad arguments for the opcode '%s' ", g_op_tab[i].mnemonique);
 	    return (0);
 	  }
         op_cur->nbr_cycles = g_op_tab[i].nbr_cycles;
