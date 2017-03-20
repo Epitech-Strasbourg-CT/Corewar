@@ -1,7 +1,5 @@
 .name "lol"
 .comment "mdr"
 
-fork %:lol
-
-lol:
-	live %1
+        ld      %0,r15
+	
