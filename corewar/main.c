@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Thu Mar 16 13:35:39 2017 Arthur Knoepflin
+** Last update Mon Mar 20 14:01:46 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -51,6 +51,7 @@ int		main(int ac, char **av)
 	       parse->champ[i]->size, parse->champ[i]->comment);
       i += 1;
     }
-  game(parse);
+  if (game(parse))
+    return (84);
   return (0);
 }

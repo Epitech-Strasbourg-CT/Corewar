@@ -5,10 +5,12 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Thu Mar 16 21:07:46 2017 Arthur Knoepflin
+## Last update Sun Mar 19 16:01:27 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
+		arena/average_champ.c		\
+		arena/is_overlap.c		\
 		arena/load_champ.c		\
 		dump.c				\
 		game.c				\

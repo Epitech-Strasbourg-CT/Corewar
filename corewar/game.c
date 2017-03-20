@@ -5,11 +5,12 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Thu Mar 16 21:10:10 2017 Arthur Knoepflin
+** Last update Mon Mar 20 15:04:00 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
+#include "my.h"
 
 t_game		*init_game(t_parse *parse)
 {
@@ -20,6 +21,10 @@ t_game		*init_game(t_parse *parse)
   game->parse = parse;
   if ((game->arena = arena_create()) == NULL)
     return (NULL);
+  if (is_overlap_lock(parse) && (my_puterror("Overlap detected\n")))
+    return (NULL);
+  if (init_arena(game))
+    return (NULL);
   game->cycle = 0;
 }
 
@@ -29,6 +34,9 @@ int		game(t_parse *parse)
 
   if (!(game = init_game(parse)))
     return (1);
-  load_champ(game, parse->champ[0]);
+  /* printf("nb_champ : %d\n", nb_champ_with_addr(parse)); */
+  /* printf("%d\n", ecart); */
+  /* load_champ(game, parse->champ[0]); */
   dump(game);
+  return (0);
 }

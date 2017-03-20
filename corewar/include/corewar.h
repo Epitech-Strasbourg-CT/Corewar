@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Mon Mar 20 13:11:20 2017 Maxime Jenny
+** Last update Mon Mar 20 15:07:31 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -57,12 +57,29 @@ int		delete_heads(t_heads **precedent_head, t_heads **head_to_del);
 */
 
 char	*arena_create(void);
+int	init_arena(t_game *);
+
+/*
+** average_champ.c
+*/
+
+int	get_ecart(t_parse *);
+
+/*
+** is_overlap.c
+*/
+
+int	*get_tab_pos(t_parse *, int);
+int	is_overlap_lock(t_parse *);
 
 /*
 ** load_champ.c
 */
 
-void	load_champ(t_game *, t_nchamp *);
+int	nb_champ_with_addr(t_parse *);
+int	load_champ(t_game *, t_nchamp *, int);
+int	load_all_champ(t_game *, int);
+int	load_champ_addr(t_game *, int);
 
 /*
 ** dump.c

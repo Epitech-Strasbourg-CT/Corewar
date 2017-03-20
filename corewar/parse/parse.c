@@ -5,12 +5,13 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 19:19:22 2017 Arthur Knoepflin
-** Last update Tue Mar 14 16:49:45 2017 Arthur Knoepflin
+** Last update Mon Mar 20 13:58:06 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
+#include "op.h"
 
 int	nb_champ(int ac, char **av)
 {
@@ -60,6 +61,18 @@ void	parse_dump(t_parse *parse, int ac, char **av)
     }
 }
 
+void	mod_addr(t_parse *parse)
+{
+  int	i;
+
+  i = -1;
+  while (++i < parse->nb_champ)
+    {
+      if (parse->champ[i]->load_addr > -1)
+	parse->champ[i]->load_addr %= MEM_SIZE;
+    }
+}
+
 t_parse		*get_parse(int ac, char **av)
 {
   t_parse	*parse;
@@ -73,5 +86,6 @@ t_parse		*get_parse(int ac, char **av)
   parse_champ(parse, ac, av);
   if (parse_file_champ(parse))
     return (NULL);
+  mod_addr(parse);
   return (parse);
 }
