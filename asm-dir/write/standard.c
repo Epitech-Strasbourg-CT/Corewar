@@ -5,10 +5,11 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 19:01:48 2017 Nicolas Polomack
-** Last update Mon Mar 20 17:08:26 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:15:22 2017 
 */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "asm.h"
 #include "my.h"
 #include "my_printf.h"
@@ -27,6 +28,7 @@ void	write_standard_reg(t_instruct *instruct, int index, t_asm *myasm)
   byte_code = my_char_int_to_bytes(reg, &size);
   my_strncpy(str + (REG_SIZE - size), byte_code, size);
   write(myasm->fd, str, REG_SIZE);
+  free(byte_code);
 }
 
 void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm)
@@ -46,10 +48,12 @@ void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm)
   else
     dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
-    my_printf("error dir : %d\n", size);
+    error_write(size, instruct->args[index] + 2);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
+  free(dir);
   my_strncpy(str + (DIR_SIZE - size), byte_code, size);
   write(myasm->fd, str, DIR_SIZE);
+  free(byte_code);
 }
 
 void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm)
@@ -69,10 +73,12 @@ void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm)
   else
     ind = my_unsigned_to_char(my_getnbr(ind));
   if (size)
-    my_printf("error ind : %d\n", size);
+    error_write(size, instruct->args[index] + 1);
   byte_code = my_char_int_to_bytes(ind, &size);
+  free(ind);
   my_strncpy(str + (IND_SIZE - size), byte_code, size);
   write(myasm->fd, str, IND_SIZE);
+  free(byte_code);
 }
 
 void	write_standard(t_instruct *current, t_asm *myasm)

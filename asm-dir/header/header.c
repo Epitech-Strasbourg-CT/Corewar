@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Thu Mar  9 20:01:23 2017 Nicolas Polomack
+** Last update Mon Mar 20 19:09:48 2017 
 */
 
 #include <stdlib.h>
@@ -36,12 +36,14 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
-    exit(84 + 0 * my_printf("ERROR:%d:%d: Invalid character\n", *i, j + l));
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
+			    GREEN, RESET, *i, j + l));
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
   if (a->file[*i][j + t] != quote || a->file[*i][j + t + 1] != 0)
-    exit(84 + 0 * my_printf("ERROR:%d:%d: Invalid quotes.\n", *i, j + l));
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
+			    GREEN, RESET, *i, j + l));
   a->header.name = my_strndup(&(a->file[*i][j + l]), t - l);
   suppress_line(a->file, *i);
   *i = -1;
@@ -59,12 +61,14 @@ void	parse_comment(t_asm *a, int *i, int j, int *indic)
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
-    exit(84 + 0 * my_printf("ERROR:%d:%d: Invalid character\n", *i, j + l));
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
+			    GREEN, RESET, *i, j + l));
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
   if (a->file[*i][j + t] != quote || a->file[*i][j + t + 1] != 0)
-    exit(84 + 0 * my_printf("ERROR:%d:%d: Invalid quotes.\n", *i, j + l));
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
+			    GREEN, RESET, *i, j + l));
   a->header.comment = my_strndup(&(a->file[*i][j + l]), t - l);
   suppress_line(a->file, *i);
   *i = -1;
@@ -104,6 +108,7 @@ void	parse_headers(t_asm *a)
   comment = 0;
   logic(a, &name, &comment);
   if (a->header.name == NULL || a->header.comment == NULL)
-    exit(84 + 0 * my_printf("ERROR: No '%s' found.\n",
+    exit(84 + 0 * my_printf("%sERROR%s: No '%s' found.\n",
+			    GREEN, RESET,
 			    (!name) ? NAME_CMD_STRING : COMMENT_CMD_STRING));
 }

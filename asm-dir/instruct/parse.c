@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Mon Mar 20 21:06:29 2017 Nicolas Polomack
+** Last update Mon Mar 20 21:07:43 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -37,18 +37,19 @@ int	parse_types(t_op *cur, char **command)
 	  cur->type[i] = T_LAB | T_DIR;
 	else if (my_str_isnum(command[i] + 1))
 	  cur->type[i] = T_DIR;
-      else if (command[i][0] == LABEL_CHAR && is_only_composed_of(command[i] + 1, LABEL_CHARS))
-	cur->type[i] = T_LAB | T_IND;
-      else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
-	       is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
-	cur->type[i] = T_REG;
-      else if (my_str_isnum(command[i] + (command[i][0] == '-')))
-	cur->type[i] = T_IND;
-      else
-	{
-	  my_printf("%sERROR%s: Wrong argument type ", GREEN, RESET, command[i]);
-	  return (84);
-	}
+	else if (command[i][0] == LABEL_CHAR && is_only_composed_of(command[i] + 1, LABEL_CHARS))
+	  cur->type[i] = T_LAB | T_IND;
+	else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
+		 is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
+	  cur->type[i] = T_REG;
+	else if (my_str_isnum(command[i] + (command[i][0] == '-')))
+	  cur->type[i] = T_IND;
+	else
+	  {
+	    my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
+		      YELLOW, RESET, command[i]);
+	    return (84);
+	  }
     }
   return (0);
 }
@@ -80,13 +81,15 @@ int	check_command_args(char **command, int fd, t_op *op_cur)
         if (op_cur->nbr_args != g_op_tab[i].nbr_args ||
 	    !are_same_type(op_cur, g_op_tab + i))
 	  {
-	    my_printf("ERROR: Bad arguments for the opcode '%s' ", g_op_tab[i].mnemonique);
+	    my_printf("%sERROR%s: Bad arguments for the opcode '%s' ",
+		      YELLOW, RESET, g_op_tab[i].mnemonique);
 	    return (0);
 	  }
         op_cur->nbr_cycles = g_op_tab[i].nbr_cycles;
 	return (1);
       }
-  my_printf("Bad opcode for '%s' ", op_cur->mnemonique);
+  my_printf("%sERROR%s: Bad opcode for '%s' ", YELLOW, RESET,
+	    op_cur->mnemonique);
   return (0);
 }
 
