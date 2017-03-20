@@ -181,6 +181,8 @@ void	write_standard(t_instruct *current, t_asm *myasm);
 **mod.c
 */
 void	write_standard_mod(t_instruct *current, t_asm *myasm);
+void	write_standard_dir_mod(t_instruct *instruct, int index, t_asm *myasm);
+void	write_standard_ind_mod(t_instruct *instruct, int index, t_asm *myasm);
 void	write_simple_instruct_mod(t_instruct *instruct, t_asm *myasm);
 
 /*

@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Mon Mar 20 10:37:49 2017 
+** Last update Mon Mar 20 14:02:50 2017 
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -13,14 +13,14 @@
 #include "op.h"
 #include "my.h"
 
-int	get_arg_size(char type)
+int	get_arg_size(char type, int ismod)
 {
   if (type == T_REG)
     return (REG_SIZE);
   else if ((type & T_IND) == T_IND)
-    return (IND_SIZE);
+    return (IND_SIZE / (1 + ismod));
   else if ((type & T_DIR) == T_DIR)
-    return (DIR_SIZE);
+    return (DIR_SIZE / (1 + ismod));
 }
 
 static char	get_arg_mask(char type)
@@ -40,14 +40,20 @@ int	get_instruct_size(t_instruct *instruct)
   t_op	*my_op;
 
   size = 1;
-  if (instruct->op->code == 1)
+  if (instruct->op->code == 0x01)
     return (5);
   my_op = instruct->op;
   i = -1;
+  if (my_op->code == 0x0f)
+    return (3);
   if (my_op->nbr_args > 1 || my_op->code == 0x10)
     size += my_op->nbr_args / 4 + (my_op->nbr_args % 4 ? 1 : 0);
   while (++i < my_op->nbr_args)
-    size += get_arg_size(my_op->type[i]);
+    {
+      printf("Name: %s\t", my_op->mnemonique);
+      size += get_arg_size(my_op->type[i], (my_op->code == 0x0a || my_op->code == 0x0b));
+      printf("Size: %d\n", get_arg_size(my_op->type[i], (my_op->code == 0x02 || my_op->code == 0x03 || my_op->code == 0x0a || my_op->code == 0x0b || my_op->code == 0x0d || my_op->code == 0x0e)));
+    }
   return (size);
 }
 
