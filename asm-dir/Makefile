@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Mon Mar 20 00:00:05 2017 Nicolas Polomack
+## Last update Mon Mar 20 12:05:54 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c				\
@@ -27,6 +27,7 @@ SRC	=	main.c				\
 		misc/my_int_to_char.c		\
 		misc/endian.c			\
 		write/standard.c		\
+		write/mod.c			\
 		write/write.c
 
 
@@ -58,6 +59,7 @@ $(NAME):	.SILENT
 		@echo "OK"
 		@echo -en "Linking ASM compiler...\t\t"
 		@gcc -o $(NAME) $(OBJ) -L$(LIB_F) $(LIB)
+		@cp ../asm .
 		@echo "OK"
 
 clean:

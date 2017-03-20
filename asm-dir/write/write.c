@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:54:50 2017 
+** Last update Mon Mar 20 12:10:57 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -20,22 +20,22 @@ void	write_simple_instruct(t_instruct *instruct, t_asm *myasm)
   char	*dir;
   int	size;
   char	*byte_code;
-  char	str[DIR_SIZE];
+  char	str[DIR_SIZE / 2];
 
   size = 0;
   dir = instruct->args[0];
-  my_memset(str, 0, DIR_SIZE);
+  my_memset(str, 0, DIR_SIZE / 2);
   if ((instruct->op->type[0] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
 			      label_to_addr(myasm, instruct,
 					    dir + 2, &size));
   else
-  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
+    dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
-  my_strncpy(str + (DIR_SIZE - size), byte_code, size);
-  write(myasm->fd, str, DIR_SIZE);
+  my_strncpy(str + ((DIR_SIZE / 2) - size), byte_code, size);
+  write(myasm->fd, str, DIR_SIZE / 2);
 }
 
 void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
@@ -53,7 +53,7 @@ void	write_live_instruct(t_instruct *instruct, t_asm *myasm)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
   else
-  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
+    dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
