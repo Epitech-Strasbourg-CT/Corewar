@@ -5,48 +5,46 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Thu Oct  6 17:50:16 2016 Cédric Thomas
-** Last update Sun Oct 16 19:02:18 2016 Cédric Thomas
+** Last update Mon Mar 20 17:11:43 2017 Nicolas Polomack
 */
 
+#include <limits.h>
 #include <stdlib.h>
 
-static int	b_int(long nb)
+unsigned int     my_getunbr(char *str)
 {
-  if (nb < -2147483648 || nb > 2147483647)
+  unsigned long	nbr;
+  int		i;
+
+  i = -1;
+  nbr = 0;
+  while (str[++i] >= '0' && str[i] <= '9')
     {
-      return (0);
+      nbr *= 10;
+      nbr += str[i] - '0';
+      if (nbr > UINT_MAX)
+	return (0);
     }
-  else
-    {
-      return (1);
-    }
+  return (nbr);
 }
 
-int	my_getnbr(char *str)
+long int     my_getnbr(char *str)
 {
-  long	nb;
-  int	i;
-  int	sign;
-  int	bool;
+  long long	nbr;
+  long int	i;
+  char		sign;
 
-  nb = 0;
-  i = 0;
+  i = -1;
+  nbr = 0;
   sign = 1;
-  bool = 1;
-  if (str == NULL)
-    return (0);
-  while (str[i] && (str[i] == '+' || str[i] == '-'))
+  while (str[++i] == '+' || str[i] <= '-')
+    sign = (str[i] == '-' ? -sign : sign);
+  while (str[i] >= '0' && str[i] <= '9')
     {
-      ((str[i] == '-') ? (sign *= -1) : (sign *=  1));
-      i+=1;
+      nbr *= 10;
+      nbr += str[i++] - '0';
+      if (nbr * sign > LONG_MAX || nbr * sign < LONG_MIN)
+	return (0);
     }
-  while (str[i] != '\0' && bool == 1)
-    {
-      if (str[i] >= '0' && str[i] <= '9')
-	nb = nb * 10 + str[i] - 48;
-      i +=1;
-      if (str[i] < '0' || str[i] > '9')
-	bool = 0;
-    }
-  return (b_int(nb) ? nb * sign : 0);
+  return (nbr * sign);
 }

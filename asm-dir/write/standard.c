@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 19:01:48 2017 Nicolas Polomack
-** Last update Sun Mar 19 19:54:19 2017 
+** Last update Mon Mar 20 17:08:26 2017 Nicolas Polomack
 */
 
 #include <unistd.h>
@@ -38,13 +38,13 @@ void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm)
 
   size = 0;
   dir = instruct->args[index];
-  my_memset(str, 0, 4);
+  my_memset(str, 0, DIR_SIZE);
   if ((instruct->op->type[index] & T_LAB) == T_LAB)
     dir = my_unsigned_to_char((unsigned int)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
   else
-  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
+    dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error dir : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
@@ -67,7 +67,7 @@ void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm)
                               label_to_addr(myasm, instruct,
                                             ind + 1, &size));
   else
-  	ind = my_unsigned_to_char(my_getnbr(ind));
+    ind = my_unsigned_to_char(my_getnbr(ind));
   if (size)
     my_printf("error ind : %d\n", size);
   byte_code = my_char_int_to_bytes(ind, &size);
@@ -94,3 +94,21 @@ void	write_standard(t_instruct *current, t_asm *myasm)
     }
 }
 
+void	write_lldi(t_instruct *current, t_asm *myasm)
+{
+  int	i;
+  t_op	*op;
+
+  i = -1;
+  op = current->op;
+  write_args_type(current, myasm->fd);
+  while (++i < op->nbr_args)
+    {
+      if (op->type[i] == T_REG)
+	write_standard_reg(current, i, myasm);
+      else if ((op->type[i] & T_IND) == T_IND)
+	write_standard_ind(current, i, myasm);
+      else if ((op->type[i] & T_DIR) == T_DIR)
+	write_standard_dir_mod(current, i, myasm);
+    }
+}

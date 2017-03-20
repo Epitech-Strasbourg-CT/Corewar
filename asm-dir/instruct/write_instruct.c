@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 **
 ** Started on  Fri Mar 17 13:02:48 2017
-** Last update Mon Mar 20 13:57:56 2017 Nicolas Polomack
+** Last update Mon Mar 20 17:03:49 2017 Nicolas Polomack
 */
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,8 +17,8 @@
 static void	fill_fct(void (*fct[16])(t_instruct *current, t_asm *myasm))
 {
   fct[0x0] = &write_live_instruct;
-  fct[0x1] = &write_standard_mod;
-  fct[0x2] = &write_standard_mod;
+  fct[0x1] = &write_standard;
+  fct[0x2] = &write_standard;
   fct[0x3] = &write_math_instruct;
   fct[0x4] = &write_math_instruct;
   fct[0x5] = &write_logic_instruct;
@@ -29,7 +29,7 @@ static void	fill_fct(void (*fct[16])(t_instruct *current, t_asm *myasm))
   fct[0xa] = &write_standard_mod;
   fct[0xb] = &write_simple_instruct;
   fct[0xc] = &write_standard;
-  fct[0xd] = &write_standard;
+  fct[0xd] = &write_lldi;
   fct[0xe] = &write_simple_instruct;
   fct[0xf] = &write_standard;
 }

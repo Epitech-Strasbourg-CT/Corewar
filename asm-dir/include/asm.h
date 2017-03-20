@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Sun Mar 19 19:41:18 2017 
+** Last update Mon Mar 20 16:45:34 2017 Nicolas Polomack
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -176,6 +176,8 @@ void	write_standard_reg(t_instruct *instruct, int index, t_asm *myasm);
 void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm);
 void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm);
 void	write_standard(t_instruct *current, t_asm *myasm);
+void	write_lldi(t_instruct *current, t_asm *myasm);
+
 
 /*
 **mod.c

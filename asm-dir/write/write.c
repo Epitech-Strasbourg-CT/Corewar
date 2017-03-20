@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 18:06:29 2017 Nicolas Polomack
-** Last update Mon Mar 20 12:10:57 2017 Nicolas Polomack
+** Last update Mon Mar 20 15:43:27 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -78,12 +78,12 @@ void	write_logic_instruct(t_instruct *instruct, t_asm *myasm)
   i = -1;
   write_args_type(instruct, myasm->fd);
   while (++i < instruct->op->nbr_args)
-  {
-	if ((instruct->op->type[i] & T_DIR) == T_DIR)
-	  write_standard_dir(instruct, i, myasm);
-	else if ((instruct->op->type[i] & T_IND) == T_IND)
-	  write_standard_ind(instruct, i, myasm);
-	else if ((instruct->op->type[i] & T_REG) == T_REG)
-	  write_standard_reg(instruct, i, myasm);
-  }
+    {
+      if ((instruct->op->type[i] & T_DIR) == T_DIR)
+	write_standard_dir(instruct, i, myasm);
+      else if ((instruct->op->type[i] & T_IND) == T_IND)
+	write_standard_ind(instruct, i, myasm);
+      else if ((instruct->op->type[i] & T_REG) == T_REG)
+	write_standard_reg(instruct, i, myasm);
+    }
 }

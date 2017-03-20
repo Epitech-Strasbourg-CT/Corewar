@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sat Jan  7 23:19:08 2017 Nicolas Polomack
-** Last update Sat Jan 21 01:04:00 2017 Nicolas Polomack
+** Last update Mon Mar 20 15:30:07 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -43,7 +43,7 @@ char		*my_unsigned_to_char(unsigned int i)
 {
   char		*final;
   int		len;
-  unsigned int	n;
+  unsigned long	n;
 
   len = (i == 0) ? 1 : 0;
   n = i;
@@ -54,12 +54,13 @@ char		*my_unsigned_to_char(unsigned int i)
     }
   if ((final = malloc(len + 1)) == NULL)
     return (NULL);
+  n = i;
   final[len--] = 0;
-  final[len] = (i == 0) ? 0 + '0' : 0;
-  while (i >= 1)
+  final[len] = (n == 0) ? 0 + '0' : 0;
+  while (n >= 1)
     {
-      final[len--] = (i % 10) + '0';
-      i /= 10;
+      final[len--] = (n % 10) + '0';
+      n /= 10;
     }
   return (final);
 }

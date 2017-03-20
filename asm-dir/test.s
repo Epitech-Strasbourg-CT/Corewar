@@ -14,6 +14,6 @@ ldi 3,%4,r1
 sti r2,%4,%5
 fork %7
 lld 524,r4
-lldi 523,%53,r8
+#lldi 523,%53,r8
 lfork %72
 aff r3

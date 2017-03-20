@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Mon Mar 20 12:18:35 2017 Nicolas Polomack
-** Last update Mon Mar 20 13:56:44 2017 Nicolas Polomack
+** Last update Mon Mar 20 17:08:38 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -30,7 +30,7 @@ void	write_standard_dir_mod(t_instruct *instruct, int index, t_asm *myasm)
                               label_to_addr(myasm, instruct,
                                             dir + 2, &size));
   else
-  	dir = my_unsigned_to_char(my_getnbr(dir + 1));
+    dir = my_unsigned_to_char(my_getnbr(dir + 1));
   if (size)
     my_printf("error dir : %d\n", size);
   byte_code = my_char_int_to_bytes(dir + (dir[0] == '%'), &size);
@@ -53,7 +53,7 @@ void	write_standard_ind_mod(t_instruct *instruct, int index, t_asm *myasm)
                               label_to_addr(myasm, instruct,
                                             ind + 1, &size));
   else
-  	ind = my_unsigned_to_char(my_getnbr(ind));
+    ind = my_unsigned_to_char(my_getnbr(ind));
   if (size)
     my_printf("error ind : %d\n", size);
   byte_code = my_char_int_to_bytes(ind, &size);

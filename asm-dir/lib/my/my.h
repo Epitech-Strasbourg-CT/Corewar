@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Thu Oct 13 11:14:10 2016 Cédric Thomas
-** Last update Mon Feb 20 21:43:57 2017 
+** Last update Mon Mar 20 16:02:31 2017 Nicolas Polomack
 */
 
 #ifndef MY_H_
@@ -18,6 +18,7 @@ int		my_swap(int *a, int *b);
 int		my_putstr(char *str);
 int		my_strlen(char *str);
 int		my_getnbr(char *str);
+unsigned int	my_getunbr(char *str);
 void		my_sort_int_tab(int *tab, int size);
 int		my_power_rec(int nb, int power);
 int		my_square_root(int nb);
