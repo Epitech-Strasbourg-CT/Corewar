@@ -82,7 +82,6 @@ static void	logic(t_asm *a, int *name, int *comment)
   i = -1;
   while (a->file[++i])
     {
-      a->file[i] = my_epurnstr(a->file[i], 1, " \t", ' ');
       j = 0;
       while (a->file[i][j] && (a->file[i][j] == ' ' ||
                                a->file[i][j] == '\t'))
@@ -95,6 +94,8 @@ static void	logic(t_asm *a, int *name, int *comment)
         parse_comment(a, &i, j + 8, comment);
       else if (*name == 2 || *comment == 2)
         error_header(i, j, (*name == 2) ? 1 : 0);
+	  else
+	  	a->file[i] = my_epurnstr(a->file[i], 1, " \t", ' ');
       j += 1;
     }
 }
