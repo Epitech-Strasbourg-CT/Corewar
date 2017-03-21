@@ -25,3 +25,5 @@ fi
 hexdump -C $1.cor > my.log
 
 diff -sy my.log origin.log --color
+
+rm my.log origin.log
