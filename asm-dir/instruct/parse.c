@@ -36,7 +36,7 @@ int	parse_types(t_op *cur, char **command)
 	if (command[i][1] == LABEL_CHAR &&
 	    composed_of(command[i] + 2, LABEL_CHARS))
 	  cur->type[i] = T_LAB | T_DIR;
-	else if (my_str_isnum(command[i] + 1))
+	else if (my_str_isnum(command[i] + 1 + (command[i][1] == '-')))
 	  cur->type[i] = T_DIR;
       }
     else if (command[i][0] == LABEL_CHAR &&
