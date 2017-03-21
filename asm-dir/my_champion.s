@@ -1,7 +1,7 @@
 .name "Wall-e"
 .comment ""
 
-sti r1,%:live6,%1
+sti r1,%1,%1
 sti r1,%:live7,%1
 sti r1,%:init,%1
 sti r1,%:init2,%1

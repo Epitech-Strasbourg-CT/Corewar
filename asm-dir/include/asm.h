@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Tue Mar 21 11:45:27 2017 
+** Last update Tue Mar 21 13:04:24 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -91,6 +91,7 @@ int	get_prog_size(t_instruct *instr);
 void	error_header(int, int, int);
 int	error_double_label(t_label **my_label, char *name);
 int	error_write(int error_nb, char *info);
+void	error_parse(char *str);
 
 /*
 **MISC

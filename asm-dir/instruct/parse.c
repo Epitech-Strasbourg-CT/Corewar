@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Tue Mar 21 12:54:33 2017 Nicolas Polomack
+** Last update Tue Mar 21 13:05:44 2017 
 */
 
 #include <stdlib.h>
@@ -48,11 +48,7 @@ int	parse_types(t_op *cur, char **command)
     else if (my_str_isnum(command[i] + (command[i][0] == '-')))
       cur->type[i] = T_IND;
     else
-      {
-	my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
-		  YELLOW, RESET, command[i]);
-	return (84);
-      }
+      error_parse(command[i]);
   return (0);
 }
 
