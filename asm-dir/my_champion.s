@@ -23,7 +23,7 @@ main:	fork %:func
        zjmp %:init2
 
 regen:  sti r1,%:wall,%1
-       sti r1,%:live1,%1
+       sti r1,%-1,%1
        sti r1,%:live2,%1
        sti r1,%:live3,%1
        sti r1,%:live6,%1
