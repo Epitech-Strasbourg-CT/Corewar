@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Sun Mar 12 11:16:07 2017 Arthur Knoepflin
-** Last update Thu Mar 16 20:57:24 2017 Arthur Knoepflin
+** Last update Tue Mar 21 21:14:10 2017 
 */
 
 #include <stdlib.h>
@@ -16,6 +16,7 @@ static int	init_champ(t_parse *parse, int nb)
 {
   if ((parse->champ[nb] = malloc(sizeof(t_nchamp))) == NULL)
     return (1);
+  my_memset(parse->champ[nb], 0, sizeof(t_nchamp));
   parse->champ[nb]->id = -1;
   parse->champ[nb]->load_addr = -1;
   parse->champ[nb]->path = NULL;

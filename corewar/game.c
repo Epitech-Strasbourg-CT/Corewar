@@ -5,13 +5,22 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Tue Mar 21 14:17:18 2017 Arthur Knoepflin
+** Last update Tue Mar 21 21:24:06 2017 
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "op.h"
 #include "my.h"
+
+static void	link_ids(t_nchamp *champs)
+{
+  int		i;
+
+  i = -1;
+  while (++i < 4 && (*champs)[i])
+    (*champs)[i].regs[0] = (*champs)[i].id;
+}
 
 t_game		*init_game(t_parse *parse)
 {
@@ -26,6 +35,7 @@ t_game		*init_game(t_parse *parse)
     return (NULL);
   if (init_arena(game))
     return (NULL);
+  link_ids(game->parse->champ);
   game->cycle = 0;
 }
 

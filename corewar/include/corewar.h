@@ -5,11 +5,13 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Tue Mar 21 20:54:52 2017 
+** Last update Tue Mar 21 21:10:18 2017 
 */
 
 #ifndef COREWAR_H_
 # define COREWAR_H_
+
+# include "op.h"
 
 # define BUF_SIZE	2048
 
@@ -22,6 +24,8 @@ typedef struct		s_heads
 
 typedef struct	s_nchamp
 {
+  char		regs[REG_NUMBER];
+  int		carry;
   int		id;
   int		load_addr;
   char		*path;
