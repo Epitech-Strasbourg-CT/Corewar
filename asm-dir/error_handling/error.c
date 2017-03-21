@@ -5,12 +5,19 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 20:00:51 2017 Nicolas Polomack
-** Last update Mon Mar 20 19:20:16 2017 
+** Last update Tue Mar 21 13:03:22 2017 
 */
 
 #include <stdlib.h>
 #include "my_printf.h"
 #include "asm.h"
+
+void	error_parse(char *str)
+{
+  my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
+	    YELLOW, RESET, str);
+  exit(84);
+}
 
 void	error_header(int i, int j, int k)
 {

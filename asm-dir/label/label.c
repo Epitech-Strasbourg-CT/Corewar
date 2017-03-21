@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Mon Mar 13 14:56:55 2017 
-** Last update Tue Mar 14 15:43:13 2017 
+** Last update Tue Mar 21 11:40:11 2017 
 */
 #include <stdlib.h>
 #include "asm.h"
@@ -34,7 +34,7 @@ static char	*get_label(char *line)
   len = my_cstrnlen(line, LABEL_CHAR);
   if ((label = my_strndup(line, len)) == NULL)
     return (NULL);
-  if (!is_only_composed_of(label, LABEL_CHARS))
+  if (!composed_of(label, LABEL_CHARS))
     {
       free(label);
       return (NULL);
@@ -49,7 +49,7 @@ static char	*set_next_valid_line(char *line, char **tab)
   i = -1;
   while (tab[++i] && tab[i] != line);
   i -= 1;
-  while (tab[++i] && is_only_composed_of(tab[i], " \t"));
+  while (tab[++i] && composed_of(tab[i], " \t"));
   return (tab[i]);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 15:42:59 2017 
-** Last update Tue Mar 14 16:17:29 2017 
+** Last update Tue Mar 21 11:39:10 2017 
 */
 #include <stdlib.h>
 #include "asm.h"
@@ -46,7 +46,7 @@ char		**epurtab(t_asm *my_asm)
     exit(84);
   while (my_asm->file[++i])
     {
-      if (!is_only_composed_of(my_asm->file[i], "\t "))
+      if (!composed_of(my_asm->file[i], "\t "))
 	{
 	  new_tab[j] = my_asm->file[i];
 	  j += 1;

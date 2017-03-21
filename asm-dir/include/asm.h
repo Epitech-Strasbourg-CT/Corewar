@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Mon Mar 20 19:11:19 2017 
+** Last update Tue Mar 21 13:34:36 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -70,7 +70,6 @@ int	check_dir(char *file);
 /*
 ** header.c
 */
-
 void	parse_headers(t_asm *a);
 
 /*
@@ -91,6 +90,8 @@ int	get_prog_size(t_instruct *instr);
 
 void	error_header(int, int, int);
 int	error_double_label(t_label **my_label, char *name);
+int	error_write(int error_nb, char *info);
+void	error_parse(char *str);
 
 /*
 **MISC
@@ -108,7 +109,7 @@ char	**my_cpyrealloc(char **old, int new_size);
 int	my_cstrnlen(char *str, char c);
 int	my_strnlen(char *str, char *c);
 char	*my_strndup(char *str, int len);
-int	is_only_composed_of(char *str, char *only_composed);
+int	composed_of(char *str, char *only_composed);
 
 /*
 **endian.c
@@ -149,7 +150,8 @@ int	my_free_label(t_label **ll);
 /*
 **size.c
 */
-int	label_to_addr(t_asm *myasm, t_instruct *current, char *name, int *error);
+int	label_to_addr(t_asm *myasm, t_instruct *current,
+		      char *name, int *error);
 
 /*
 **INSTRUCT
@@ -189,7 +191,6 @@ void	write_standard_dir(t_instruct *instruct, int index, t_asm *myasm);
 void	write_standard_ind(t_instruct *instruct, int index, t_asm *myasm);
 void	write_standard(t_instruct *current, t_asm *myasm);
 void	write_lldi(t_instruct *current, t_asm *myasm);
-
 
 /*
 **mod.c

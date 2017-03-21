@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Mon Mar 20 21:07:43 2017 Nicolas Polomack
+** Last update Tue Mar 21 13:05:44 2017 
 */
 
 #include <stdlib.h>
@@ -31,26 +31,24 @@ int	parse_types(t_op *cur, char **command)
 
   i = -1;
   while (command[++i])
-    {
-      if (command[i][0] == DIRECT_CHAR)
-	if (command[i][1] == LABEL_CHAR && is_only_composed_of(command[i] + 2, LABEL_CHARS))
+    if (command[i][0] == DIRECT_CHAR)
+      {
+	if (command[i][1] == LABEL_CHAR &&
+	    composed_of(command[i] + 2, LABEL_CHARS))
 	  cur->type[i] = T_LAB | T_DIR;
-	else if (my_str_isnum(command[i] + 1))
+	else if (my_str_isnum(command[i] + 1 + (command[i][1] == '-')))
 	  cur->type[i] = T_DIR;
-	else if (command[i][0] == LABEL_CHAR && is_only_composed_of(command[i] + 1, LABEL_CHARS))
-	  cur->type[i] = T_LAB | T_IND;
-	else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
-		 is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
-	  cur->type[i] = T_REG;
-	else if (my_str_isnum(command[i] + (command[i][0] == '-')))
-	  cur->type[i] = T_IND;
-	else
-	  {
-	    my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
-		      YELLOW, RESET, command[i]);
-	    return (84);
-	  }
-    }
+      }
+    else if (command[i][0] == LABEL_CHAR &&
+	     composed_of(command[i] + 1, LABEL_CHARS))
+      cur->type[i] = T_LAB | T_IND;
+    else if (command[i][0] == 'r' && my_str_isnum(command[i] + 1) &&
+	     is_betw(1, my_getnbr(command[i] + 1), REG_NUMBER))
+      cur->type[i] = T_REG;
+    else if (my_str_isnum(command[i] + (command[i][0] == '-')))
+      cur->type[i] = T_IND;
+    else
+      error_parse(command[i]);
   return (0);
 }
 

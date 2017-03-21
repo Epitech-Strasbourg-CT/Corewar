@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Mon Mar 20 19:09:48 2017 
+** Last update Tue Mar 21 13:34:24 2017 
 */
 
 #include <stdlib.h>
@@ -32,7 +32,7 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
 
   l = 0;
   while (a->file[*i][j + l] && (a->file[*i][j + l] == ' ' ||
-                               a->file[*i][j + l] == '\t'))
+				a->file[*i][j + l] == '\t'))
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
@@ -57,7 +57,7 @@ void	parse_comment(t_asm *a, int *i, int j, int *indic)
 
   l = 0;
   while (a->file[*i][j + l] && (a->file[*i][j + l] == ' ' ||
-                               a->file[*i][j + l] == '\t'))
+				a->file[*i][j + l] == '\t'))
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
@@ -82,7 +82,6 @@ static void	logic(t_asm *a, int *name, int *comment)
   i = -1;
   while (a->file[++i])
     {
-      a->file[i] = my_epurnstr(a->file[i], 1, " \t", ' ');
       j = 0;
       while (a->file[i][j] && (a->file[i][j] == ' ' ||
                                a->file[i][j] == '\t'))
@@ -95,6 +94,8 @@ static void	logic(t_asm *a, int *name, int *comment)
         parse_comment(a, &i, j + 8, comment);
       else if (*name == 2 || *comment == 2)
         error_header(i, j, (*name == 2) ? 1 : 0);
+	  else
+	  	a->file[i] = my_epurnstr(a->file[i], 1, " \t", ' ');
       j += 1;
     }
 }

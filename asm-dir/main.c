@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Mon Mar 20 18:41:20 2017 
+** Last update Tue Mar 21 19:52:17 2017 
 */
 
 #include <stdlib.h>
@@ -76,10 +76,10 @@ int		main(int ac, char **av)
   if (ac != 2 || (check_dir(av[1]) == -1))
     return (84);
   init_asm(&a, av);
+  if (read_file(&a, av[1]) == -1)
+    return (84);
   if ((a.fd = open(a.file_name,
 		   O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-    return (84);
-  if (read_file(&a, av[1]) == -1)
     return (84);
   clear_comments(&a);
   parse_headers(&a);
