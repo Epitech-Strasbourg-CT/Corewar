@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Mon Mar 20 14:01:46 2017 Arthur Knoepflin
+** Last update Tue Mar 21 20:33:22 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -34,23 +34,24 @@ int		main(int ac, char **av)
 {
   t_parse	*parse;
 
-  if (ac == 1)
-    disp_help(av[0]);
-  if (ac > 1 && my_strcmp(av[1], "-h") == 0)
-    disp_help(av[0]);
+  if (ac == 1 || (ac > 1 && my_strcmp(av[1], "-h") == 0))
+    {
+      disp_help(av[0]);
+      return (0);
+    }
   if ((parse = get_parse(ac - 1, av + 1)) == NULL)
     return (84);
-  printf("dump : %d && nb_champ : %d\n", parse->dump, parse->nb_champ);
-  int	i;
-  i = 0;
-  while (i < parse->nb_champ)
-    {
-      if (parse->champ[i])
-  	printf("id : %d load_addr : %d path : %s name : %s size : %d comment : %s\n", parse->champ[i]->id,
-	       parse->champ[i]->load_addr, parse->champ[i]->path, parse->champ[i]->name,
-	       parse->champ[i]->size, parse->champ[i]->comment);
-      i += 1;
-    }
+  /* printf("dump : %d && nb_champ : %d\n", parse->dump, parse->nb_champ); */
+  /* int	i; */
+  /* i = 0; */
+  /* while (i < parse->nb_champ) */
+  /*   { */
+  /*     if (parse->champ[i]) */
+  /* 	printf("id : %d load_addr : %d path : %s name : %s size : %d comment : %s\n", parse->champ[i]->id, */
+  /* 	       parse->champ[i]->load_addr, parse->champ[i]->path, parse->champ[i]->name, */
+  /* 	       parse->champ[i]->size, parse->champ[i]->comment); */
+  /*     i += 1; */
+  /*   } */
   if (game(parse))
     return (84);
   return (0);

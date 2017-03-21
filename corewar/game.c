@@ -5,11 +5,12 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Mon Mar 20 15:04:00 2017 Arthur Knoepflin
+** Last update Tue Mar 21 14:17:18 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
+#include "op.h"
 #include "my.h"
 
 t_game		*init_game(t_parse *parse)
@@ -30,13 +31,38 @@ t_game		*init_game(t_parse *parse)
 
 int		game(t_parse *parse)
 {
+  t_ins		*tmp;
+  int		j;
   t_game	*game;
 
   if (!(game = init_game(parse)))
     return (1);
-  /* printf("nb_champ : %d\n", nb_champ_with_addr(parse)); */
-  /* printf("%d\n", ecart); */
-  /* load_champ(game, parse->champ[0]); */
-  dump(game);
+  j = 0;
+  while (j < parse->champ[0]->size)
+    {
+      if ((tmp = get_instruc(game, j)) == NULL)
+	{
+	  j += 1;
+	  my_putstr("NOT AN INSTRUCTION\n");
+	}
+      else
+	{
+	  printf("%s ", op_tab[tmp->cmd - 1].mnemonique);
+	  int i;
+	  i = -1;
+	  while (++i < tmp->nb_arg)
+	    {
+	      printf("%s%d", (tmp->type[i] == 1) ? "r" :
+		     (tmp->type[i] == 2) ? "%" : "", tmp->val[i]);
+	      if (i == tmp->nb_arg - 1)
+		printf("\n");
+	      else
+		printf(",");
+	    }
+	  j += tmp->tot_byte;
+	  /* printf("tot_byte : %d nb_arg : %d\n", tmp->tot_byte, tmp->nb_arg); */
+	}
+    }
+  /* dump(game); */
   return (0);
 }

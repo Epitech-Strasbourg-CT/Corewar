@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 14 13:40:17 2017 Arthur Knoepflin
-** Last update Thu Mar 16 20:58:24 2017 Arthur Knoepflin
+** Last update Tue Mar 21 11:34:07 2017 Arthur Knoepflin
 */
 
 #ifndef OP_H_
@@ -51,9 +51,11 @@ typedef struct s_op	t_op;
 ** size (in bytes)
 */
 
-# define REG_SIZE	4
+# define INV		-1
+# define REG_SIZE	1
 # define IND_SIZE	2
-# define DIR_SIZE	REG_SIZE
+# define IDX_SIZE	2
+# define DIR_SIZE	4
 
 /*
 ** op_tab

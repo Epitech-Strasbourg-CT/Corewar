@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Sun Mar 19 16:01:27 2017 Arthur Knoepflin
+## Last update Mon Mar 20 22:20:36 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -14,6 +14,9 @@ SRC	=	arena/arena_create.c		\
 		arena/load_champ.c		\
 		dump.c				\
 		game.c				\
+		instruct/get_arg.c		\
+		instruct/get_desc.c		\
+		instruct/get_instruct.c		\
 		main.c				\
 		op.c				\
 		endian.c			\
