@@ -69,6 +69,8 @@ int	read_file(t_asm *a, char *file)
       if ((a->file = my_realloc(a->file, line, size++)) == NULL)
 	return (-1);
   close(fd);
+  if (a->file == NULL)
+    exit(0 * my_printf("%sERROR%s: Empty file\n", GREEN, RESET));
   return (0);
 }
 

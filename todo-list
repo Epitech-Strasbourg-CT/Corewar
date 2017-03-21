@@ -2,24 +2,24 @@ ASM:
 
 - .name			DONE
 - .comment		DONE
-- live (0x01)
-- ld (0x02)
-- st (0x03)
-- add (0x04)
-- sub (0x05)
-- and (0x06)
-- or (0x07)
-- xor (0x08)
-- zjmp (0x09)
-- ldi (0x0a)
-- sti (0x0b)
-- fork (0x0c)
-- lld (0x0d)
-- lldi (0x0e)
-- lfork (0x0f)
-- aff (0x10)
-- parse
-- error handling
+- live (0x01)		DONE
+- ld (0x02)    		DONE
+- st (0x03)     	DONE
+- add (0x04)    	DONE
+- sub (0x05)   		DONE
+- and (0x06)    	DONE
+- or (0x07)     	DONE
+- xor (0x08)    	DONE
+- zjmp (0x09)   	DONE
+- ldi (0x0a)    	DONE
+- sti (0x0b)    	DONE
+- fork (0x0c)   	DONE
+- lld (0x0d)    	DONE
+- lldi (0x0e)   	DONE
+- lfork (0x0f)  	DONE
+- aff (0x10)    	DONE
+- parse         	DONE
+- error handling 	DONE
 
 
 VM:
