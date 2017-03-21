@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Mon Mar 20 18:02:35 2017 Nicolas Polomack
+** Last update Tue Mar 21 13:28:11 2017 
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -29,7 +29,7 @@ static char	get_arg_mask(char type)
     return (1);
   else if ((type & T_IND) == T_IND)
     return (3);
-    else if ((type & T_DIR) == T_DIR)
+  else if ((type & T_DIR) == T_DIR)
     return (2);
 }
 
