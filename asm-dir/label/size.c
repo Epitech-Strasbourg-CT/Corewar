@@ -5,14 +5,15 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Sat Mar 18 16:18:30 2017 
-** Last update Mon Mar 20 18:51:14 2017 
+** Last update Tue Mar 21 11:35:46 2017 
 */
 #include <stdlib.h>
 #include "my.h"
 #include "asm.h"
 #include "op.h"
 
-static int	find_instruct_index(t_asm *myasm, t_instruct *current, int *error)
+static int	find_instruct_index(t_asm *myasm,
+				    t_instruct *current, int *error)
 {
   int		index;
   t_instruct	*to_find;
@@ -32,7 +33,8 @@ static int	find_instruct_index(t_asm *myasm, t_instruct *current, int *error)
   return (index);
 }
 
-static t_instruct	*find_instruct(t_asm *myasm, char *name, int *index, int *error)
+static t_instruct	*find_instruct(t_asm *myasm, char *name,
+				       int *index, int *error)
 {
   t_label		*lab;
   t_instruct		*to_find;
@@ -71,7 +73,8 @@ int		calc_size(t_instruct *first, t_instruct *sec, int index, int mod)
   return (size * mod);
 }
 
-int		label_to_addr(t_asm *myasm, t_instruct *current, char *name, int *error)
+int		label_to_addr(t_asm *myasm, t_instruct *current,
+			      char *name, int *error)
 {
   int		index;
   char		*line;

@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Mon Mar 20 14:00:54 2017 
+** Last update Tue Mar 21 11:45:54 2017 
 */
 
 #ifndef _OP_H_
@@ -59,9 +59,9 @@ struct		s_op
 struct		s_header
 {
   int		magic;
-  char		prog_name[PROG_NAME_LENGTH+1];
+  char		prog_name[PROG_NAME_LENGTH + 1];
   int		prog_size;
-  char		comment[COMMENT_LENGTH+1];
+  char		comment[COMMENT_LENGTH + 1];
 };
 
 typedef struct	s_header	t_header;
