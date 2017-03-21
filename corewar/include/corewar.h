@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Mon Mar 20 15:07:31 2017 Arthur Knoepflin
+** Last update Tue Mar 21 12:59:16 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -37,6 +37,15 @@ typedef struct		s_parse
   int			nb_champ;
   struct s_nchamp	*champ[4];
 }			t_parse;
+
+typedef struct	s_ins
+{
+  int		nb_arg;
+  int		cmd;
+  int		type[4];
+  long		val[4];
+  int		tot_byte;
+}		t_ins;
 
 typedef struct	s_game
 {
@@ -98,6 +107,24 @@ void	swap_endian(void *, int);
 */
 
 int	game(t_parse *);
+
+/*
+** instruct/get_arg.c
+*/
+
+int	get_arg(t_game *, int, t_ins *);
+
+/*
+** get_desc.c
+*/
+
+int	get_desc(int, t_ins *);
+
+/*
+** get_instruc.c
+*/
+
+t_ins	*get_instruc(t_game *, int);
 
 /*
 ** parse.c
