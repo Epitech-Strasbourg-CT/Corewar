@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 16:19:32 2017 Nicolas Polomack
+** Last update Thu Mar 23 16:31:26 2017 Nicolas Polomack
 */
 
 #ifndef COREWAR_H_
@@ -17,8 +17,6 @@
 
 typedef struct	s_nchamp
 {
-  char		regs[REG_NUMBER];
-  int		carry;
   int		id;
   int		load_addr;
   char		*path;
