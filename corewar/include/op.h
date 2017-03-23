@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 14 13:40:17 2017 Arthur Knoepflin
-** Last update Tue Mar 21 11:34:07 2017 Arthur Knoepflin
+** Last update Wed Mar 22 23:01:11 2017 Arthur Knoepflin
 */
 
 #ifndef OP_H_
@@ -61,7 +61,7 @@ typedef struct s_op	t_op;
 ** op_tab
 */
 
-extern	t_op	op_tab[];
+extern	t_op	g_op_tab[];
 
 /*
 ** header

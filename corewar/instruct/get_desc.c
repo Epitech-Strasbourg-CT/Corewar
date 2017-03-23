@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 17:42:56 2017 Arthur Knoepflin
-** Last update Mon Mar 20 21:51:36 2017 Arthur Knoepflin
+** Last update Wed Mar 22 22:56:02 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -31,6 +31,7 @@ static char	*add_zero(char *in)
       i += 1;
       j += 1;
     }
+  free(in);
   return (ret);
 }
 
@@ -50,6 +51,12 @@ static int	nb_arg(char *base)
   return (ret);
 }
 
+static int	my_free(void *ptr)
+{
+  free(ptr);
+  return (1);
+}
+
 int	get_desc(int desci, t_ins *ret)
 {
   int	i;
@@ -58,8 +65,9 @@ int	get_desc(int desci, t_ins *ret)
 
   if ((desc = my_int_to_char(desci)) == NULL)
     return (1);
-  if ((b = convert_base(desc, "0123456789", "01")) == NULL)
+  if ((b = convert_base(desc, "0123456789", "01")) == NULL && my_free(desc))
     return (1);
+  free(desc);
   if (my_strlen(b) != 8)
     if ((b = add_zero(b)) == NULL)
       return (1);
@@ -73,5 +81,6 @@ int	get_desc(int desci, t_ins *ret)
       if (b[i * 2 + 1] == '1')
 	ret->type[i] = ret->type[i] | 0x1;
     }
+  free(b);
   return (0);
 }

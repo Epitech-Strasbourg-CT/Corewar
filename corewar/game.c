@@ -5,13 +5,20 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Tue Mar 21 14:17:18 2017 Arthur Knoepflin
+** Last update Thu Mar 23 10:34:43 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "op.h"
 #include "my.h"
+
+static void	init_cycle(t_game *g)
+{
+  g->cycle_to_die = CYCLE_TO_DIE;
+  g->old_cycle_verrif = 0;
+  g->cycle = 0;
+}
 
 t_game		*init_game(t_parse *parse)
 {
@@ -26,43 +33,34 @@ t_game		*init_game(t_parse *parse)
     return (NULL);
   if (init_arena(game))
     return (NULL);
-  game->cycle = 0;
+  if (init_live(game))
+    return (NULL);
+  init_cycle(game);
+  init_head(game);
+  return (game);
 }
 
 int		game(t_parse *parse)
 {
-  t_ins		*tmp;
-  int		j;
+  void		(*fnt[16])(t_game *, t_heads *, t_ins *);
+  int		stop;
+  t_heads	*head;
   t_game	*game;
 
   if (!(game = init_game(parse)))
     return (1);
-  j = 0;
-  while (j < parse->champ[0]->size)
+  get_fnt_tab(fnt);
+  stop = 0;
+  while (!stop)
     {
-      if ((tmp = get_instruc(game, j)) == NULL)
-	{
-	  j += 1;
-	  my_putstr("NOT AN INSTRUCTION\n");
-	}
-      else
-	{
-	  printf("%s ", op_tab[tmp->cmd - 1].mnemonique);
-	  int i;
-	  i = -1;
-	  while (++i < tmp->nb_arg)
-	    {
-	      printf("%s%d", (tmp->type[i] == 1) ? "r" :
-		     (tmp->type[i] == 2) ? "%" : "", tmp->val[i]);
-	      if (i == tmp->nb_arg - 1)
-		printf("\n");
-	      else
-		printf(",");
-	    }
-	  j += tmp->tot_byte;
-	  /* printf("tot_byte : %d nb_arg : %d\n", tmp->tot_byte, tmp->nb_arg); */
-	}
+      head = game->heads;
+      while (!stop && head)
+  	{
+  	  exec_head(game, head, &stop, fnt);
+  	  head->pos %= MEM_SIZE;
+  	  head = head->next;
+  	}
+      game->cycle += 1;
     }
-  /* dump(game); */
   return (0);
 }

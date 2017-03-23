@@ -1,0 +1,14 @@
+/*
+** live.c for live in /home/arthur/delivery/CPE/CPE_2016_corewar/corewar
+** 
+** Made by Arthur Knoepflin
+** Login   <arthur@epitech.net>
+** 
+** Started on  Wed Mar 22 23:16:12 2017 Arthur Knoepflin
+** Last update Wed Mar 22 23:16:23 2017 Arthur Knoepflin
+*/
+
+void	live()
+{
+
+}

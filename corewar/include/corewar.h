@@ -5,20 +5,13 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Tue Mar 21 12:59:16 2017 Arthur Knoepflin
+** Last update Thu Mar 23 10:19:19 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
 # define COREWAR_H_
 
 # define BUF_SIZE	2048
-
-typedef struct		s_heads
-{
-  int			champion_id;
-  int			pos;
-  struct s_heads	*next;
-}			t_heads;
 
 typedef struct	s_nchamp
 {
@@ -30,6 +23,16 @@ typedef struct	s_nchamp
   char		*comment;
   char		*code;
 }		t_nchamp;
+
+typedef struct		s_heads
+{
+  int			id;
+  int			reg[16];
+  int			ctn_cycle;
+  int			carry;
+  int			pos;
+  struct s_heads	*next;
+}			t_heads;
 
 typedef struct		s_parse
 {
@@ -49,17 +52,14 @@ typedef struct	s_ins
 
 typedef struct	s_game
 {
+  int		*live;
   t_parse	*parse;
   unsigned char	*arena;
+  int		old_cycle_verrif;
   int		cycle;
+  int		cycle_to_die;
+  t_heads	*heads;
 }		t_game;
-
-/*
-** head/head.c
-*/
-
-int		new_head(int champion_id, int position, t_heads **list);
-int		delete_heads(t_heads **precedent_head, t_heads **head_to_del);
 
 /*
 ** arena_create.c
@@ -103,10 +103,44 @@ void	dump(t_game *);
 void	swap_endian(void *, int);
 
 /*
+** fnt_tab.c
+*/
+
+void	get_fnt_tab(void (*fnt[16])(t_game *, t_heads *, t_ins *));
+
+/*
+** fnt/live.c
+*/
+
+void	live(t_game *, t_heads *, t_ins *);
+
+/*
 ** game.c
 */
 
 int	game(t_parse *);
+
+/*
+** head/exec_head.c
+*/
+
+void	exec_head(t_game *,
+		  t_heads *,
+		  int *,
+		  void (*fnt[16])(t_game *, t_heads *, t_ins *));
+
+/*
+** head.c
+*/
+
+int	new_head(t_heads, t_heads **);
+int	delete_heads(t_heads **, t_heads **);
+
+/*
+** init_head.c
+*/
+
+void	init_head(t_game *);
 
 /*
 ** instruct/get_arg.c
@@ -125,6 +159,14 @@ int	get_desc(int, t_ins *);
 */
 
 t_ins	*get_instruc(t_game *, int);
+
+/*
+** live.c
+*/
+
+int	init_live(t_game *);
+void	update_live(t_game *);
+int	check_live(t_game *, int *);
 
 /*
 ** parse.c

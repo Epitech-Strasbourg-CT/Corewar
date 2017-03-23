@@ -5,12 +5,12 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 14 17:13:55 2017 Arthur Knoepflin
-** Last update Tue Mar 14 17:16:41 2017 Arthur Knoepflin
+** Last update Wed Mar 22 23:01:23 2017 Arthur Knoepflin
 */
 
 #include "op.h"
 
-t_op	op_tab[] =
+t_op	g_op_tab[] =
   {
     {"live", 1, {T_DIR}, 1, 10, "alive"},
     {"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load"},

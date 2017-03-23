@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:48:58 2017 Arthur Knoepflin
-** Last update Mon Mar 20 15:00:57 2017 Arthur Knoepflin
+** Last update Wed Mar 22 13:56:34 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -23,12 +23,29 @@ char	*arena_create(void)
   return (arena);
 }
 
+static int	affect_addr(t_game *g, int ecart)
+{
+  int		i;
+  int		*tab_pos;
+
+  if ((tab_pos = get_tab_pos(g->parse, ecart)) == NULL)
+    return (1);
+  i = -1;
+  while (++i < g->parse->nb_champ)
+    if (g->parse->champ[i]->load_addr == -1)
+      g->parse->champ[i]->load_addr = tab_pos[i];
+  free(tab_pos);
+  return (0);
+}
+
 int	init_arena(t_game *game)
 {
   int	ret;
   int	ecart;
 
   ecart = get_ecart(game->parse);
+  if (affect_addr(game, ecart))
+    return (1);
   if (!nb_champ_with_addr(game->parse))
     ret = load_all_champ(game, ecart);
   else

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:56:31 2017 Arthur Knoepflin
-** Last update Tue Mar 21 16:13:58 2017 Arthur Knoepflin
+** Last update Wed Mar 22 22:50:30 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -41,6 +41,7 @@ const static int	g_byte_len[16][3] =
 static int	extract_val(char *arena, int len)
 {
   int		i;
+  int		reti;
   unsigned char	*ret;
 
   if ((ret = malloc(sizeof(char) * (len + 1))) == NULL)
@@ -49,14 +50,15 @@ static int	extract_val(char *arena, int len)
   while (++i < len)
     ret[i] = arena[i];
   if (len == 1)
-    return (ret[0]);
+    reti = ret[0];
   if (len == 2)
-    return ((short int) ((ret[0] << 8) | ret[1]));
+    reti = ((short int) ((ret[0] << 8) | ret[1]));
   if (len == 3)
-    return (((ret[0] << 16) | (ret[1] << 8) | ret[2]));
+    reti = (((ret[0] << 16) | (ret[1] << 8) | ret[2]));
   if (len == 4)
-    return (((ret[0] << 24) | (ret[1] << 16) | (ret[2] << 8) | ret[3]));
-  return (0);
+    reti = (((ret[0] << 24) | (ret[1] << 16) | (ret[2] << 8) | ret[3]));
+  free(ret);
+  return (reti);
 }
 
 static int	particular(t_game *game, int index, t_ins *ret)

@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Mon Mar 20 22:20:36 2017 Arthur Knoepflin
+## Last update Wed Mar 22 23:17:03 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -13,10 +13,16 @@ SRC	=	arena/arena_create.c		\
 		arena/is_overlap.c		\
 		arena/load_champ.c		\
 		dump.c				\
+		fnt_tab.c			\
+		fnt/live.c			\
 		game.c				\
+		head/exec_head.c		\
+		head/head.c			\
+		head/init_head.c		\
 		instruct/get_arg.c		\
 		instruct/get_desc.c		\
 		instruct/get_instruct.c		\
+		live.c				\
 		main.c				\
 		op.c				\
 		endian.c			\
