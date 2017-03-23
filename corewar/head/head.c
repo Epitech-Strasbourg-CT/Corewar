@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Mon Mar 20 12:52:28 2017 Maxime Jenny
-** Last update Thu Mar 23 16:18:11 2017 Arthur Knoepflin
+** Last update Thu Mar 23 16:20:52 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -66,5 +66,5 @@ int		delete_heads(t_heads *index, t_heads **list)
 int		delete_heads_fulllist(t_heads **heads)
 {
   while (*heads)
-    delete_heads(heads, heads);
+    delete_heads(*heads, heads);
 }
