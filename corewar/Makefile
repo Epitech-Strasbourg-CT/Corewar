@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Thu Mar 23 18:21:34 2017 Nicolas Polomack
+## Last update Thu Mar 23 21:37:36 2017 
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -13,6 +13,7 @@ SRC	=	arena/arena_create.c		\
 		arena/is_overlap.c		\
 		arena/load_champ.c		\
 		dump.c				\
+		list_live.c			\
 		fnt_tab.c			\
 		fnt/live.c			\
 		fnt/st.c			\
