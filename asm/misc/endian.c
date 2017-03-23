@@ -5,8 +5,10 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Wed Mar  1 09:54:48 2017 
+** Last update Thu Mar 23 23:15:23 2017 
 */
+#include <stdlib.h>
+#include "my_printf.h"
 #include "asm.h"
 
 void		swap_endian(void *raw, int size)
@@ -25,5 +27,27 @@ void		swap_endian(void *raw, int size)
       converted[i] = converted[j];
       converted[j] = c;
       j -= 1;
+    }
+}
+
+void	check_nb_args(char *expr, char **split, int idx)
+{
+  int	i;
+  int	nb_comma;
+  int	nb_args;
+
+  i = -1;
+  while (split[++i]);
+  nb_args = i;
+  i = -1;
+  nb_comma = 0;
+  while (expr[++i])
+    if (expr[i] == ',')
+      nb_comma += 1;
+  if (nb_args != nb_comma + 1)
+    {
+      my_printf("%sERROR%s: Bad arguments number for instruct %d\n",
+		YELLOW, RESET, idx);
+      exit(0);
     }
 }

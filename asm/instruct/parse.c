@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:11:24 2017 Nicolas Polomack
+** Last update Thu Mar 23 23:14:08 2017 
 */
 
 #include <stdlib.h>
@@ -108,6 +108,7 @@ void		parse_commands(t_asm *a)
 	i += 1;
       arg = my_epurnstr(my_strdup(t->raw), 0, " ", ' ');
       list = my_split(arg + i, ',');
+      check_nb_args( arg + i, list, idx);
       my_memset((char *)t->op, 0, sizeof(t_op));
       t->op->mnemonique = my_strndup(arg, i);
       if ((check_command_args(list, a->fd, t->op)) == 0)
