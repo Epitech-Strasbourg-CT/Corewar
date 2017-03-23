@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 16:31:26 2017 Nicolas Polomack
+** Last update Thu Mar 23 17:14:45 2017 Nicolas Polomack
 */
 
 #ifndef COREWAR_H_
@@ -117,6 +117,18 @@ void	get_fnt_tab(void (*fnt[16])(t_game *, t_heads *, t_ins *));
 void	live(t_game *, t_heads *, t_ins *);
 
 /*
+** st.c
+*/
+
+void	st(t_game *, t_heads *, t_ins *);
+
+/*
+** ld.c
+*/
+
+void	ld(t_game *, t_heads *, t_ins *);
+
+/*
 ** game.c
 */
 
@@ -148,6 +160,7 @@ void	init_head(t_game *);
 ** instruct/get_arg.c
 */
 
+int	extract_val(char *, int);
 int	get_arg(t_game *, int, t_ins *);
 
 /*
