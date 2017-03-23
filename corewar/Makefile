@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Thu Mar 23 18:17:31 2017 Nicolas Polomack
+## Last update Thu Mar 23 18:21:34 2017 Nicolas Polomack
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -25,6 +25,7 @@ SRC	=	arena/arena_create.c		\
 		fnt/add.c			\
 		fnt/sub.c			\
 		fnt/aff.c			\
+		fnt/zjmp.c			\
 		game.c				\
 		head/exec_head.c		\
 		head/head.c			\
