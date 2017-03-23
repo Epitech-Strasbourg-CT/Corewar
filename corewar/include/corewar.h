@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 19:04:12 2017 Arthur Knoepflin
+** Last update Thu Mar 23 23:07:31 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -14,6 +14,13 @@
 # include "op.h"
 
 # define BUF_SIZE	2048
+
+typedef struct		s_live
+{
+  char			*name;
+  struct s_live		*prev;
+  struct s_live		*next;
+}			t_live;
 
 typedef struct	s_nchamp
 {
@@ -118,6 +125,18 @@ void	get_fnt_tab(void (*fnt[16])(t_game *, t_heads *, t_ins *));
 void	live(t_game *, t_heads *, t_ins *);
 
 /*
+** st.c
+*/
+
+void	st(t_game *, t_heads *, t_ins *);
+
+/*
+** ld.c
+*/
+
+void	ld(t_game *, t_heads *, t_ins *);
+
+/*
 ** game.c
 */
 
@@ -155,6 +174,7 @@ void	kill_player(t_game *, int);
 ** instruct/get_arg.c
 */
 
+int	extract_val(char *, int);
 int	get_arg(t_game *, int, t_ins *);
 
 /*
