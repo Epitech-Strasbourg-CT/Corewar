@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Tue Mar 21 19:52:17 2017 
+** Last update Thu Mar 23 21:08:52 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -78,14 +78,14 @@ int		main(int ac, char **av)
   init_asm(&a, av);
   if (read_file(&a, av[1]) == -1)
     return (84);
-  if ((a.fd = open(a.file_name,
-		   O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
-    return (84);
   clear_comments(&a);
   parse_headers(&a);
   change_label(&a);
   load_instruct(&a);
   parse_commands(&a);
+  if ((a.fd = open(a.file_name,
+                   O_WRONLY | O_CREAT | O_TRUNC, 0644)) == -1)
+    return (84);
   write_headers(&a);
   write_instructs(a.instructs, &a);
   free_asm(&a);
