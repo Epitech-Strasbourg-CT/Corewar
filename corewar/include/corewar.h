@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 16:00:02 2017 Arthur Knoepflin
+** Last update Thu Mar 23 16:19:32 2017 Nicolas Polomack
 */
 
 #ifndef COREWAR_H_
