@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Mon Mar 20 18:05:40 2017 Nicolas Polomack
+## Last update Thu Mar 23 20:37:10 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c				\
@@ -36,8 +36,6 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	asm
 
-NAME2	=	../asm
-
 LIB_F	=	./lib/
 
 LIB	=	-lmy -lmyprintf -lgnl
@@ -46,9 +44,9 @@ INCLUDE	=	-I./include/
 
 CFLAGS	+=	 $(INCLUDE)
 
-all:		$(NAME2)
+all:		$(NAME)
 
-$(NAME2):	.SILENT
+$(NAME):	.SILENT
 
 .SILENT:	$(OBJ)
 		@echo -en "Compilation GNL...\t\t"
@@ -61,8 +59,7 @@ $(NAME2):	.SILENT
 		@make -sC lib/my_printf
 		@echo "OK"
 		@echo -en "Linking ASM compiler...\t\t"
-		@gcc -o $(NAME2) $(OBJ) -L$(LIB_F) $(LIB)
-		@cp $(NAME2) .
+		@gcc -o $(NAME) $(OBJ) -L$(LIB_F) $(LIB)
 		@echo "OK"
 
 clean:
@@ -76,7 +73,6 @@ fclean:		clean
 		@make -sC lib/my fclean
 		@make -sC lib/my_printf fclean
 		@rm -f $(NAME)
-		@rm -f ../$(NAME)
 
 re: 		fclean all
 
