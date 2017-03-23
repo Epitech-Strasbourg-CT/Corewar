@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Thu Mar 23 10:42:28 2017 Arthur Knoepflin
+** Last update Thu Mar 23 11:34:12 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -57,9 +57,11 @@ int	check_live(t_game *g, int *stop)
 	  if (g->live[g->parse->champ[i]->id - 1] == 0)
 	    {
 	      printf("The player %d(%s) is dead\n", g->parse->champ[i]->id, g->parse->champ[i]->name);
-	      kill_player(g, g->parse->champ[i]->id);
+	      /* KILL PLAYER */
 	      g->live[g->parse->champ[i]->id - 1] = -2;
 	    }
+	  else
+	    g->live[g->parse->champ[i]->id - 1] = 0;
 	}
     }
 }

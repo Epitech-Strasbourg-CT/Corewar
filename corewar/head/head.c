@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Mon Mar 20 12:52:28 2017 Maxime Jenny
-** Last update Wed Mar 22 23:22:54 2017 Arthur Knoepflin
+** Last update Thu Mar 23 16:15:46 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -48,11 +48,17 @@ int		new_head(t_heads in, t_heads **list)
   return (0);
 }
 
-int		delete_heads(t_heads **precedent_head, t_heads **head_to_del)
+int		delete_heads(t_heads *index, t_heads **list)
 {
-  if ((*precedent_head)->next == NULL)
-    return (-1);
-  (*precedent_head)->next = (*head_to_del)->next;
-  free(head_to_del);
+  t_heads	*tmp;
+
+  tmp = *list;
+  if (*list == index)
+    *list = (*list)->next;
+  while (tmp && tmp->next != index && tmp != index)
+    tmp = tmp->next;
+  if (index && tmp)
+    tmp->next = index->next;
+  free(index);
   return (0);
 }

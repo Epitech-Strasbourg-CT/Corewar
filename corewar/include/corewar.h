@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 10:52:04 2017 Arthur Knoepflin
+** Last update Thu Mar 23 16:00:02 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -138,7 +138,7 @@ void	exec_head(t_game *,
 */
 
 int	new_head(t_heads, t_heads **);
-int	delete_heads(t_heads **, t_heads **);
+int	delete_heads(t_heads *, t_heads **);
 
 /*
 ** init_head.c
