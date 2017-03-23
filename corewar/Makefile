@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Thu Mar 23 21:41:40 2017 
+## Last update Thu Mar 23 21:43:46 2017 
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -18,6 +18,7 @@ SRC	=	arena/arena_create.c		\
 		fnt/live.c			\
 		fnt/st.c			\
 		fnt/ld.c			\
+		fnt/lld.c			\
 		fnt/sti.c			\
 		fnt/ldi.c			\
 		fnt/and.c			\
