@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Mon Mar 20 12:52:28 2017 Maxime Jenny
-** Last update Mon Mar 20 13:08:02 2017 Maxime Jenny
+** Last update Tue Mar 21 23:10:27 2017 
 */
 
 #include <stdlib.h>
@@ -20,6 +20,7 @@ int		new_head(int champion_id, int position, t_heads **list)
     return (-1);
   elem->champion_id = champion_id;
   elem->pos = pos;
+  elem->head_id = id;
   elem->next = NULL;
   if ((*list) == NULL)
     {
@@ -29,17 +30,28 @@ int		new_head(int champion_id, int position, t_heads **list)
   tmp = (*list);
   while ((*list)->next != NULL)
     (*list) = (*list)->next;
-  elem->head_id = id;
   (*list)->next = elem;
   (*list) = tmp;
   return (0);
 }
 
-int		delete_heads(t_heads **precedent_head, t_heads **head_to_del)
+int		delete_heads(t_heads *index, t_heads **list)
 {
-  if ((*precedent_head)->next == NULL)
-    return (-1);
-  (*precedent_head)->next = (*head_to_del)->next;
-  free(head_to_del);
+  t_heads *tmp;
+
+  tmp = *list;
+  if (*list == index)
+    *list = (*list)->next;
+  while (tmp && tmp->next != index && tmp != index)
+    tmp = tmp->next;
+  if (index && tmp)
+    tmp->next = index->next;
+  free(index);
   return (0);
+}
+
+int		delete_heads_fulllist(t_heads **heads)
+{
+  while (*heads)
+    delete_heads(heads, heads);
 }
