@@ -5,8 +5,9 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:10:13 2017 
-** Last update Thu Mar 23 18:13:03 2017 
+** Last update Thu Mar 23 21:36:38 2017 
 */
+#include "corewar.h"
 
 void	aff(t_game *g, t_heads *h, t_ins *in)
 {

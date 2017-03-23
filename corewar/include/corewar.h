@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 17:14:45 2017 Nicolas Polomack
+** Last update Thu Mar 23 21:39:43 2017 
 */
 
 #ifndef COREWAR_H_
@@ -14,6 +14,13 @@
 # include "op.h"
 
 # define BUF_SIZE	2048
+
+typedef struct		s_live
+{
+  char			*name;
+  struct s_live		*prev;
+  struct s_live		*next;
+}			t_live;
 
 typedef struct	s_nchamp
 {
