@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 22:52:43 2017 Arthur Knoepflin
-** Last update Wed Mar 22 23:21:03 2017 Arthur Knoepflin
+** Last update Thu Mar 23 10:52:43 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -32,3 +32,4 @@ void		init_head(t_game *game)
       new_head(val, &(game->heads));
     }
 }
+

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Thu Mar 23 10:34:43 2017 Arthur Knoepflin
+** Last update Thu Mar 23 10:53:37 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -18,6 +18,14 @@ static void	init_cycle(t_game *g)
   g->cycle_to_die = CYCLE_TO_DIE;
   g->old_cycle_verrif = 0;
   g->cycle = 0;
+
+static void	link_ids(t_nchamp *champs)
+{
+  int		i;
+
+  i = -1;
+  while (++i < 4 && (*champs)[i])
+    (*champs)[i].regs[0] = (*champs)[i].id;
 }
 
 t_game		*init_game(t_parse *parse)
@@ -37,6 +45,8 @@ t_game		*init_game(t_parse *parse)
     return (NULL);
   init_cycle(game);
   init_head(game);
+  link_ids(game->parse->champ);
+  game->cycle = 0;
   return (game);
 }
 
