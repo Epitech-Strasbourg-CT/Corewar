@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 09:59:16 2017 
-** Last update Tue Mar 21 13:34:36 2017 
+** Last update Thu Mar 23 23:13:48 2017 
 */
 #ifndef ASM_H_
 # define ASM_H_
@@ -115,7 +115,8 @@ int	composed_of(char *str, char *only_composed);
 **endian.c
 */
 
-void		swap_endian(void *raw, int size);
+void	swap_endian(void *raw, int size);
+void	check_nb_args(char *expr, char **split, int idx);
 
 /*
 **epurstr.c

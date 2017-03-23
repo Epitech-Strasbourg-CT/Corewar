@@ -1,7 +1,7 @@
-.name "lol"
-.comment "mdr"
+.name " lol \t "
+.comment " mdr"
 
-ld -400,r2
+	ld		-400 , r2 
 ld %-400,r3
 
 st r1, r1

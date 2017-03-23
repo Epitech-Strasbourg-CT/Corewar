@@ -1,4 +1,4 @@
-find  ~/clones/Corewar/champions/tests/src -name "*.s"|while read filename; do
+find  $1 -name "*.s"|while read filename; do
     ./asm "$filename" > /dev/null
     text="echo $filename | sed 's/\.s/\.cor/'"
     text=`eval $text`
