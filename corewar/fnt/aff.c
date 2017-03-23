@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:10:13 2017 
-** Last update Thu Mar 23 22:17:17 2017 Nicolas Polomack
+** Last update Thu Mar 23 22:18:14 2017 Nicolas Polomack
 */
 #include "my.h"
 #include "corewar.h"
