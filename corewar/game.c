@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Thu Mar 23 16:15:38 2017 Arthur Knoepflin
+** Last update Thu Mar 23 23:46:25 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -45,7 +45,6 @@ int		game(t_parse *parse)
 {
   void		(*fnt[16])(t_game *, t_heads *, t_ins *);
   int		stop;
-  t_heads	*head;
   t_game	*game;
 
   if (!(game = init_game(parse)))
@@ -54,14 +53,16 @@ int		game(t_parse *parse)
   stop = 0;
   while (!stop)
     {
-      head = game->heads;
-      while (!stop && head)
+      game->read = game->heads;
+      while (!stop && game->read)
   	{
-  	  exec_head(game, head, &stop, fnt);
-  	  head->pos %= MEM_SIZE;
-  	  head = head->next;
+  	  exec_head(game, game->read, &stop, fnt);
+	  if (game->read && ((game->read->pos %= MEM_SIZE) || 1))
+	    game->read = game->read->next;
   	}
       game->cycle += 1;
     }
+  printf("%d\n", game->cycle_to_die);
+  /* dump(game); */
   return (0);
 }

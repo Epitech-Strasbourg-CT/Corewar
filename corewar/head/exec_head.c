@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:22:03 2017 Arthur Knoepflin
-** Last update Thu Mar 23 10:20:05 2017 Arthur Knoepflin
+** Last update Thu Mar 23 22:59:14 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -17,17 +17,27 @@ void	exec_head(t_game *g,
 		  int *stop,
 		  void (*fnt[16])(t_game *, t_heads *, t_ins *))
 {
+  t_ins	*tmp;
   t_ins	*ins;
 
-  if ((ins = get_instruc(g, head->pos)) == NULL)
+  if (g->cycle >= head->ctn_cycle)
     {
-      head->pos += 1;
-      return ;
+      if ((ins = get_instruc(g, head->pos)) == NULL)
+	{
+	  head->pos += 1;
+	  return ;
+	}
+      tmp = get_instruc(g, head->pos + ins->tot_byte);
+      if (tmp)
+	{
+	  head->ctn_cycle = g->cycle + g_op_tab[tmp->cmd - 1].nbr_cycles;
+	  free(tmp);
+	}
+      if (ins->cmd == 1)
+	fnt[ins->cmd - 1](g, head, ins);
+      head->pos += ins->tot_byte;
+      free(ins);
     }
-  if (ins->cmd == 1)
-    fnt[ins->cmd - 1](g, head, ins);
-  head->pos += ins->tot_byte;
   update_live(g);
   check_live(g, stop);
-  free(ins);
 }

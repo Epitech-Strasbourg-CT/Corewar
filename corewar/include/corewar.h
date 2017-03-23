@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 23:07:31 2017 Arthur Knoepflin
+** Last update Thu Mar 23 23:35:11 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -72,27 +72,27 @@ typedef struct	s_game
 }		t_game;
 
 /*
-** arena_create.c
+** arena/arena_create.c
 */
 
 char	*arena_create(void);
 int	init_arena(t_game *);
 
 /*
-** average_champ.c
+** arena/average_champ.c
 */
 
 int	get_ecart(t_parse *);
 
 /*
-** is_overlap.c
+** arena/is_overlap.c
 */
 
 int	*get_tab_pos(t_parse *, int);
 int	is_overlap_lock(t_parse *);
 
 /*
-** load_champ.c
+** arena/load_champ.c
 */
 
 int	nb_champ_with_addr(t_parse *);
@@ -125,16 +125,94 @@ void	get_fnt_tab(void (*fnt[16])(t_game *, t_heads *, t_ins *));
 void	live(t_game *, t_heads *, t_ins *);
 
 /*
-** st.c
+** fnt/ld.c
+*/
+
+void	ld(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/st.c
 */
 
 void	st(t_game *, t_heads *, t_ins *);
 
 /*
-** ld.c
+** fnt/add.c
 */
 
-void	ld(t_game *, t_heads *, t_ins *);
+void	add(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/sub.c
+*/
+
+void	sub(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/and.c
+*/
+
+void	and(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/or.c
+*/
+
+void	or(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/xor.c
+*/
+
+void	xor(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/zjmp.c
+*/
+
+void	zjmp(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/ldi.c
+*/
+
+void	ldi(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/sti.c
+*/
+
+void	sti(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/fork.c
+*/
+
+void	fork_head(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/lld.c
+*/
+
+void	lld(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/lldi.c
+*/
+
+void	lldi(t_game *, t_heads *,t_ins *);
+
+/*
+** fnt/lfork.c
+*/
+
+void	lfork(t_game *, t_heads *, t_ins *);
+
+/*
+** fnt/aff.c
+*/
+
+void	aff(t_game *, t_heads *, t_ins *);
 
 /*
 ** game.c
@@ -152,20 +230,20 @@ void	exec_head(t_game *,
 		  void (*fnt[16])(t_game *, t_heads *, t_ins *));
 
 /*
-** head.c
+** head/head.c
 */
 
 int	new_head(t_heads, t_heads **);
 int	delete_heads(t_heads *, t_heads **);
 
 /*
-** init_head.c
+** head/init_head.c
 */
 
 void	init_head(t_game *);
 
 /*
-** kill_player.c
+** head/kill_player.c
 */
 
 void	kill_player(t_game *, int);
@@ -178,13 +256,13 @@ int	extract_val(char *, int);
 int	get_arg(t_game *, int, t_ins *);
 
 /*
-** get_desc.c
+** instruct/get_desc.c
 */
 
 int	get_desc(int, t_ins *);
 
 /*
-** get_instruc.c
+** instruct/get_instruc.c
 */
 
 t_ins	*get_instruc(t_game *, int);
@@ -198,26 +276,26 @@ void	update_live(t_game *);
 int	check_live(t_game *, int *);
 
 /*
-** parse.c
+** parse/parse.c
 */
 
 t_parse	*get_parse(int, char **);
 
 /*
-** parse_champ.c
+** parse/parse_champ.c
 */
 
 int	parse_champ(t_parse *, int, char **);
 
 /*
-** parse_error.c
+** parse/parse_error.c
 */
 
 int	is_an_arg(char *);
 int	check_error(int, char **);
 
 /*
-** parse_error_2.c
+** parse/parse_error_2.c
 */
 
 int	print_unknown_arg(char *);
@@ -225,20 +303,20 @@ int	check_valid_arg(int, char **);
 int	check_nb_champ(int, char **);
 
 /*
-** parse_get_list_id.c
+** parse/parse_get_list_id.c
 */
 
 char	*get_list_id(int, char **);
 int	check_id(int, char **);
 
 /*
-** parse_file_champ.c
+** parse/parse_file_champ.c
 */
 
 int	parse_file_champ(t_parse *);
 
 /*
-** parse_file.c
+** parse/parse_file.c
 */
 
 int	read_comment(int, char *, t_nchamp *);
@@ -247,7 +325,7 @@ int	check_magic_number(int, char *);
 int	parse_header(int, char *, t_nchamp *);
 
 /*
-** read_file.c
+** parse/read_file.c
 */
 
 char	*read_file(int);

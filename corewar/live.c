@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Thu Mar 23 11:34:12 2017 Arthur Knoepflin
+** Last update Thu Mar 23 23:51:30 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -38,10 +38,41 @@ void	update_live(t_game *g)
   i = -1;
   sum = 0;
   while (++i < 4)
-    if (g->live[i] >= 0)
+    if (g->live[i] > 0)
       sum += g->live[i];
   if (sum >= NBR_LIVE)
     g->cycle_to_die -= CYCLE_DELTA;
+}
+
+static void	print_dead(int id, char *name)
+{
+  my_putstr("The player ");
+  my_put_nbr(id);
+  my_putstr("(");
+  my_putstr(name);
+  my_putstr(") is dead\n");
+}
+
+int		nb_player_alive(t_game *g)
+{
+  char		tmp_live[4];
+  int		i;
+  int		ret;
+  t_heads	*tmp;
+
+  tmp = g->heads;
+  my_memset(tmp_live, 0, 4);
+  while (tmp)
+    {
+      tmp_live[tmp->id - 1] = 1;
+      tmp = tmp->next;
+    }
+  i = -1;
+  ret = 0;
+  while (++i < 4)
+    if (tmp_live[i])
+      ret += 1;
+  return (ret);
 }
 
 int	check_live(t_game *g, int *stop)
@@ -53,15 +84,17 @@ int	check_live(t_game *g, int *stop)
       g->old_cycle_verrif = g->cycle;
       i = -1;
       while (++i < g->parse->nb_champ)
-	{
-	  if (g->live[g->parse->champ[i]->id - 1] == 0)
-	    {
-	      printf("The player %d(%s) is dead\n", g->parse->champ[i]->id, g->parse->champ[i]->name);
-	      /* KILL PLAYER */
-	      g->live[g->parse->champ[i]->id - 1] = -2;
-	    }
-	  else
-	    g->live[g->parse->champ[i]->id - 1] = 0;
-	}
+	if (g->live[g->parse->champ[i]->id - 1] == 0)
+	  {
+	    print_dead(g->parse->champ[i]->id, g->parse->champ[i]->name);
+	    while (g->read && g->read->id == g->parse->champ[i]->id)
+	      g->read = g->read->next;
+	    kill_player(g, g->parse->champ[i]->id);
+	    g->live[g->parse->champ[i]->id - 1] = -2;
+	  }
+	else if (g->live[g->parse->champ[i]->id - 1] != -2)
+	  g->live[g->parse->champ[i]->id - 1] = 0;
     }
+  if (nb_player_alive(g) <= 1)
+    *stop = 1;
 }

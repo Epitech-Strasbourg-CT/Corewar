@@ -5,12 +5,12 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:25:52 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:36:09 2017 Nicolas Polomack
+** Last update Thu Mar 23 23:35:43 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
 
-void		lfork_head(t_game *g, t_heads *h, t_ins *in)
+void		lfork(t_game *g, t_heads *h, t_ins *in)
 {
   int		i;
   t_heads	head;

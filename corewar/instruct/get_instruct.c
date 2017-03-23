@@ -5,12 +5,29 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:50:27 2017 Arthur Knoepflin
-** Last update Wed Mar 22 22:46:54 2017 Arthur Knoepflin
+** Last update Thu Mar 23 17:05:44 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
+#include "op.h"
+
+int	is_reg_valid(t_ins *ret)
+{
+  int	i;
+
+  i = -1;
+  while (++i < ret->nb_arg)
+    {
+      if (ret->type[i] == 1 &&
+	  (ret->val[i] < 1 || ret->val[i] > REG_NUMBER))
+	{
+	  return (1);
+	}
+    }
+      return (0);
+}
 
 t_ins	*get_instruc(t_game *game, int index)
 {
@@ -33,5 +50,10 @@ t_ins	*get_instruc(t_game *game, int index)
 	return (NULL);
       }
   get_arg(game, index, ret);
+  if (is_reg_valid(ret))
+    {
+      free(ret);
+      return (NULL);
+    }
   return (ret);
 }
