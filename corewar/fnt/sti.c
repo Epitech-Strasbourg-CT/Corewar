@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 17:02:39 2017 Nicolas Polomack
-** Last update Thu Mar 23 17:57:28 2017 Nicolas Polomack
+** Last update Fri Mar 24 13:18:07 2017 Nicolas Polomack
 */
 
 #include "corewar.h"
@@ -21,9 +21,9 @@ void	sti(t_game *g, t_heads *h, t_ins *in)
     pos = h->reg[in->val[1]];
   else
     pos = in->val[1] + ((in->type[1] == 3) ? h->pos : 0);
-  if (in->type[1] == 1)
-    pos += h->reg[in->val[1]];
+  if (in->type[2] == 1)
+    pos += h->reg[in->val[2]];
   else
-    pos += in->val[1] + ((in->type[1] == 3) ? h->pos : 0);
+    pos += in->val[2] + ((in->type[2] == 3) ? h->pos : 0);
   my_strncpy(g->arena + pos, (char *)&val, REG_SIZE);
 }
