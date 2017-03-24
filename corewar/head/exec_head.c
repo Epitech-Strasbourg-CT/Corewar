@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:22:03 2017 Arthur Knoepflin
-** Last update Thu Mar 23 22:59:14 2017 Arthur Knoepflin
+** Last update Fri Mar 24 23:36:53 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -20,7 +20,7 @@ void	exec_head(t_game *g,
   t_ins	*tmp;
   t_ins	*ins;
 
-  if (g->cycle >= head->ctn_cycle)
+  if (g->cycle >= head->ctn_cycle && head->id == 1)
     {
       if ((ins = get_instruc(g, head->pos)) == NULL)
 	{
@@ -33,11 +33,14 @@ void	exec_head(t_game *g,
 	  head->ctn_cycle = g->cycle + g_op_tab[tmp->cmd - 1].nbr_cycles;
 	  free(tmp);
 	}
-      if (ins->cmd == 1)
-	fnt[ins->cmd - 1](g, head, ins);
-      head->pos += ins->tot_byte;
+      /* if (ins->cmd == 1 || ins->cmd == 9 || ins->cmd == 11) */
+      /* 	{ */
+      fnt[ins->cmd - 1](g, head, ins);
+      printf("%s au cycle %d\n", g_op_tab[ins->cmd - 1].mnemonique, g->cycle);
+      /* } */
+      if (ins->cmd != 9 || (ins->cmd == 9 && head->carry))
+	  head->pos += ins->tot_byte;
       free(ins);
     }
   update_live(g);
-  check_live(g, stop);
 }

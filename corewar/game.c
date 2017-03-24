@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Thu Mar 23 23:46:25 2017 Arthur Knoepflin
+** Last update Fri Mar 24 14:55:04 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -50,6 +50,7 @@ int		game(t_parse *parse)
   if (!(game = init_game(parse)))
     return (1);
   get_fnt_tab(fnt);
+  dump(game);
   stop = 0;
   while (!stop)
     {
@@ -57,12 +58,12 @@ int		game(t_parse *parse)
       while (!stop && game->read)
   	{
   	  exec_head(game, game->read, &stop, fnt);
+	  check_live(game, &stop);
 	  if (game->read && ((game->read->pos %= MEM_SIZE) || 1))
 	    game->read = game->read->next;
   	}
       game->cycle += 1;
     }
-  printf("%d\n", game->cycle_to_die);
-  /* dump(game); */
+  printf("nb_cycle : %d %d\n", game->cycle, game->cycle_to_die);
   return (0);
 }

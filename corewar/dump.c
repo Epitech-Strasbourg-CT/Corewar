@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 19:07:46 2017 Arthur Knoepflin
-** Last update Thu Mar 16 20:52:48 2017 Arthur Knoepflin
+** Last update Fri Mar 24 15:55:30 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -33,8 +33,9 @@ void	dump(t_game *game)
   int	j;
 
   i = -1;
-  while (++i < MEM_SIZE / 32)
-    {
+  i = 0;
+  /* while (++i < MEM_SIZE / 32) */
+  /*   { */
       print_nb_line(i);
       j = -1;
       while (++j < 32)
@@ -46,5 +47,5 @@ void	dump(t_game *game)
 	    my_putchar(' ');
 	}
       my_putchar('\n');
-    }
+    /* } */
 }
