@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 17:32:57 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:08:52 2017 Nicolas Polomack
+** Last update Fri Mar 24 13:06:32 2017 
 */
 
 #include <stdlib.h>
@@ -78,8 +78,8 @@ int		main(int ac, char **av)
   init_asm(&a, av);
   if (read_file(&a, av[1]) == -1)
     return (84);
-  clear_comments(&a);
   parse_headers(&a);
+  clear_comments(&a);
   change_label(&a);
   load_instruct(&a);
   parse_commands(&a);
