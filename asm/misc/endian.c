@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Thu Mar 23 23:15:23 2017 
+** Last update Sun Mar 26 16:57:44 2017 Nicolas Polomack
 */
 #include <stdlib.h>
 #include "my_printf.h"
@@ -48,6 +48,6 @@ void	check_nb_args(char *expr, char **split, int idx)
     {
       my_printf("%sERROR%s: Bad arguments number for instruct %d\n",
 		YELLOW, RESET, idx);
-      exit(0);
+      exit(84);
     }
 }

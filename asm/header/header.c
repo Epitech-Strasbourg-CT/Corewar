@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:13:53 2017 Nicolas Polomack
+** Last update Sun Mar 26 16:57:26 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -36,13 +36,13 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
-    exit(0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
 		       GREEN, RESET, *i, j + l));
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
   if (a->file[*i][j + t] != quote || a->file[*i][j + t + 1] != 0)
-    exit(0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
 		       GREEN, RESET, *i, j + l));
   a->header.name = my_strndup(&(a->file[*i][j + l]), t - l);
   suppress_line(a->file, *i);
@@ -61,13 +61,13 @@ void	parse_comment(t_asm *a, int *i, int j, int *indic)
     l += 1;
   quote = a->file[*i][j + l];
   if (quote != '"' && quote != '\'')
-    exit(0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
 		       GREEN, RESET, *i, j + l));
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
   if (a->file[*i][j + t] != quote || a->file[*i][j + t + 1] != 0)
-    exit(0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
+    exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
 		       GREEN, RESET, *i, j + l));
   a->header.comment = my_strndup(&(a->file[*i][j + l]), t - l);
   suppress_line(a->file, *i);
@@ -113,6 +113,6 @@ void	parse_headers(t_asm *a)
       my_printf("%sERROR%s: No '%s' found.\n",
 		GREEN, RESET,
 		(!name) ? NAME_CMD_STRING : COMMENT_CMD_STRING);
-      exit(0);
+      exit(84);
     }
 }

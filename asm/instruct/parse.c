@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Thu Mar 23 23:14:08 2017 
+** Last update Sun Mar 26 16:56:23 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -112,7 +112,7 @@ void		parse_commands(t_asm *a)
       my_memset((char *)t->op, 0, sizeof(t_op));
       t->op->mnemonique = my_strndup(arg, i);
       if ((check_command_args(list, a->fd, t->op)) == 0)
-	exit(0 * my_printf("at instruct number %d\n", idx));
+	exit(84 + 0 * my_printf("at instruct number %d\n", idx));
       free(arg);
       t->args = list;
       t = t->next;

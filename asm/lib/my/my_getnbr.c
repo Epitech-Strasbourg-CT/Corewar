@@ -5,13 +5,13 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Thu Oct  6 17:50:16 2016 Cédric Thomas
-** Last update Mon Mar 20 17:11:43 2017 Nicolas Polomack
+** Last update Sun Mar 26 16:58:53 2017 Nicolas Polomack
 */
 
 #include <limits.h>
 #include <stdlib.h>
 
-unsigned int     my_getunbr(char *str)
+unsigned int	my_getunbr(char *str)
 {
   unsigned long	nbr;
   int		i;
@@ -28,7 +28,7 @@ unsigned int     my_getunbr(char *str)
   return (nbr);
 }
 
-long int     my_getnbr(char *str)
+long int	my_getnbr(char *str)
 {
   long long	nbr;
   long int	i;

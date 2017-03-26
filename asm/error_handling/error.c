@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 20:00:51 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:10:47 2017 Nicolas Polomack
+** Last update Sun Mar 26 16:55:34 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -16,14 +16,14 @@ void	error_parse(char *str)
 {
   my_printf("%sERROR%s: The argument \'%s\' doesn't match any type ",
 	    YELLOW, RESET, str);
-  exit(0);
+  exit(84);
 }
 
 void	error_header(int i, int j, int k)
 {
   my_printf("%sERROR%s: %d:%d: Two %s defined.\n", GREEN, RESET, i, j,
             (k) ? "names" : "comments");
-  exit(0);
+  exit(84);
 }
 
 int	error_double_label(t_label **my_label, char *name)
@@ -31,7 +31,7 @@ int	error_double_label(t_label **my_label, char *name)
   my_printf("%sERROR%s: two labels (or more) have the name value: '%s'\n",
 	    BLUE, RESET, name);
   my_free_label(my_label);
-  exit(0);
+  exit(84);
 }
 
 int	error_write(int error_nb, char *info)
@@ -43,5 +43,5 @@ int	error_write(int error_nb, char *info)
     my_printf("Oups..., j'ai perdu la ligne '%s'\n", info);
   if (error_nb == 3)
     my_printf("Oups..., j'ai perdu la ligne '%s'\n", info);
-  exit(0);
+  exit(84);
 }

@@ -5,7 +5,7 @@
 ** Login   <cedric@epitech.net>
 ** 
 ** Started on  Sat Oct 22 10:31:05 2016 Cédric Thomas
-** Last update Tue Mar 21 11:34:11 2017 
+** Last update Sun Mar 26 16:58:01 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -70,7 +70,7 @@ int	read_file(t_asm *a, char *file)
 	return (-1);
   close(fd);
   if (a->file == NULL)
-    exit(0 * my_printf("%sERROR%s: Empty file\n", GREEN, RESET));
+    exit(84 + 0 * my_printf("%sERROR%s: Empty file\n", GREEN, RESET));
   return (0);
 }
 
