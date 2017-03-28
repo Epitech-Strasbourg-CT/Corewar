@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 23 15:26:05 2017 Arthur Knoepflin
-** Last update Thu Mar 23 16:12:00 2017 Arthur Knoepflin
+** Last update Tue Mar 28 16:24:45 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -15,18 +15,18 @@ void		kill_player(t_game *g, int id)
   t_heads	*tmp;
   t_heads	*next;
 
+  while (g->read && g->read->id == id)
+    g->read = g->read->next;
   tmp = g->heads;
   while (tmp)
     {
       if (tmp->id == id)
 	{
 	  next = tmp->next;
-	  while (next && next->id == id)
-	    next = next->next;
 	  delete_heads(tmp, &g->heads);
 	  tmp = next;
 	}
-      if (tmp)
+      else
 	tmp = tmp->next;
     }
 }

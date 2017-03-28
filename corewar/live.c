@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Fri Mar 24 15:11:14 2017 Arthur Knoepflin
+** Last update Tue Mar 28 16:41:22 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -81,6 +81,7 @@ int	check_live(t_game *g, int *stop)
 
   if (g->cycle >= g->old_cycle_verrif + g->cycle_to_die)
     {
+      g->cycle_to_die -= CYCLE_DELTA;
       g->old_cycle_verrif = g->cycle;
       i = -1;
       while (++i < g->parse->nb_champ)

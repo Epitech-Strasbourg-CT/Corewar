@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Thu Mar 23 23:35:11 2017 Arthur Knoepflin
+** Last update Tue Mar 28 15:20:54 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -69,6 +69,7 @@ typedef struct	s_game
   int		cycle_to_die;
   t_heads	*heads;
   t_heads	*read;
+  t_live	*msg;
 }		t_game;
 
 /*

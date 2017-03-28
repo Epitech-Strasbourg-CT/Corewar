@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 19:07:46 2017 Arthur Knoepflin
-** Last update Fri Mar 24 15:55:30 2017 Arthur Knoepflin
+** Last update Tue Mar 28 17:24:15 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"

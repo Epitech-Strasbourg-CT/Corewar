@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 21:26:50 2017 
-** Last update Thu Mar 23 21:38:52 2017 
+** Last update Tue Mar 28 15:25:18 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -43,7 +43,6 @@ int		my_show_live(t_live *ll)
   while (ll != NULL)
     {
       my_putstr(ll->name);
-      my_putchar('\n');
       ll = ll->next;
     }
   return (0);
