@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:25:52 2017 Nicolas Polomack
-** Last update Thu Mar 23 21:32:45 2017 Nicolas Polomack
+** Last update Tue Mar 28 20:38:13 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -20,6 +20,7 @@ void		fork_head(t_game *g, t_heads *h, t_ins *in)
   head.pos = h->pos + in->val[0];
   while (++i < 16)
     head.reg[i] = h->reg[i];
+  printf("TEST : %d\n", head.reg[0]);
   head.ctn_cycle = 0;
   head.carry = 0;
   new_head(head, &h);

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Tue Mar 28 18:29:18 2017 Arthur Knoepflin
+** Last update Tue Mar 28 19:00:35 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -39,6 +39,7 @@ t_game		*init_game(t_parse *parse)
   init_head(game);
   game->cycle = 0;
   game->msg = NULL;
+  game->old_check = 0;
   return (game);
 }
 
@@ -64,5 +65,6 @@ int		game(t_parse *parse)
   	}
       game->cycle += 1;
     }
+  printf("%d %d\n", game->cycle, game->cycle_to_die);
   return (0);
 }

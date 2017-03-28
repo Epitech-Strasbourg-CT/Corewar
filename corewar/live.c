@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Tue Mar 28 16:41:22 2017 Arthur Knoepflin
+** Last update Tue Mar 28 19:01:52 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -39,9 +39,15 @@ void	update_live(t_game *g)
   sum = 0;
   while (++i < 4)
     if (g->live[i] > 0)
-      sum += g->live[i];
-  if (sum >= NBR_LIVE)
-    g->cycle_to_die -= CYCLE_DELTA;
+      {
+	sum += g->live[i];
+      }
+  if (sum >= NBR_LIVE + g->old_check)
+    {
+      printf("JE REDUIS LE CYCLE_TO_DIE\n");
+      g->cycle_to_die -= CYCLE_DELTA;
+      g->old_check += 40;
+    }
 }
 
 static void	print_dead(int id, char *name)
@@ -81,6 +87,7 @@ int	check_live(t_game *g, int *stop)
 
   if (g->cycle >= g->old_cycle_verrif + g->cycle_to_die)
     {
+      printf("JE REDUIS LE CYCLE_TO_DIE\n");
       g->cycle_to_die -= CYCLE_DELTA;
       g->old_cycle_verrif = g->cycle;
       i = -1;

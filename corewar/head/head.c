@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Mon Mar 20 12:52:28 2017 Maxime Jenny
-** Last update Thu Mar 23 16:20:52 2017 Arthur Knoepflin
+** Last update Tue Mar 28 19:36:51 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -19,7 +19,10 @@ static void	my_assign(int *out, int *in)
 
   i = -1;
   while (++i < REG_NUMBER)
-    out[i] = in[i];
+    {
+      out[i] = in[i];
+      /* printf("TEST : %d\n", in[i]); */
+    }
 }
 
 int		new_head(t_heads in, t_heads **list)
@@ -27,6 +30,7 @@ int		new_head(t_heads in, t_heads **list)
   t_heads	*elem;
   t_heads	*tmp;
 
+  /* printf("%d\n", in.reg[0]); */
   if ((elem = malloc(sizeof(*elem))) == NULL)
     return (1);
   elem->carry = in.carry;
