@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Tue Mar 28 19:01:52 2017 Arthur Knoepflin
+** Last update Tue Mar 28 21:14:00 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -44,7 +44,6 @@ void	update_live(t_game *g)
       }
   if (sum >= NBR_LIVE + g->old_check)
     {
-      printf("JE REDUIS LE CYCLE_TO_DIE\n");
       g->cycle_to_die -= CYCLE_DELTA;
       g->old_check += 40;
     }
@@ -68,9 +67,14 @@ int		nb_player_alive(t_game *g)
 
   tmp = g->heads;
   my_memset(tmp_live, 0, 4);
+  tmp_live[0] = 0;
+  tmp_live[1] = 0;
+  tmp_live[2] = 0;
+  tmp_live[3] = 0;
   while (tmp)
     {
-      tmp_live[tmp->id - 1] = 1;
+      if (tmp->id >= 1 && tmp->id <= 4)
+	tmp_live[tmp->id - 1] = 1;
       tmp = tmp->next;
     }
   i = -1;
@@ -87,7 +91,7 @@ int	check_live(t_game *g, int *stop)
 
   if (g->cycle >= g->old_cycle_verrif + g->cycle_to_die)
     {
-      printf("JE REDUIS LE CYCLE_TO_DIE\n");
+      printf("CHECK_LIVE");
       g->cycle_to_die -= CYCLE_DELTA;
       g->old_cycle_verrif = g->cycle;
       i = -1;

@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Thu Mar 23 21:43:46 2017 
+## Last update Tue Mar 28 23:51:58 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -36,6 +36,7 @@ SRC	=	arena/arena_create.c		\
 		head/head.c			\
 		head/init_head.c		\
 		head/kill_player.c		\
+		instruct/error_desc.c		\
 		instruct/get_arg.c		\
 		instruct/get_desc.c		\
 		instruct/get_instruct.c		\

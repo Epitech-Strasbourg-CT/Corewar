@@ -5,14 +5,14 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 17:42:56 2017 Arthur Knoepflin
-** Last update Wed Mar 22 22:56:02 2017 Arthur Knoepflin
+** Last update Tue Mar 28 23:00:41 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
 
-static char	*add_zero(char *in)
+static char	*add_zero(unsigned char *in)
 {
   int		i;
   int		j;
@@ -35,7 +35,7 @@ static char	*add_zero(char *in)
   return (ret);
 }
 
-static int	nb_arg(char *base)
+static int	nb_arg(unsigned char *base)
 {
   int		i;
   int		ret;
@@ -65,13 +65,14 @@ int	get_desc(int desci, t_ins *ret)
 
   if ((desc = my_int_to_char(desci)) == NULL)
     return (1);
-  if ((b = convert_base(desc, "0123456789", "01")) == NULL && my_free(desc))
-    return (1);
+  if ((b = convert_base(desc, "0123456789", "01")) == NULL)
+    return (my_free(desc));
   free(desc);
   if (my_strlen(b) != 8)
     if ((b = add_zero(b)) == NULL)
       return (1);
-  ret->nb_arg = nb_arg(b);
+  if ((ret->nb_arg = nb_arg(b)) != g_op_tab[ret->cmd - 1].nbr_args)
+    return (1);
   i = -1;
   while (++i < ret->nb_arg)
     {

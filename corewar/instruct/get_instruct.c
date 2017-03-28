@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:50:27 2017 Arthur Knoepflin
-** Last update Fri Mar 24 20:52:46 2017 Arthur Knoepflin
+** Last update Tue Mar 28 23:51:16 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -45,6 +45,8 @@ t_ins	*get_instruc(t_game *game, int index)
 {
   t_ins	*ret;
 
+  if (game->arena[index] == 6)
+    printf(" %d %.2x %.2x %.2x %.2x\n", index, game->arena[index], game->arena[index + 1], game->arena[index + 2], game->arena[index + 3]);
   if (game->arena[index] <= 0 || game->arena[index] > 16)
     return (NULL);
   if ((ret = malloc(sizeof(t_ins))) == NULL)
@@ -67,5 +69,7 @@ t_ins	*get_instruc(t_game *game, int index)
       free(ret);
       return (NULL);
     }
+  if (error_desc(ret))
+    return (NULL);
   return (ret);
 }

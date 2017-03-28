@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Tue Mar 28 18:57:40 2017 Arthur Knoepflin
+** Last update Wed Mar 29 00:06:45 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -35,7 +35,7 @@ typedef struct	s_nchamp
 
 typedef struct		s_heads
 {
-  int			id;
+  unsigned int		id;
   int			reg[16];
   int			ctn_cycle;
   int			carry;
@@ -251,10 +251,16 @@ void	init_head(t_game *);
 void	kill_player(t_game *, int);
 
 /*
+** instruct/error_desc.c
+*/
+
+int	error_desc(t_ins *);
+
+/*
 ** instruct/get_arg.c
 */
 
-int	extract_val(char *, int);
+int	extract_val(unsigned char *, int);
 int	get_arg(t_game *, int, t_ins *);
 
 /*

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:56:31 2017 Arthur Knoepflin
-** Last update Thu Mar 23 17:00:20 2017 Nicolas Polomack
+** Last update Tue Mar 28 22:05:18 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -38,7 +38,7 @@ const static int	g_byte_len[16][3] =
     {REG_SIZE, INV, INV}			/* aff */
   };
 
-int	extract_val(char *arena, int len)
+int	extract_val(unsigned char *arena, int len)
 {
   int		i;
   int		reti;

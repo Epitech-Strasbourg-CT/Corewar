@@ -5,23 +5,26 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:25:52 2017 Nicolas Polomack
-** Last update Tue Mar 28 20:38:13 2017 Arthur Knoepflin
+** Last update Tue Mar 28 21:37:11 2017 Arthur Knoepflin
 */
 
+#include <stdlib.h>
 #include "corewar.h"
 
 void		fork_head(t_game *g, t_heads *h, t_ins *in)
 {
   int		i;
-  t_heads	head;
+  t_heads	*head;
 
   i = -1;
-  head.id = h->id;
-  head.pos = h->pos + in->val[0];
+  if ((head = (malloc(sizeof(t_heads)))) == NULL)
+    return ;
+  head->id = h->id;
+  head->pos = h->pos + in->val[0];
   while (++i < 16)
-    head.reg[i] = h->reg[i];
-  printf("TEST : %d\n", head.reg[0]);
-  head.ctn_cycle = 0;
-  head.carry = 0;
-  new_head(head, &h);
+    head->reg[i] = h->reg[i];
+  head->ctn_cycle = 0;
+  head->carry = 0;
+  new_head(*head, &h);
+  free(head);
 }
