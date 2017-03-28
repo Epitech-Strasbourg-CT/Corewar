@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 19:07:46 2017 Arthur Knoepflin
-** Last update Tue Mar 28 17:24:15 2017 Arthur Knoepflin
+** Last update Tue Mar 28 17:50:57 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -36,16 +36,16 @@ void	dump(t_game *game)
   i = 0;
   /* while (++i < MEM_SIZE / 32) */
   /*   { */
-      print_nb_line(i);
-      j = -1;
-      while (++j < 32)
-	{
-	  if (size_nb(game->arena[i * 32 + j], "0123456789ABCDEF") == 1)
-	    my_putchar('0');
-	  my_putnbr_base(game->arena[i * 32 + j], "0123456789ABCDEF");
-	  if (j != 31)
-	    my_putchar(' ');
-	}
-      my_putchar('\n');
-    /* } */
+  print_nb_line(i);
+  j = -1;
+  while (++j < 32)
+    {
+      if (size_nb(game->arena[i * 32 + j], "0123456789ABCDEF") == 1)
+	my_putchar('0');
+      my_putnbr_base(game->arena[i * 32 + j], "0123456789ABCDEF");
+      if (j != 31)
+	my_putchar(' ');
+    }
+  my_putchar('\n');
+  /* } */
 }

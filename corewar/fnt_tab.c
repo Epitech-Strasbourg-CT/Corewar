@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Wed Mar 22 23:08:40 2017 Arthur Knoepflin
-** Last update Thu Mar 23 23:34:54 2017 Arthur Knoepflin
+** Last update Tue Mar 28 17:46:37 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -24,8 +24,8 @@ void	get_fnt_tab(void (*fnt[16])(t_game *, t_heads *, t_ins *))
   fnt[9] = &ldi;
   fnt[10] = &sti;
   fnt[11] = &fork_head;
-  fnt[12] = &lld;
-  fnt[13] = &lldi;
-  fnt[14] = &lfork;
+  fnt[12] = &ld;
+  fnt[13] = &ldi;
+  fnt[14] = &fork_head;
   fnt[15] = &aff;
 }

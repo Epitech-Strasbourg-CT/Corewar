@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:19:11 2017 Nicolas Polomack
-** Last update Tue Mar 28 16:56:25 2017 Arthur Knoepflin
+** Last update Tue Mar 28 17:51:27 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"

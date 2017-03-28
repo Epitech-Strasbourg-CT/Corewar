@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 17:02:39 2017 Nicolas Polomack
-** Last update Tue Mar 28 17:03:08 2017 Arthur Knoepflin
+** Last update Tue Mar 28 17:54:15 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -26,6 +26,9 @@ void	sti(t_game *g, t_heads *h, t_ins *in)
   else if (in->type[2] == 2)
     pos += in->val[2];
   swap_endian(&val, sizeof(int));
+  pos %= MEM_SIZE;
+  while (pos < 0)
+    pos += MEM_SIZE;
   my_strncpy((char *)g->arena + pos, (char *)&val, sizeof(int));
   h->carry = !val;
 }

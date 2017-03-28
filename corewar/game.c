@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Tue Mar 28 17:29:23 2017 Arthur Knoepflin
+** Last update Tue Mar 28 18:00:35 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -54,6 +54,7 @@ int		game(t_parse *parse)
   stop = 0;
   while (!stop)
     {
+      printf("============NOUVEAU CYCLE : %d=============\n", game->cycle);
       game->read = game->heads;
       while (!stop && game->read)
   	{
