@@ -4,7 +4,6 @@ then
     exit
 fi
 
-cp ../asm .
 
 ./unit_test/origin_asm $1.s
 if [ $? -ne 0 ];

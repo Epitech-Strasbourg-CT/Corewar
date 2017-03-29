@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Sat Mar 18 16:18:30 2017 
-** Last update Tue Mar 21 11:35:46 2017 
+** Last update Wed Mar 29 15:25:23 2017 
 */
 #include <stdlib.h>
 #include "my.h"
@@ -54,8 +54,6 @@ static t_instruct	*find_instruct(t_asm *myasm, char *name,
       *index += 1;
       to_find = to_find->next;
     }
-  if (to_find == NULL)
-    *error = 2;
   return (to_find);
 }
 
@@ -65,7 +63,7 @@ int		calc_size(t_instruct *first, t_instruct *sec, int index, int mod)
   int		size;
 
   size = 0;
-  while (sec && first && first != sec)
+  while (first && first != sec)
     {
       size += get_instruct_size(first);
       first = first->next;
@@ -84,11 +82,10 @@ int		label_to_addr(t_asm *myasm, t_instruct *current,
 
   index = *error;
   *error = 0;
-  if ((to_find = find_instruct(myasm, name, &idx_find, error)) == NULL)
-    return (0);
+  to_find = find_instruct(myasm, name, &idx_find, error);
   if ((idx_current = find_instruct_index(myasm, current, error)) == -1)
     return (0);
-  if (idx_find < idx_current)
+  if (idx_find <= idx_current)
     return (calc_size(to_find, current, index, -1));
   else if (idx_find > idx_current)
     return (calc_size(current, to_find, index, 1));
