@@ -5,14 +5,14 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Sun Mar 12 12:04:18 2017 Arthur Knoepflin
-** Last update Thu Mar 16 20:59:03 2017 Arthur Knoepflin
+** Last update Wed Mar 29 16:51:39 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
 
-static void	treat_arg(int ac, char **av, int *i, char *val)
+static void	treat_arg(char **av, int *i, char *val)
 {
   if ((is_an_arg(av[*i]) == 2 || is_an_arg(av[*i]) == 3))
     {
@@ -37,8 +37,8 @@ char	*get_list_id(int ac, char **av)
     {
       if (!my_strcmp(av[i], "-dump") && (i += 2))
 	continue ;
-      treat_arg(ac, av, &i, &ret[nb_champ]);
-      treat_arg(ac, av, &i, &ret[nb_champ]);
+      treat_arg(av, &i, &ret[nb_champ]);
+      treat_arg(av, &i, &ret[nb_champ]);
       nb_champ += 1;
     }
   return (ret);
@@ -67,7 +67,6 @@ static int	same_id(int val, int index, char *list_id)
 int	check_id(int ac, char **av)
 {
   int	i;
-  int	j;
   char	*list_id;
 
   if ((list_id = get_list_id(ac, av)) == NULL)

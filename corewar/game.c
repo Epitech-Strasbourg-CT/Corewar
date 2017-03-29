@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Tue Mar 28 23:53:27 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:59:04 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -59,8 +59,8 @@ int		game(t_parse *parse)
       game->read = game->heads;
       while (!stop && game->read)
   	{
-  	  printf("%p : %d", game->read, game->read->id);
-  	  exec_head(game, game->read, &stop, fnt);
+  	  printf("%p : %d", (void *)game->read, game->read->id);
+  	  exec_head(game, game->read, fnt);
   	  check_live(game, &stop);
   	  if (game->read && ((game->read->pos %= MEM_SIZE) || 1))
   	    game->read = game->read->next;

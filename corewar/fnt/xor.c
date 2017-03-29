@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Thu Mar 23 17:55:29 2017 Maxime Jenny
-** Last update Tue Mar 28 17:11:21 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:59:28 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -18,6 +18,7 @@ static int	get_val(t_game *g, t_heads *h, int mode, int val)
     return (val);
   if (mode == 3)
     return (extract_val(g->arena + val, sizeof(int)));
+  return (0);
 }
 
 void	xor(t_game *g, t_heads *h, t_ins *in)

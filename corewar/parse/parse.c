@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 19:19:22 2017 Arthur Knoepflin
-** Last update Mon Mar 20 13:58:06 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:00:45 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -22,12 +22,17 @@ int	nb_champ(int ac, char **av)
   nb_champ = 0;
   while (i < ac)
     {
-      if (!my_strcmp(av[i], "-dump") && (i += 2))
-	continue ;
-      if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3) && (i += 2));
-      if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3) && (i += 2));
-      nb_champ += 1;
-      i += 1;
+      if (!my_strcmp(av[i], "-dump"))
+	i += 2;
+      else
+	{
+	  if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3))
+	    i += 2;
+	  if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3))
+	    i += 2;
+	  nb_champ += 1;
+	  i += 1;
+	}
     }
   return (nb_champ);
 }
@@ -51,13 +56,15 @@ void	parse_dump(t_parse *parse, int ac, char **av)
   while (i < ac)
     {
       if (!my_strcmp(av[i], "-dump") && (i += 1))
+	parse->dump = my_getnbr(av[i++]);
+      else
 	{
-	  parse->dump = my_getnbr(av[i++]);
-	  continue ;
+	  if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3))
+	    i += 2;
+	  if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3))
+	    i += 2;
+	  i += 1;
 	}
-      if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3) && (i += 2));
-      if ((is_an_arg(av[i]) == 2 || is_an_arg(av[i]) == 3) && (i += 2));
-      i += 1;
     }
 }
 

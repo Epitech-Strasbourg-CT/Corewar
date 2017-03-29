@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Wed Mar 29 00:06:45 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:58:36 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
@@ -35,7 +35,7 @@ typedef struct	s_nchamp
 
 typedef struct		s_heads
 {
-  unsigned int		id;
+  int			id;
   int			reg[16];
   int			ctn_cycle;
   int			carry;
@@ -77,8 +77,8 @@ typedef struct	s_game
 ** arena/arena_create.c
 */
 
-char	*arena_create(void);
-int	init_arena(t_game *);
+unsigned char	*arena_create(void);
+int		init_arena(t_game *);
 
 /*
 ** arena/average_champ.c
@@ -228,7 +228,6 @@ int	game(t_parse *);
 
 void	exec_head(t_game *,
 		  t_heads *,
-		  int *,
 		  void (*fnt[16])(t_game *, t_heads *, t_ins *));
 
 /*
@@ -281,7 +280,7 @@ t_ins	*get_instruc(t_game *, int);
 
 int	init_live(t_game *);
 void	update_live(t_game *);
-int	check_live(t_game *, int *);
+void	check_live(t_game *, int *);
 
 /*
 ** parse/parse.c

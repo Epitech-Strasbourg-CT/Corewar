@@ -5,14 +5,14 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 17:42:56 2017 Arthur Knoepflin
-** Last update Tue Mar 28 23:00:41 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:16:44 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
 
-static char	*add_zero(unsigned char *in)
+static char	*add_zero(char *in)
 {
   int		i;
   int		j;
@@ -35,7 +35,7 @@ static char	*add_zero(unsigned char *in)
   return (ret);
 }
 
-static int	nb_arg(unsigned char *base)
+static int	nb_arg(char *base)
 {
   int		i;
   int		ret;

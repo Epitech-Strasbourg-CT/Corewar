@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Tue Mar 21 20:33:22 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:11:41 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -34,6 +34,7 @@ int		main(int ac, char **av)
 {
   t_parse	*parse;
 
+  /* int	i; */
   if (ac == 1 || (ac > 1 && my_strcmp(av[1], "-h") == 0))
     {
       disp_help(av[0]);
@@ -42,7 +43,6 @@ int		main(int ac, char **av)
   if ((parse = get_parse(ac - 1, av + 1)) == NULL)
     return (84);
   /* printf("dump : %d && nb_champ : %d\n", parse->dump, parse->nb_champ); */
-  /* int	i; */
   /* i = 0; */
   /* while (i < parse->nb_champ) */
   /*   { */
