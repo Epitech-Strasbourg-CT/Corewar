@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 13 21:57:35 2017 Arthur Knoepflin
-** Last update Tue Mar 14 15:37:05 2017 Arthur Knoepflin
+** Last update Wed Mar 29 15:51:12 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -26,7 +26,7 @@ static int	check_magicnum(t_header *head, char *path)
   return (0);
 }
 
-static int	attribute_size(t_header *head, t_nchamp *champ)
+static void	attribute_size(t_header *head, t_nchamp *champ)
 {
   swap_endian(&head->prog_size, 4);
   champ->size = head->prog_size;

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Tue Mar 28 21:14:00 2017 Arthur Knoepflin
+** Last update Wed Mar 29 15:43:50 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -45,7 +45,7 @@ void	update_live(t_game *g)
   if (sum >= NBR_LIVE + g->old_check)
     {
       g->cycle_to_die -= CYCLE_DELTA;
-      g->old_check += 40;
+      g->old_check += NBR_LIVE;
     }
 }
 

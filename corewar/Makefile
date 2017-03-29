@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Tue Mar 28 23:51:58 2017 Arthur Knoepflin
+## Last update Wed Mar 29 15:50:27 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -57,7 +57,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	corewar
 
-CFLAGS	+=	-Iinclude -g
+CFLAGS	+=	-Iinclude -g -Wall -Wextra -pedantic -ansi
 
 all:		$(NAME)
 
