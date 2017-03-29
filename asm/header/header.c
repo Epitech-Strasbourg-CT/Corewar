@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Tue Mar 28 18:07:06 2017 
+** Last update Tue Mar 28 18:26:02 2017 
 */
 
 #include <stdlib.h>
@@ -26,9 +26,9 @@ void	suppress_line(char **file, int i)
 
 void	parse_name(t_asm *a, int *i, int j, int *indic)
 {
-  int   l;
-  int   t;
-  char  quote;
+  int	l;
+  int	t;
+  char	quote;
 
   l = 0;
   while (a->file[*i][j + l] && (a->file[*i][j + l] == ' ' ||
@@ -37,13 +37,13 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
   quote = a->file[*i][j + l];
   if (quote != '"')
     exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid character\n",
-		       GREEN, RESET, *i, j + l));
+			    GREEN, RESET, *i, j + l));
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
   if (a->file[*i][j + t] != quote || a->file[*i][j + t + 1] != 0)
     exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
-		       GREEN, RESET, *i, j + l));
+			    GREEN, RESET, *i, j + l));
   a->header.name = my_strndup(&(a->file[*i][j + l]), t - l);
   suppress_line(a->file, *i);
   *i = -1;

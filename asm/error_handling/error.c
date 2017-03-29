@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar  9 20:00:51 2017 Nicolas Polomack
-** Last update Sun Mar 26 16:55:34 2017 Nicolas Polomack
+** Last update Wed Mar 29 15:29:10 2017 
 */
 
 #include <stdlib.h>
@@ -39,9 +39,7 @@ int	error_write(int error_nb, char *info)
   my_printf("%sERROR%s: ", RED, RESET);
   if (error_nb == 1)
     my_printf("Undefined label '%s'\n", info);
-  if (error_nb == 2)
-    my_printf("Oups..., j'ai perdu la ligne '%s'\n", info);
-  if (error_nb == 3)
+  if (error_nb >= 2)
     my_printf("Oups..., j'ai perdu la ligne '%s'\n", info);
   exit(84);
 }
