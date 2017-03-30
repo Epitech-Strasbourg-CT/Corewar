@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Wed Mar 29 15:48:41 2017 
+** Last update Thu Mar 30 11:30:43 2017 
 */
 
 #include <stdlib.h>
@@ -41,7 +41,8 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
-  if (a->file[*i][j + t] != quote || !composed_of(a->file[*i] + j + t + 1, "\t "))
+  if (a->file[*i][j + t] != quote ||
+      !composed_of(a->file[*i] + j + t + 1, "\t "))
     exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
 			    GREEN, RESET, *i, j + l));
   a->header.name = my_strndup(&(a->file[*i][j + l]), t - l);
@@ -66,7 +67,8 @@ void	parse_comment(t_asm *a, int *i, int j, int *indic)
   t = ++l;
   while (a->file[*i][j + t] && a->file[*i][j + t] != quote)
     t += 1;
-  if (a->file[*i][j + t] != quote || !composed_of(a->file[*i] + j + t + 1, "\t "))
+  if (a->file[*i][j + t] != quote ||
+      !composed_of(a->file[*i] + j + t + 1, "\t "))
     exit(84 + 0 * my_printf("%sERROR%s:%d:%d: Invalid quotes.\n",
 		       GREEN, RESET, *i, j + l));
   a->header.comment = my_strndup(&(a->file[*i][j + l]), t - l);
