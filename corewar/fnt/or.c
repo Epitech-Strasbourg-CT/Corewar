@@ -5,7 +5,7 @@
 ** Login   <maxime.jenny@epitech.eu>
 **
 ** Started on  Thu Mar 23 17:55:09 2017 Maxime Jenny
-** Last update Tue Mar 28 17:08:56 2017 Arthur Knoepflin
+** Last update Wed Mar 29 18:00:11 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -18,6 +18,7 @@ static int	get_val(t_game *g, t_heads *h, int mode, int val)
     return (val);
   if (mode == 3)
     return (extract_val(g->arena + val, sizeof(int)));
+  return (0);
 }
 
 void	or(t_game *g, t_heads *h, t_ins *in)
@@ -27,6 +28,6 @@ void	or(t_game *g, t_heads *h, t_ins *in)
 
   i = get_val(g, h, in->type[0], in->val[0]);
   j = get_val(g, h, in->type[1], in->val[1]);
-  h->reg[in->val[2]] = i | j;
-  h->carry = !h->reg[in->val[2]];
+  h->reg[in->val[2] - 1] = i | j;
+  h->carry = !h->reg[in->val[2] - 1];
 }

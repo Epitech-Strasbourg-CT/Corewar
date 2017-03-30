@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 13 22:16:36 2017 Arthur Knoepflin
-** Last update Thu Mar 16 20:57:56 2017 Arthur Knoepflin
+** Last update Wed Mar 29 16:50:16 2017 Arthur Knoepflin
 */
 
 #include <sys/stat.h>
@@ -31,7 +31,6 @@ int	open_file(char *path)
 int	parse_file_champ(t_parse *parse)
 {
   int	i;
-  char	*tmp;
   int	fd;
 
   i = -1;

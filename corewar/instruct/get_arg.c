@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:56:31 2017 Arthur Knoepflin
-** Last update Tue Mar 28 22:05:18 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:49:38 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@
 ** -1 -> invalid
 */
 
-const static int	g_byte_len[16][3] =
+static const int	g_byte_len[16][3] =
   {
     {INV, DIR_SIZE, INV},			/* live */
     {REG_SIZE, DIR_SIZE, IND_SIZE},		/* ld */

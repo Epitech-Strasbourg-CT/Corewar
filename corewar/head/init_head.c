@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 22:52:43 2017 Arthur Knoepflin
-** Last update Tue Mar 28 20:45:41 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:50:06 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -27,9 +27,7 @@ void		init_head(t_game *game)
 {
   t_ins		*ins;
   t_heads	*val;
-  t_heads	*tmp;
   int		i;
-  int		j;
 
   game->heads = NULL;
   i = -1;

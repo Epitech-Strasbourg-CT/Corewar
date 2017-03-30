@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:25:52 2017 Nicolas Polomack
-** Last update Tue Mar 28 21:37:11 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:55:46 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -16,6 +16,7 @@ void		fork_head(t_game *g, t_heads *h, t_ins *in)
   int		i;
   t_heads	*head;
 
+  (void)g;
   i = -1;
   if ((head = (malloc(sizeof(t_heads)))) == NULL)
     return ;

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar  9 20:41:18 2017 Arthur Knoepflin
-** Last update Sun Mar 12 12:19:05 2017 Arthur Knoepflin
+** Last update Wed Mar 29 16:56:00 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -40,7 +40,8 @@ int		check_champ(int ac, char **av, int *count, int *i)
     return (1);
   if (av[*i][0] == '-' && !is_an_arg(av[*i]))
     return (print_unknown_arg(av[*i]));
-  if (!is_an_arg(av[*i]) && (*count += 1));
+  if (!is_an_arg(av[*i]))
+    *count += 1;
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:22:03 2017 Arthur Knoepflin
-** Last update Tue Mar 28 21:55:44 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:52:43 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -29,10 +29,8 @@ int	get_cycle_next(t_game *g, t_heads *head, t_ins *actual)
 
 void	exec_head(t_game *g,
 		  t_heads *head,
-		  int *stop,
 		  void (*fnt[16])(t_game *, t_heads *, t_ins *))
 {
-  t_ins	*tmp;
   t_ins	*ins;
 
   if (g->cycle >= head->ctn_cycle)
@@ -42,7 +40,7 @@ void	exec_head(t_game *g,
 	  head->pos += 1;
 	  return ;
 	}
-      printf("%d=%d %d=%d %d=%d\n", ins->type[0], ins->val[0], ins->type[1], ins->val[1], ins->type[2], ins->val[2]);
+      printf("%d=%ld %d=%ld %d=%ld\n", ins->type[0], ins->val[0], ins->type[1], ins->val[1], ins->type[2], ins->val[2]);
       head->ctn_cycle = g->cycle + get_cycle_next(g, head, ins);
       fnt[ins->cmd - 1](g, head, ins);
       printf(" : %s", g_op_tab[ins->cmd - 1].mnemonique);

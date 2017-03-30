@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:48:58 2017 Arthur Knoepflin
-** Last update Wed Mar 22 13:56:34 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:58:22 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -13,9 +13,9 @@
 #include "op.h"
 #include "my.h"
 
-char	*arena_create(void)
+unsigned char	*arena_create(void)
 {
-  char	*arena;
+  unsigned char	*arena;
 
   if ((arena = malloc(sizeof(char) * MEM_SIZE)) == NULL)
     return (NULL);

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Tue Mar 28 21:14:00 2017 Arthur Knoepflin
+** Last update Wed Mar 29 17:12:05 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -45,7 +45,7 @@ void	update_live(t_game *g)
   if (sum >= NBR_LIVE + g->old_check)
     {
       g->cycle_to_die -= CYCLE_DELTA;
-      g->old_check += 40;
+      g->old_check += NBR_LIVE;
     }
 }
 
@@ -85,13 +85,12 @@ int		nb_player_alive(t_game *g)
   return (ret);
 }
 
-int	check_live(t_game *g, int *stop)
+void	check_live(t_game *g, int *stop)
 {
   int	i;
 
   if (g->cycle >= g->old_cycle_verrif + g->cycle_to_die)
     {
-      printf("CHECK_LIVE");
       g->cycle_to_die -= CYCLE_DELTA;
       g->old_cycle_verrif = g->cycle;
       i = -1;
