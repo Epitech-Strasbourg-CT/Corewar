@@ -5,13 +5,11 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Thu Mar  9 19:04:34 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:58:36 2017 Arthur Knoepflin
+** Last update Fri Mar 31 23:08:54 2017 Arthur Knoepflin
 */
 
 #ifndef COREWAR_H_
 # define COREWAR_H_
-
-# include "op.h"
 
 # define BUF_SIZE	2048
 
@@ -202,7 +200,7 @@ void	lld(t_game *, t_heads *, t_ins *);
 ** fnt/lldi.c
 */
 
-void	lldi(t_game *, t_heads *,t_ins *);
+void	lldi(t_game *, t_heads *, t_ins *);
 
 /*
 ** fnt/lfork.c
@@ -220,7 +218,13 @@ void	aff(t_game *, t_heads *, t_ins *);
 ** game.c
 */
 
-int	game(t_parse *);
+t_game	*game(t_parse *);
+
+/*
+** get_name.c
+*/
+
+char	*get_name(t_game *, int);
 
 /*
 ** head/exec_head.c
@@ -280,7 +284,15 @@ t_ins	*get_instruc(t_game *, int);
 
 int	init_live(t_game *);
 void	update_live(t_game *);
+void	win_msg(t_game *);
 void	check_live(t_game *, int *);
+
+/*
+** list_live.c
+*/
+
+int	my_put_list_live(t_live **, char *);
+int	my_show_live(t_live *);
 
 /*
 ** parse/parse.c
@@ -336,5 +348,11 @@ int	parse_header(int, char *, t_nchamp *);
 */
 
 char	*read_file(int);
+
+/*
+** print_dead.c
+*/
+
+void	print_dead(t_game *, int);
 
 #endif /* !COREWAR_H_ */

@@ -5,10 +5,11 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 16:12:48 2017 Nicolas Polomack
-** Last update Wed Mar 29 17:25:17 2017 Arthur Knoepflin
+** Last update Fri Mar 31 22:02:24 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
+#include "op.h"
 
 void	ld(t_game *g, t_heads *h, t_ins *in)
 {

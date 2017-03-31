@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 19 19:01:48 2017 Nicolas Polomack
-** Last update Mon Mar 20 19:15:22 2017 
+** Last update Fri Mar 31 23:21:34 2017 Arthur Knoepflin
 */
 
 #include <unistd.h>
@@ -21,7 +21,6 @@ void	write_standard_reg(t_instruct *instruct, int index, t_asm *myasm)
   int	size;
   char	*byte_code;
   char	str[REG_SIZE];
-  int	i;
 
   reg = instruct->args[index] + 1;
   my_memset(str, 0, REG_SIZE);

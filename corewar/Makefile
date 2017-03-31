@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Wed Mar 29 17:54:50 2017 Arthur Knoepflin
+## Last update Fri Mar 31 23:11:38 2017 Arthur Knoepflin
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -29,6 +29,7 @@ SRC	=	arena/arena_create.c		\
 		fnt/zjmp.c			\
 		fnt/fork.c			\
 		game.c				\
+		get_name.c			\
 		head/exec_head.c		\
 		head/head.c			\
 		head/init_head.c		\
@@ -48,25 +49,38 @@ SRC	=	arena/arena_create.c		\
 		parse/parse_get_list_id.c	\
 		parse/parse_file_champ.c	\
 		parse/parse_file_header.c	\
-		parse/read_file.c
+		parse/read_file.c		\
+		print_dead.c
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	corewar
 
-CFLAGS	+=	-Iinclude -g -Wall -Wextra -pedantic -ansi
+CFLAGS	+=	-Iinclude -Wall -Wextra -pedantic -ansi -Werror
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ)
-		gcc -o $(NAME) $(OBJ) -lmy -Llib
+$(NAME):	.SILENT
+
+.SILENT:	$(OBJ)
+		@echo "\n\033[32;1mCompile lib\033[0m"
+		@make -sC lib/my --no-print-directory
+		@echo "\n\033[32;1mCompile Corewar\033[0m"
+		@gcc -o $(NAME) $(OBJ) -lmy -Llib
+		@echo "\n\n\033[34;1m---====== Ready for Battle ======---\033[0m\n"
 
 clean:
-		rm -rf $(OBJ)
+		@make -sC lib/my clean
+		@rm -rf $(OBJ)
 
 fclean:		clean
-		rm -rf $(NAME)
+		@make -sC lib/my fclean
+		@rm -rf $(NAME)
 
 re:		fclean all
 
 .PHONY:		all clean fclean re
+
+%.o:		%.c
+		@echo "\033[32;1mCompile\033[0m $< \033[33;1m=>\033[0m $@"
+		gcc -c $(CFLAGS) -o $@ $<

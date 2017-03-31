@@ -5,7 +5,7 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Tue Mar 14 14:32:36 2017 
-** Last update Tue Mar 21 13:28:11 2017 
+** Last update Fri Mar 31 23:20:08 2017 Arthur Knoepflin
 */
 #include <unistd.h>
 #include <stdlib.h>
@@ -21,6 +21,7 @@ int	get_arg_size(char type, int ismod)
     return (IND_SIZE);
   else if ((type & T_DIR) == T_DIR)
     return (DIR_SIZE / (1 + ismod));
+  return (0);
 }
 
 static char	get_arg_mask(char type)
@@ -31,6 +32,7 @@ static char	get_arg_mask(char type)
     return (3);
   else if ((type & T_DIR) == T_DIR)
     return (2);
+  return (0);
 }
 
 int	get_instruct_size(t_instruct *instruct)

@@ -5,10 +5,11 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 28 23:36:19 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:35:48 2017 Arthur Knoepflin
+** Last update Fri Mar 31 22:03:05 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
+#include "op.h"
 
 int	error_desc(t_ins *ret)
 {

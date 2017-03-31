@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 21:02:16 2017 Arthur Knoepflin
-** Last update Tue Mar 21 21:19:48 2017 
+** Last update Fri Mar 31 23:09:29 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -40,7 +40,7 @@ int	load_champ(t_game *game, t_nchamp *champ, int addr)
   while (++i < champ->size)
     {
       if (game->arena[index] != 0 && (my_puterror("Overlap detected\n")))
-	return (1);	
+	return (1);
       game->arena[index] = (unsigned char) champ->code[i];
       index += 1;
     }

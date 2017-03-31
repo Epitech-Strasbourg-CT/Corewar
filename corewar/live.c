@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:12:05 2017 Arthur Knoepflin
+** Last update Fri Mar 31 23:05:49 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -49,15 +49,6 @@ void	update_live(t_game *g)
     }
 }
 
-static void	print_dead(int id, char *name)
-{
-  my_putstr("The player ");
-  my_put_nbr(id);
-  my_putstr("(");
-  my_putstr(name);
-  my_putstr(") is dead\n");
-}
-
 int		nb_player_alive(t_game *g)
 {
   char		tmp_live[4];
@@ -85,6 +76,29 @@ int		nb_player_alive(t_game *g)
   return (ret);
 }
 
+void	win_msg(t_game *g)
+{
+  char	*name;
+  char	*msg;
+
+  if (nb_player_alive(g) == 1)
+    {
+      name = get_name(g, g->heads->id);
+      if ((msg = malloc(sizeof(char) * (30 + my_strlen(name)))) != NULL)
+	{
+	  my_memset(msg, ' ', 29);
+	  msg[29] = '\0';
+	  my_strcpy(msg, "Le joueur ");
+	  msg[10] = g->heads->id + '0';
+	  my_strcpy(msg + 11, " (");
+	  my_strcpy(msg + 13, name);
+	  my_strcpy(msg + 13 + my_strlen(name), ") a gagné.\n");
+	  my_putstr(msg);
+	  free(msg);
+	}
+    }
+}
+
 void	check_live(t_game *g, int *stop)
 {
   int	i;
@@ -97,7 +111,7 @@ void	check_live(t_game *g, int *stop)
       while (++i < g->parse->nb_champ)
 	if (g->live[g->parse->champ[i]->id - 1] == 0)
 	  {
-	    print_dead(g->parse->champ[i]->id, g->parse->champ[i]->name);
+	    print_dead(g, g->parse->champ[i]->id);
 	    while (g->read && g->read->id == g->parse->champ[i]->id)
 	      g->read = g->read->next;
 	    kill_player(g, g->parse->champ[i]->id);

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 21:56:31 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:49:38 2017 Arthur Knoepflin
+** Last update Wed Mar 29 19:14:17 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -20,22 +20,22 @@
 
 static const int	g_byte_len[16][3] =
   {
-    {INV, DIR_SIZE, INV},			/* live */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* ld */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* st */
-    {REG_SIZE, INV, INV},			/* add */
-    {REG_SIZE, INV, INV},			/* sub */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* and */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* or */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* xor */
-    {INV, IDX_SIZE, INV},			/* zjmp */
-    {REG_SIZE, IDX_SIZE, IND_SIZE},		/* ldi */
-    {REG_SIZE, IDX_SIZE, IND_SIZE},		/* sti */
-    {INV, IDX_SIZE, INV},			/* fork */
-    {REG_SIZE, DIR_SIZE, IND_SIZE},		/* lld */
-    {REG_SIZE, IDX_SIZE, IND_SIZE},		/* lldi */
-    {INV, IDX_SIZE, INV},			/* lfork */
-    {REG_SIZE, INV, INV}			/* aff */
+    {INV, DIR_SIZE, INV},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {REG_SIZE, INV, INV},
+    {REG_SIZE, INV, INV},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {INV, IDX_SIZE, INV},
+    {REG_SIZE, IDX_SIZE, IND_SIZE},
+    {REG_SIZE, IDX_SIZE, IND_SIZE},
+    {INV, IDX_SIZE, INV},
+    {REG_SIZE, DIR_SIZE, IND_SIZE},
+    {REG_SIZE, IDX_SIZE, IND_SIZE},
+    {INV, IDX_SIZE, INV},
+    {REG_SIZE, INV, INV}
   };
 
 int	extract_val(unsigned char *arena, int len)

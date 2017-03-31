@@ -5,12 +5,14 @@
 ## Login   <nicolas.polomack@epitech.eu>
 ## 
 ## Started on  Mon Mar 20 00:00:28 2017 Nicolas Polomack
-## Last update Thu Mar 23 20:35:39 2017 Nicolas Polomack
+## Last update Fri Mar 31 20:46:00 2017 Arthur Knoepflin
 ##
 
-MAKE	=	make -C asm --no-print-directory
+MAKE		=	make -C asm --no-print-directory
 
-NAME	=	asm/asm
+MAKE_COR	=	make -C corewar --no-print-directory
+
+NAME		=	asm/asm
 
 all:	$(NAME)
 

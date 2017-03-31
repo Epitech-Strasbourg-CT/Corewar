@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Wed Mar  1 19:36:44 2017 Nicolas Polomack
-** Last update Thu Mar 30 11:30:43 2017 
+** Last update Fri Mar 31 23:26:02 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -24,7 +24,7 @@ void	suppress_line(char **file, int i)
   file[i - 1] = NULL;
 }
 
-void	parse_name(t_asm *a, int *i, int j, int *indic)
+void	parse_name(t_asm *a, int *i, int j)
 {
   int	l;
   int	t;
@@ -50,7 +50,7 @@ void	parse_name(t_asm *a, int *i, int j, int *indic)
   *i = -1;
 }
 
-void	parse_comment(t_asm *a, int *i, int j, int *indic)
+void	parse_comment(t_asm *a, int *i, int j)
 {
   int	l;
   int	t;
@@ -90,10 +90,10 @@ static void	logic(t_asm *a, int *name, int *comment)
         j += 1;
       if (my_strncmp(&(a->file[i][j]), NAME_CMD_STRING,
 		     5) == 0 && (*name)++ == 0)
-        parse_name(a, &i, j + 5, name);
+        parse_name(a, &i, j + 5);
       else if (my_strncmp(&(a->file[i][j]), COMMENT_CMD_STRING,
 			  8) == 0 && (*comment)++ == 0)
-        parse_comment(a, &i, j + 8, comment);
+        parse_comment(a, &i, j + 8);
       else if (*name == 2 || *comment == 2)
         error_header(i, j, (*name == 2) ? 1 : 0);
       else

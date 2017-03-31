@@ -5,12 +5,13 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Mon Mar 20 17:42:56 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:16:44 2017 Arthur Knoepflin
+** Last update Fri Mar 31 22:03:20 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
 #include "corewar.h"
 #include "my.h"
+#include "op.h"
 
 static char	*add_zero(char *in)
 {

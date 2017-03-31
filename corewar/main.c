@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:11:41 2017 Arthur Knoepflin
+** Last update Fri Mar 31 22:42:11 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -33,8 +33,8 @@ The addresses are MEM_SIZE modulo\n");
 int		main(int ac, char **av)
 {
   t_parse	*parse;
+  t_game	*g;
 
-  /* int	i; */
   if (ac == 1 || (ac > 1 && my_strcmp(av[1], "-h") == 0))
     {
       disp_help(av[0]);
@@ -42,17 +42,10 @@ int		main(int ac, char **av)
     }
   if ((parse = get_parse(ac - 1, av + 1)) == NULL)
     return (84);
-  /* printf("dump : %d && nb_champ : %d\n", parse->dump, parse->nb_champ); */
-  /* i = 0; */
-  /* while (i < parse->nb_champ) */
-  /*   { */
-  /*     if (parse->champ[i]) */
-  /* 	printf("id : %d load_addr : %d path : %s name : %s size : %d comment : %s\n", parse->champ[i]->id, */
-  /* 	       parse->champ[i]->load_addr, parse->champ[i]->path, parse->champ[i]->name, */
-  /* 	       parse->champ[i]->size, parse->champ[i]->comment); */
-  /*     i += 1; */
-  /*   } */
-  if (game(parse))
+  if ((g = game(parse)) == NULL)
     return (84);
+  if ((unsigned int) g->cycle <= g->parse->dump)
+    my_show_live(g->msg);
+  win_msg(g);
   return (0);
 }

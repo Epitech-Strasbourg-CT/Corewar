@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 14 17:13:55 2017 Arthur Knoepflin
-** Last update Tue Mar 28 19:03:02 2017 Arthur Knoepflin
+** Last update Thu Mar 30 11:24:33 2017 Arthur Knoepflin
 */
 
 #include "op.h"
@@ -28,7 +28,7 @@ t_op	g_op_tab[] =
      "load index"},
     {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
      "store index"},
-    {"fork", 1, {T_DIR}, 12, 100, "fork"},
+    {"fork", 1, {T_DIR}, 12, 800, "fork"},
     {"lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load"},
     {"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
      "long load index"},

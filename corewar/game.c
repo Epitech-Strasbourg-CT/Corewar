@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Thu Mar 16 12:53:10 2017 Arthur Knoepflin
-** Last update Wed Mar 29 17:59:04 2017 Arthur Knoepflin
+** Last update Fri Mar 31 22:41:29 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -43,31 +43,29 @@ t_game		*init_game(t_parse *parse)
   return (game);
 }
 
-int		game(t_parse *parse)
+t_game		*game(t_parse *parse)
 {
   void		(*fnt[16])(t_game *, t_heads *, t_ins *);
   int		stop;
   t_game	*game;
 
   if (!(game = init_game(parse)))
-    return (1);
+    return (NULL);
   get_fnt_tab(fnt);
   stop = 0;
   while (!stop)
     {
-      printf("=========NOUVEAU CYCLE : %d=========\n", game->cycle);
+      if ((unsigned int) game->cycle == game->parse->dump)
+	dump(game);
       game->read = game->heads;
       while (!stop && game->read)
   	{
-  	  printf("%p : %d", (void *)game->read, game->read->id);
   	  exec_head(game, game->read, fnt);
   	  check_live(game, &stop);
   	  if (game->read && ((game->read->pos %= MEM_SIZE) || 1))
   	    game->read = game->read->next;
-  	  printf("\n");
   	}
       game->cycle += 1;
     }
-  printf("%d %d\n", game->cycle, game->cycle_to_die);
-  return (0);
+  return (game);
 }

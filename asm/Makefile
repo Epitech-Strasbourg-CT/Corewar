@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Wed Mar 29 15:21:55 2017 
+## Last update Fri Mar 31 23:23:06 2017 Arthur Knoepflin
 ##
 
 SRC	=	main.c				\
@@ -42,7 +42,7 @@ LIB	=	-lmy -lmyprintf -lgnl
 
 INCLUDE	=	-I./include/
 
-CFLAGS	+=	 $(INCLUDE) -g
+CFLAGS	+=	 $(INCLUDE) -Wall -Wextra
 
 all:		$(NAME)
 

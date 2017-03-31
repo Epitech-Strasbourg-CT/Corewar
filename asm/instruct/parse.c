@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Sun Mar 26 16:56:23 2017 Nicolas Polomack
+** Last update Fri Mar 31 23:28:18 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -63,7 +63,7 @@ int	are_same_type(t_op *cur, t_op *ref)
   return (1);
 }
 
-int	check_command_args(char **command, int fd, t_op *op_cur)
+int	check_command_args(char **command, t_op *op_cur)
 {
   int	i;
 
@@ -111,7 +111,7 @@ void		parse_commands(t_asm *a)
       check_nb_args( arg + i, list, idx);
       my_memset((char *)t->op, 0, sizeof(t_op));
       t->op->mnemonique = my_strndup(arg, i);
-      if ((check_command_args(list, a->fd, t->op)) == 0)
+      if ((check_command_args(list, t->op)) == 0)
 	exit(84 + 0 * my_printf("at instruct number %d\n", idx));
       free(arg);
       t->args = list;
