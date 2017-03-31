@@ -5,8 +5,9 @@
 ** Login   <cedric.thomas@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 18:10:13 2017 
-** Last update Fri Mar 31 23:10:45 2017 Arthur Knoepflin
+** Last update Fri Mar 31 23:53:39 2017 Arthur Knoepflin
 */
+
 #include "my.h"
 #include "corewar.h"
 
