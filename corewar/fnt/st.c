@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Thu Mar 23 17:02:39 2017 Nicolas Polomack
-** Last update Thu Mar 30 14:44:36 2017 Nicolas Polomack
+** Last update Sat Apr  1 18:13:14 2017 Arthur Knoepflin
 */
 
 #include "corewar.h"
@@ -21,10 +21,10 @@ void	st(t_game *g, t_heads *h, t_ins *in)
   if (in->type[1] == 1)
     pos = h->reg[in->val[1] - 1];
   else if (in->type[1] == 3)
-    pos = extract_val(g->arena + (h->pos + in->val[1]) % MEM_SIZE,
-		      sizeof(int));
+    pos = h->pos + in->val[1];
   pos %= MEM_SIZE;
   while (pos < 0)
     pos += MEM_SIZE;
-  my_strncpy((char *)g->arena + pos, (char *)&val, REG_SIZE);
+  swap_endian(&val, sizeof(int));
+  my_strncpy((char *)g->arena + pos, (char *)&val, sizeof(int));
 }

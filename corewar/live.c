@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Mar 21 21:20:58 2017 Arthur Knoepflin
-** Last update Fri Mar 31 23:05:49 2017 Arthur Knoepflin
+** Last update Sat Apr  1 18:27:44 2017 Arthur Knoepflin
 */
 
 #include <stdlib.h>
@@ -79,23 +79,15 @@ int		nb_player_alive(t_game *g)
 void	win_msg(t_game *g)
 {
   char	*name;
-  char	*msg;
 
   if (nb_player_alive(g) == 1)
     {
       name = get_name(g, g->heads->id);
-      if ((msg = malloc(sizeof(char) * (30 + my_strlen(name)))) != NULL)
-	{
-	  my_memset(msg, ' ', 29);
-	  msg[29] = '\0';
-	  my_strcpy(msg, "Le joueur ");
-	  msg[10] = g->heads->id + '0';
-	  my_strcpy(msg + 11, " (");
-	  my_strcpy(msg + 13, name);
-	  my_strcpy(msg + 13 + my_strlen(name), ") a gagné.\n");
-	  my_putstr(msg);
-	  free(msg);
-	}
+      my_putstr("Le joueur ");
+      my_putchar(g->heads->id + '0');
+      my_putstr(" (");
+      my_putstr(name);
+      my_putstr(") a gagné.\n");
     }
 }
 
