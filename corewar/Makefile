@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ## 
 ## Started on  Thu Mar  9 18:45:29 2017 Arthur Knoepflin
-## Last update Fri Mar 31 23:11:38 2017 Arthur Knoepflin
+## Last update Sat Apr  1 01:59:00 2017 Nicolas Polomack
 ##
 
 SRC	=	arena/arena_create.c		\
@@ -63,11 +63,11 @@ all:		$(NAME)
 $(NAME):	.SILENT
 
 .SILENT:	$(OBJ)
-		@echo "\n\033[32;1mCompile lib\033[0m"
+		@echo -e "\n\033[32;1mCompile lib\033[0m"
 		@make -sC lib/my --no-print-directory
-		@echo "\n\033[32;1mCompile Corewar\033[0m"
+		@echo -e "\n\033[32;1mCompile Corewar\033[0m"
 		@gcc -o $(NAME) $(OBJ) -lmy -Llib
-		@echo "\n\n\033[34;1m---====== Ready for Battle ======---\033[0m\n"
+		@echo -e "\n\n\033[34;1m---====== Ready for Battle ======---\033[0m\n"
 
 clean:
 		@make -sC lib/my clean
@@ -82,5 +82,5 @@ re:		fclean all
 .PHONY:		all clean fclean re
 
 %.o:		%.c
-		@echo "\033[32;1mCompile\033[0m $< \033[33;1m=>\033[0m $@"
+		@echo -e "\033[32;1mCompile\033[0m $< \033[33;1m=>\033[0m $@"
 		gcc -c $(CFLAGS) -o $@ $<
