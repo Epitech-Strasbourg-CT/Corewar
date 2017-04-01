@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.net>
 ## 
 ## Started on  Sat Oct 22 10:37:32 2016 Cédric Thomas
-## Last update Fri Mar 31 23:23:06 2017 Arthur Knoepflin
+## Last update Sat Apr  1 02:13:25 2017 Nicolas Polomack
 ##
 
 SRC	=	main.c				\
@@ -44,23 +44,35 @@ INCLUDE	=	-I./include/
 
 CFLAGS	+=	 $(INCLUDE) -Wall -Wextra
 
+GREEN	=	\033[32;1m
+
+YELLOW	=	\033[33;1m
+
+BLUE	=	\033[34;1m
+
+RES	=	\033[0m
+
 all:		$(NAME)
 
 $(NAME):	.SILENT
 
 .SILENT:	$(OBJ)
-		@echo -en "Compilation GNL...\t\t"
+		@echo
+		@echo -en "$(GREEN)Compile$(RES) GNL...\t\t"
 		@make -sC lib/GNL
-		@echo "OK"
-		@echo -en "Compilation libmy...\t\t"
+		@echo -e "$(GREEN)OK$(RES)"
+		@echo -en "$(GREEN)Compile$(RES) libmy...\t"
 		@make -sC lib/my
-		@echo "OK"
-		@echo -en "Compilation my_printf...\t"
+		@echo -e "$(GREEN)OK$(RES)"
+		@echo -en "$(GREEN)Compile$(RES) my_printf...\t"
 		@make -sC lib/my_printf
-		@echo "OK"
-		@echo -en "Linking ASM compiler...\t\t"
+		@echo -e "$(GREEN)OK$(RES)"
+		@echo -en "$(GREEN)Linking$(RES) ASM compiler...\t"
 		@gcc -o $(NAME) $(OBJ) -L$(LIB_F) $(LIB)
-		@echo "OK"
+		@echo -e "$(GREEN)OK$(RES)"
+		@echo
+		@echo -e "$(BLUE)---====== READY TO BATTLE ======---$(RES)"
+		@echo
 
 clean:
 		@make -sC lib/GNL clean
@@ -77,3 +89,8 @@ fclean:		clean
 re: 		fclean all
 
 .PHONY: all clean fclean re
+
+%.o:	%.c
+	@echo -en "$(GREEN)Compile$(RES) $@"
+	@gcc -c $(CFLAGS) -o $@ $<
+	@echo -e " $(YELLOW)=>$(RES) $<"

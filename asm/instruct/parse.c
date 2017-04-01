@@ -5,7 +5,7 @@
 ** Login   <nicolas.polomack@epitech.eu>
 ** 
 ** Started on  Sun Mar 12 15:46:29 2017 Nicolas Polomack
-** Last update Fri Mar 31 23:28:18 2017 Arthur Knoepflin
+** Last update Sat Apr  1 01:57:24 2017 Nicolas Polomack
 */
 
 #include <stdlib.h>
@@ -68,7 +68,7 @@ int	check_command_args(char **command, t_op *op_cur)
   int	i;
 
   op_cur->nbr_args = -1;
-  while (command[++(op_cur->nbr_args)]);
+  while (command[(int)++(op_cur->nbr_args)]);
   if (parse_types(op_cur, command) == 84)
     return (0);
   i = -1;
