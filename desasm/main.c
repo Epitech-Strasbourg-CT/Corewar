@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 ** 
 ** Started on  Tue Feb 28 18:47:35 2017 Arthur Knoepflin
-** Last update Tue Mar 28 17:57:59 2017 
+** Last update Tue Mar 28 22:29:45 2017 
 */
 
 #include <sys/types.h>
@@ -88,9 +88,6 @@ static char	*get_file(int rd, t_header *head)
       free(file);
       return (NULL);
     }
-  int i = -1;
-  while (++i<head->prog_size)
-    my_fputchar(2, file[i]);
   return (file);
 }
 
